@@ -22,7 +22,6 @@
    :maxdepth: 1
 
    TIPS
-   Core
    ruby/dotinstall
    db/mysql
 
