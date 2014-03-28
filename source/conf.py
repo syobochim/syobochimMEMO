@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Wada_MEMO documentation build configuration file, created by
+# syobochim_MEMO documentation build configuration file, created by
 # sphinx-quickstart on Tue Oct 15 08:50:15 2013.
 #
 # This file is execfile()d with the current directory set to its
@@ -43,8 +43,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Wada_MEMO'
-copyright = u'2013, Mizuki Wada'
+project = u'syobochim_MEMO'
+copyright = u'2013, syobochim'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -184,7 +184,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Wada_MEMOdoc'
+htmlhelp_basename = 'syobochim_MEMOdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -204,8 +204,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'Wada_MEMO.tex', u'Wada\\_MEMO Documentation',
-     u'Mizuki Wada', 'manual'),
+    ('index', 'syobochim_MEMO.tex', u'syobochim\\_MEMO Documentation',
+     u'syobochim', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -234,8 +234,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'wada_memo', u'Wada_MEMO Documentation',
-     [u'Mizuki Wada'], 1)
+    ('index', 'syobochim_memo', u'syobochim_MEMO Documentation',
+     [u'syobochim'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -248,8 +248,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'Wada_MEMO', u'Wada_MEMO Documentation',
-     u'Mizuki Wada', 'Wada_MEMO', 'One line description of project.',
+    ('index', 'syobochim_MEMO', u'syobochim_MEMO Documentation',
+     u'syobochim', 'syobochim_MEMO', 'One line description of project.',
      'Miscellaneous'),
 ]
 
