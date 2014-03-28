@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>J2EEパターン -明暗を分ける設計の戦略-(書籍) &mdash; Wada_MEMO 2013.10.15 ドキュメント</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootswatch-united.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="../_static/css/font-awesome-ie7.min.css">
+<![endif]-->
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+</style>
+<link rel="stylesheet" href="../_static/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootstrap-responsive.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '2013.10.15',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+<script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../_static/underscore.js"></script>
+<script type="text/javascript" src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/translations.js"></script>
+<script type="text/javascript" src="../_static/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.show-sidebar').click(function(e) {
+       e.preventDefault();
+       if ($(".show-sidebar").html() == "Open Table Of Contents") {
+          $('.for-mobile').removeClass('hidden-phone');
+          $(".show-sidebar").html("Close Table Of Contents");
+       } else {
+          $(".show-sidebar").html("Open Table Of Contents");
+       }
+    });
+  });
+</script>
+    <link rel="top" title="Wada_MEMO 2013.10.15 ドキュメント" href="../index.html" />
+    <link rel="up" title="2013年下期 コア技術学習" href="2013_2H.html" />
+    <link rel="next" title="プロになるためのWeb技術入門(書籍)" href="2013_2H_04.html" />
+    <link rel="prev" title="クラスローダーとJ2EEパッケージング戦略を理解する" href="2013_2H_02.html" /> 
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top ">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="../index.html">Wada_MEMO 2013.10.15 ドキュメント</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              
+                <li>
+                <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
+                </li>
+                <li>
+                <a href="2013_2H_04.html" title="プロになるためのWeb技術入門(書籍)" accesskey="N">次へ</a>
+                </li>
+                <li>
+                <a href="2013_2H_02.html" title="クラスローダーとJ2EEパッケージング戦略を理解する" accesskey="P">前へ</a>
+                </li>
+                <li>
+                <a href="../Core.html" >コア技術学習</a>
+                </li>
+                <li>
+                <a href="2013_2H.html" accesskey="U">2013年下期　コア技術学習</a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+
+      
+      <div class="row-fluid hidden-desktop hidden-tablet">
+      
+<div class="span3 ">
+  <a class="visible-phone btn btn-small show-sidebar" data-toggle="collapse" data-target=".for-mobile">Open Table Of Contents</a>
+  <div class="for-mobile sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">J2EEパターン -明暗を分ける設計の戦略-(書籍)</a><ul>
+<li><a class="reference internal" href="#id2">J2EEプラットフォーム概要</a><ul>
+<li><a class="reference internal" href="#j2seapi">J2SEに含まれるAPI</a></li>
+<li><a class="reference internal" href="#id3">J2EEアプリケーションのコンポーネントおよびコンテナ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">プレゼンテーション層における設計上の考慮すべき事項と悪い方法</a><ul>
+<li><a class="reference internal" href="#id5">クライアント上でのセッション状態の保持</a></li>
+<li><a class="reference internal" href="#id8">プレゼンテーション層でのセッション状態の保持</a></li>
+<li><a class="reference internal" href="#id9">クライアントアクセスの制御</a></li>
+<li><a class="reference internal" href="#id10">　　ビューの保護</a></li>
+<li><a class="reference internal" href="#id11">　　設定によって保護を行う場合</a></li>
+<li><a class="reference internal" href="#id12">　　バリデーション</a></li>
+<li><a class="reference internal" href="#id13">ヘルパークラスのプロパティ　～統合性および一貫性～</a></li>
+<li><a class="reference internal" href="#id14">プレゼンテーション層における悪い方法</a></li>
+<li><a class="reference internal" href="#id15">　　複数のビューに制御コードが含まれている</a></li>
+<li><a class="reference internal" href="#id16">　　プレゼンテーション層のデータ構造がビジネス層に公開されている</a></li>
+<li><a class="reference internal" href="#id17">　　プレゼンテーション層のデータ構造がドメインオブジェクトに公開されている</a></li>
+<li><a class="reference internal" href="#id18">　　フォームの重複送信を放置している</a></li>
+<li><a class="reference internal" href="#id19">　　クライアントが機密リソースに直接アクセスできる</a></li>
+<li><a class="reference internal" href="#jsp-setproperty-bean">　　&lt;jsp:setProperty&gt;でBeanのプロパティがリセットされると想定している</a></li>
+<li><a class="reference internal" href="#id20">　　コントローラーが肥大化する</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id21">ビジネス層における設計上の考慮すべき事項と悪い方法</a><ul>
+<li><a class="reference internal" href="#bean">セッションBeanの使用</a></li>
+<li><a class="reference internal" href="#id22">セッションBean　―ステートフルとステートレス</a></li>
+<li><a class="reference internal" href="#id23">エンティティBean中のビジネスロジック</a></li>
+<li><a class="reference internal" href="#id24">ビジネス層およびインテグレーション層における悪い方法</a></li>
+<li><a class="reference internal" href="#id25">　　オブジェクトモデルを直接エンティティBeanモデルにマッピングする</a></li>
+<li><a class="reference internal" href="#id26">　　リレーショナルモデルを直接エンティティBeanモデルにマッピングする</a></li>
+<li><a class="reference internal" href="#id27">　　各ユースケースをセッションBeanにマッピングする</a></li>
+<li><a class="reference internal" href="#get-setbean">　　get/setメソッドでエンタープライズBeanの属性を全て公開する</a></li>
+<li><a class="reference internal" href="#id28">　　サービスの検索をクライアントに埋め込む</a></li>
+<li><a class="reference internal" href="#id29">　　エンティティBeanを読み出し専用オブジェクトをとして使う</a></li>
+<li><a class="reference internal" href="#id30">　　エンティティBeanを細粒度のオブジェクトとして使う</a></li>
+<li><a class="reference internal" href="#id31">　　エンティティBeanに依存するオブジェクトの構造全体を格納する</a></li>
+<li><a class="reference internal" href="#ejbejb">　　EJB関連の例外をEJBに関係のないクライアントに公開する</a></li>
+<li><a class="reference internal" href="#id32">　　エンティティBeanの検索メソッドを使って大規模な検索セットを返す</a></li>
+<li><a class="reference internal" href="#id33">　　クライアントがビジネスコンポーネントからデータを集めている</a></li>
+<li><a class="reference internal" href="#id34">　　長期にわたるトランザクションにエンタープライズBeanを使用する</a></li>
+<li><a class="reference internal" href="#id35">　　ステートレスセッションBeanが呼び出しごとに対話状態を再構築する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="2013_2H_02.html"
+                        title="前の章へ">クラスローダーとJ2EEパッケージング戦略を理解する</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="2013_2H_04.html"
+                        title="次の章へ">プロになるためのWeb技術入門(書籍)</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/Core/2013_2H_03.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div>
+      </div>
+      
+
+      <!-- row -->
+      <div class="row-fluid">
+         
+<div class="span3 visible-desktop visible-tablet">
+  <div class=" sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">J2EEパターン -明暗を分ける設計の戦略-(書籍)</a><ul>
+<li><a class="reference internal" href="#id2">J2EEプラットフォーム概要</a><ul>
+<li><a class="reference internal" href="#j2seapi">J2SEに含まれるAPI</a></li>
+<li><a class="reference internal" href="#id3">J2EEアプリケーションのコンポーネントおよびコンテナ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">プレゼンテーション層における設計上の考慮すべき事項と悪い方法</a><ul>
+<li><a class="reference internal" href="#id5">クライアント上でのセッション状態の保持</a></li>
+<li><a class="reference internal" href="#id8">プレゼンテーション層でのセッション状態の保持</a></li>
+<li><a class="reference internal" href="#id9">クライアントアクセスの制御</a></li>
+<li><a class="reference internal" href="#id10">　　ビューの保護</a></li>
+<li><a class="reference internal" href="#id11">　　設定によって保護を行う場合</a></li>
+<li><a class="reference internal" href="#id12">　　バリデーション</a></li>
+<li><a class="reference internal" href="#id13">ヘルパークラスのプロパティ　～統合性および一貫性～</a></li>
+<li><a class="reference internal" href="#id14">プレゼンテーション層における悪い方法</a></li>
+<li><a class="reference internal" href="#id15">　　複数のビューに制御コードが含まれている</a></li>
+<li><a class="reference internal" href="#id16">　　プレゼンテーション層のデータ構造がビジネス層に公開されている</a></li>
+<li><a class="reference internal" href="#id17">　　プレゼンテーション層のデータ構造がドメインオブジェクトに公開されている</a></li>
+<li><a class="reference internal" href="#id18">　　フォームの重複送信を放置している</a></li>
+<li><a class="reference internal" href="#id19">　　クライアントが機密リソースに直接アクセスできる</a></li>
+<li><a class="reference internal" href="#jsp-setproperty-bean">　　&lt;jsp:setProperty&gt;でBeanのプロパティがリセットされると想定している</a></li>
+<li><a class="reference internal" href="#id20">　　コントローラーが肥大化する</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id21">ビジネス層における設計上の考慮すべき事項と悪い方法</a><ul>
+<li><a class="reference internal" href="#bean">セッションBeanの使用</a></li>
+<li><a class="reference internal" href="#id22">セッションBean　―ステートフルとステートレス</a></li>
+<li><a class="reference internal" href="#id23">エンティティBean中のビジネスロジック</a></li>
+<li><a class="reference internal" href="#id24">ビジネス層およびインテグレーション層における悪い方法</a></li>
+<li><a class="reference internal" href="#id25">　　オブジェクトモデルを直接エンティティBeanモデルにマッピングする</a></li>
+<li><a class="reference internal" href="#id26">　　リレーショナルモデルを直接エンティティBeanモデルにマッピングする</a></li>
+<li><a class="reference internal" href="#id27">　　各ユースケースをセッションBeanにマッピングする</a></li>
+<li><a class="reference internal" href="#get-setbean">　　get/setメソッドでエンタープライズBeanの属性を全て公開する</a></li>
+<li><a class="reference internal" href="#id28">　　サービスの検索をクライアントに埋め込む</a></li>
+<li><a class="reference internal" href="#id29">　　エンティティBeanを読み出し専用オブジェクトをとして使う</a></li>
+<li><a class="reference internal" href="#id30">　　エンティティBeanを細粒度のオブジェクトとして使う</a></li>
+<li><a class="reference internal" href="#id31">　　エンティティBeanに依存するオブジェクトの構造全体を格納する</a></li>
+<li><a class="reference internal" href="#ejbejb">　　EJB関連の例外をEJBに関係のないクライアントに公開する</a></li>
+<li><a class="reference internal" href="#id32">　　エンティティBeanの検索メソッドを使って大規模な検索セットを返す</a></li>
+<li><a class="reference internal" href="#id33">　　クライアントがビジネスコンポーネントからデータを集めている</a></li>
+<li><a class="reference internal" href="#id34">　　長期にわたるトランザクションにエンタープライズBeanを使用する</a></li>
+<li><a class="reference internal" href="#id35">　　ステートレスセッションBeanが呼び出しごとに対話状態を再構築する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="2013_2H_02.html"
+                        title="前の章へ">クラスローダーとJ2EEパッケージング戦略を理解する</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="2013_2H_04.html"
+                        title="次の章へ">プロになるためのWeb技術入門(書籍)</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/Core/2013_2H_03.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="span9">
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="j2ee">
+<h1><a class="toc-backref" href="#id36">J2EEパターン -明暗を分ける設計の戦略-(書籍)</a><a class="headerlink" href="#j2ee" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title first">目次</p>
+<ul class="simple">
+<li><a class="reference internal" href="#j2ee" id="id36">J2EEパターン -明暗を分ける設計の戦略-(書籍)</a><ul>
+<li><a class="reference internal" href="#id2" id="id37">J2EEプラットフォーム概要</a><ul>
+<li><a class="reference internal" href="#j2seapi" id="id38">J2SEに含まれるAPI</a></li>
+<li><a class="reference internal" href="#id3" id="id39">J2EEアプリケーションのコンポーネントおよびコンテナ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4" id="id40">プレゼンテーション層における設計上の考慮すべき事項と悪い方法</a><ul>
+<li><a class="reference internal" href="#id5" id="id41">クライアント上でのセッション状態の保持</a></li>
+<li><a class="reference internal" href="#id8" id="id42">プレゼンテーション層でのセッション状態の保持</a></li>
+<li><a class="reference internal" href="#id9" id="id43">クライアントアクセスの制御</a></li>
+<li><a class="reference internal" href="#id10" id="id44">　　ビューの保護</a></li>
+<li><a class="reference internal" href="#id11" id="id45">　　設定によって保護を行う場合</a></li>
+<li><a class="reference internal" href="#id12" id="id46">　　バリデーション</a></li>
+<li><a class="reference internal" href="#id13" id="id47">ヘルパークラスのプロパティ　～統合性および一貫性～</a></li>
+<li><a class="reference internal" href="#id14" id="id48">プレゼンテーション層における悪い方法</a></li>
+<li><a class="reference internal" href="#id15" id="id49">　　複数のビューに制御コードが含まれている</a></li>
+<li><a class="reference internal" href="#id16" id="id50">　　プレゼンテーション層のデータ構造がビジネス層に公開されている</a></li>
+<li><a class="reference internal" href="#id17" id="id51">　　プレゼンテーション層のデータ構造がドメインオブジェクトに公開されている</a></li>
+<li><a class="reference internal" href="#id18" id="id52">　　フォームの重複送信を放置している</a></li>
+<li><a class="reference internal" href="#id19" id="id53">　　クライアントが機密リソースに直接アクセスできる</a></li>
+<li><a class="reference internal" href="#jsp-setproperty-bean" id="id54">　　&lt;jsp:setProperty&gt;でBeanのプロパティがリセットされると想定している</a></li>
+<li><a class="reference internal" href="#id20" id="id55">　　コントローラーが肥大化する</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id21" id="id56">ビジネス層における設計上の考慮すべき事項と悪い方法</a><ul>
+<li><a class="reference internal" href="#bean" id="id57">セッションBeanの使用</a></li>
+<li><a class="reference internal" href="#id22" id="id58">セッションBean　―ステートフルとステートレス</a></li>
+<li><a class="reference internal" href="#id23" id="id59">エンティティBean中のビジネスロジック</a></li>
+<li><a class="reference internal" href="#id24" id="id60">ビジネス層およびインテグレーション層における悪い方法</a></li>
+<li><a class="reference internal" href="#id25" id="id61">　　オブジェクトモデルを直接エンティティBeanモデルにマッピングする</a></li>
+<li><a class="reference internal" href="#id26" id="id62">　　リレーショナルモデルを直接エンティティBeanモデルにマッピングする</a></li>
+<li><a class="reference internal" href="#id27" id="id63">　　各ユースケースをセッションBeanにマッピングする</a></li>
+<li><a class="reference internal" href="#get-setbean" id="id64">　　get/setメソッドでエンタープライズBeanの属性を全て公開する</a></li>
+<li><a class="reference internal" href="#id28" id="id65">　　サービスの検索をクライアントに埋め込む</a></li>
+<li><a class="reference internal" href="#id29" id="id66">　　エンティティBeanを読み出し専用オブジェクトをとして使う</a></li>
+<li><a class="reference internal" href="#id30" id="id67">　　エンティティBeanを細粒度のオブジェクトとして使う</a></li>
+<li><a class="reference internal" href="#id31" id="id68">　　エンティティBeanに依存するオブジェクトの構造全体を格納する</a></li>
+<li><a class="reference internal" href="#ejbejb" id="id69">　　EJB関連の例外をEJBに関係のないクライアントに公開する</a></li>
+<li><a class="reference internal" href="#id32" id="id70">　　エンティティBeanの検索メソッドを使って大規模な検索セットを返す</a></li>
+<li><a class="reference internal" href="#id33" id="id71">　　クライアントがビジネスコンポーネントからデータを集めている</a></li>
+<li><a class="reference internal" href="#id34" id="id72">　　長期にわたるトランザクションにエンタープライズBeanを使用する</a></li>
+<li><a class="reference internal" href="#id35" id="id73">　　ステートレスセッションBeanが呼び出しごとに対話状態を再構築する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id37">J2EEプラットフォーム概要</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="j2seapi">
+<h3><a class="toc-backref" href="#id38">J2SEに含まれるAPI</a><a class="headerlink" href="#j2seapi" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">機能</th>
+<th class="head">パッケージ名</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>グラフィカルユーザインターフェース</td>
+<td>java.awt.* , javax.swing.*</td>
+</tr>
+<tr class="row-odd"><td>データベースアクセス</td>
+<td>java.sql.*</td>
+</tr>
+<tr class="row-even"><td>ディレクトリアクセス</td>
+<td>javax.naming.*</td>
+</tr>
+<tr class="row-odd"><td>CORBA</td>
+<td>javax.rmi.CORBA.*</td>
+</tr>
+<tr class="row-even"><td>セキュリティ</td>
+<td>java.security</td>
+</tr>
+<tr class="row-odd"><td>入出力</td>
+<td>java.io.*</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id39">J2EEアプリケーションのコンポーネントおよびコンテナ</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>Jabaアプリケーションコンポーネント</strong></div>
+<div class="line">アプリケーションコンテナ内で動く独立したJavaプログラム</div>
+<div class="line"><br /></div>
+<div class="line"><strong>アプレットコンポーネント</strong></div>
+<div class="line">合おうレットコンテナ内で動くJavaアプレット</div>
+<div class="line"><br /></div>
+<div class="line"><strong>サーブレットおよびJSP</strong></div>
+<div class="line">Webコンテナ内で動くWeb層のコンポーネント。</div>
+<div class="line">コンテンツの動的な準備や処理、表示形式に合わせた書式の整形メカニズムが提供される。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>EJBコンポーネント(エンタープライズBean)</strong></div>
+<div class="line">EJBコンテナ内で実行される粗粒度のビジネスコンポーネント。</div>
+<div class="line">セッションBeanとエンティティBeanがある。</div>
+<div class="line"><br /></div>
+<div class="line">★セッションBean</div>
+<div class="line">処理やワークフローを扱うのに適しており、ステートフルとステートレスの2種類がある。</div>
+<div class="line">ステートフルセッションBean：メソッド呼び出しをまたがってクライアントの状態を保持する</div>
+<div class="line">ステートレスセッションBean：クライアントが呼び出すメソッドの間で状態を保持する必要がない場合に使われる(パフォーマンス上は有利)</div>
+<div class="line"><br /></div>
+<div class="line">★エンティティBean</div>
+<div class="line">ビジネスコンポーネントを永続化し、複数のユーザで共有する必要があるばあイン使用される。</div>
+<div class="line">永続性を管理する方法にはBean管理による永続性(BMP)とコンテナ管理による永続性(CMP)の2種類がある。</div>
+<div class="line">BMP：Bean内の状態を永続化するメカニズムの全てをBean開発者が実装する場合に使う。</div>
+<div class="line">CMP：Beanの永続化メカニズムを開発者が実装しない場合に使う。開発者はBean属性と永続化ストレージ間の必要なマッピングを指定し、その後の仕事はコンテナに任せる。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id40">プレゼンテーション層における設計上の考慮すべき事項と悪い方法</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id41">クライアント上でのセッション状態の保持</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">クライアント上にセッション状態を保持するには、HTMLページ内にセッション状態を直列化してう目込む必要がある。</div>
+<div class="line"><br /></div>
+<div class="line">クライアント上にセッション状態を保持することの利点</div>
+</div>
+<ul class="simple">
+<li>比較的実装しやすい</li>
+<li>少量の状態を保存するのに向いている</li>
+<li>物理的にまたがった負荷分散を実装するときに、複数のサーバ上に状態の複製を作らなくても良い</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><a href="#id6"><span class="problematic" id="id7">|</span></a>方法</p>
+<ul class="simple">
+<li>HTMLのhiddenフィールド</li>
+<li>HTTPクッキー</li>
+<li>各ページで参照するURIにセッション状態を直接埋め込む</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>HTMLのhiddenフィールド</strong></div>
+<div class="line">・比較的実装が簡単</div>
+<div class="line">・保存する量が多い場合はパフォーマンス悪い(リクエストやレスポンスごとにネットワーク上で状態をやりとりするため)</div>
+<div class="line">・保持される状態が文字列に限られる</div>
+<div class="line">・暗号化しなければ、HTMLソース内にプレーンテキストとして表示される</div>
+<div class="line"><br /></div>
+<div class="line"><strong>HTMLクッキー</strong></div>
+<div class="line">・実装しやすい</div>
+<div class="line">・保存する状態の量が多い場合はパフォーマンスに影響(リクエストやレスポンスごとにネットワーク上で状態をやりとりするため)</div>
+<div class="line">・サイズや型の制限有り(クッキーヘッダのサイズに制限有り。そのためデータ量が限られる)</div>
+<div class="line">・保持される状態は文字列化された値に限られる</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">クライアント上でセッションを保持する場合は、セキュリティの問題を考慮しなければならない。データをクライアントに見せたくない場合は、何らかの暗号化を取り入れてデータを守る必要がある。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id42">プレゼンテーション層でのセッション状態の保持</a><a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">セッション状態をサーバで保持する場合、セッション状態はセッションIDを使用して取り出され、</div>
+<div class="line">たいてい次のいずれかが起きるまで保持される。</div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>あらかじめ決めたタイムアウト時間が経過する</li>
+<li>セッションが手動で無効にされる</li>
+<li>セッションから状態が削除される</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>セッションをサーバに保持する利点</strong></div>
+</div>
+<ul class="simple">
+<li>保存するデータのサイズや型が自由である</li>
+<li>セッション状態をさらさないため、セキュリティの問題が発生しない</li>
+<li>パフォーマンスに影響しない</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id43">クライアントアクセスの制御</a><a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id44">　　ビューの保護</a><a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">ある特定のユーザからアクセスできないようにビューを制限する方法</div>
+<div class="line"><br /></div>
+<div class="line"><strong>戦略</strong></div>
+</div>
+<ol class="arabic simple">
+<li>コントローラやビューの処理時にアクセスを不可能にするロジックを追加する</li>
+<li>あるリソースに対しては、別のアプリケーションリソースからの内部呼び出しによってしかアクセスできないように実行システムを設定する</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">2に関して、リソースに対するアクセスはプレゼンテーション層の別のアプリケーションリソース(コントローラとなるサーブレットなど)を経由して行う必要がある。</div>
+<div class="line">制限されたリソースにはブラウザからの直接呼出しによってアクセスすることはできない。</div>
+<div class="line"><br /></div>
+<div class="line">1に関して、実現方法は2通りある。</div>
+</div>
+<ul class="simple">
+<li>コントローラをアクセス制御の入り口として使う(第五章で説明)</li>
+<li>アクセス制御機能を直接ビューに埋め込む</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>ビューに保護既往を埋め込む方法</strong></div>
+</div>
+<ul class="simple">
+<li>リソース全体へのアクセスをブロックする方法</li>
+<li>リソースの一部へのアクセスをブロックする方法</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>ビューごとに全体を保護</strong></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">この種の保護はロジックがコード中に散在することが無いよう、共通のコントローラにカプセル化するべき。そのため、この戦略が適しているのは、ごく一部のページだけに保護が必要な場合に限られる。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">例)</div>
+<div class="line">サイト上のページを見るユーザにログインさせる必要が有る場合</div>
+</div>
+<div class="highlight-python"><pre>&lt;%@ tagline uri="/WEB-INF/corej2eetaglibrary.tld" prefix="corePatterns"&gt;
+
+&lt;corePatterns:guard /&gt;
+&lt;HTML&gt;
+.
+.
+&lt;/HTML&gt;</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>ビューの一部を保護</strong></div>
+<div class="line"><br /></div>
+<div class="line">※ユーザのロールに基づきビューの一部の表示を制限</div>
+</div>
+<div class="highlight-python"><pre>&lt;%@ tagline uri="/WEB-INF/corej2eetaglibrary.tld" prefix="corePatterns"&gt;
+
+&lt;HTML&gt;
+.
+&lt;corePatterns:guard role="manager"&gt;
+&lt;b&gt;This should be seen only by managers!&lt;/b&gt;
+&lt;corePatterns:guard /&gt;
+.
+&lt;/HTML&gt;</pre>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id45">　　設定によって保護を行う場合</a><a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">プレゼンテーションエンジンの設定により、RequestDispatcherを使ったコントローラサーブレットのようなほかの内部リソース経由でしたアクセスを許可しないようにする方法がある。</div>
+<div class="line">Webkonntena に組み込まれたセキュリティメカニズムを利用する方法もある。この場合、セキュリティ制約はweb.xmlというデプロイ記述に定義する。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>標準のセキュリティ制約でリソースを保護</strong></div>
+<div class="line">web.xmlにセキュリティ制約を設定することで、ファイルへのアクセス制御を追加することが出来る</div>
+<div class="line"><br /></div>
+<div class="line"><strong>単純で一般的な設定でリソースを保護</strong></div>
+<div class="line">WEB-INFフォルダ配下にJSP資材を格納することでリソースにクライアントが直接アクセスすることを防ぐことが出来る！</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3><a class="toc-backref" href="#id46">　　バリデーション</a><a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">バリデーションは、クライアント側(JavaScriptを使用した精査)でのバリデーションのみでは不十分である。</div>
+<div class="line">※HTMLを直接編集することにより、精査を無効にすることが出来るため</div>
+<div class="line"><br /></div>
+<div class="line">サーバサイドでは精査のコードが混在することを防ぐため、</div>
+<div class="line">バリデーションロジックをコンポー年tやサブシステムにカプセル化するのが一般的。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3><a class="toc-backref" href="#id47">ヘルパークラスのプロパティ　～統合性および一貫性～</a><a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">JavaBeanのヘルパークラスは、クライアントリクエストと一緒に渡されるときに、主として中間の状態を保持するために使われる。</div>
+<div class="line">JSPのランタイムエンジンはサーブレットのリクエストオブジェクトからこれらのJavaBeansヘルパーのプロパティへ、</div>
+<div class="line">パラメータの値を自動的にコピーするメカニズムを提供する。</div>
+<div class="line"><br /></div>
+<div class="line">このメカニズムを使用するときは、下記に注意すること。</div>
+<div class="line">サーバにパラメータが送られない限り、&lt;jsp:setProperty&gt;の機能を使ったときには対応するBeanプロパティは変更されないままになる。</div>
+<div class="line">そのため、開発者が明示的に値を変更しなければ、アプリケーション中のデータが矛盾を起こしたり不正確になったりする危険がある。</div>
+<div class="line">この問題に対する設計上の簡単な解決策は、リクエスト間でJabaBean内のすべての状態をリセットすることである。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3><a class="toc-backref" href="#id48">プレゼンテーション層における悪い方法</a><a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id15">
+<h3><a class="toc-backref" href="#id49">　　複数のビューに制御コードが含まれている</a><a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">JSPビューの先頭にカスタムタグのヘルパークラスが含まれていて、アクセス制御やその他のチェックを行うことがあります。</div>
+<div class="line">多数のビューに同じようなヘルパーの記述が含まれていると、複数の箇所を変更しなければならずコードの保守が困難になります。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>コントローラと、それに連携するコマンドヘルパークラスを導入して制御コードを一環所に纏める</li>
+<li>JSPビューの一部だけを特定のユーザから見えないようにするために、複数の箇所に同じような制御コードを含める必要がある場合は、その作業を再利用可能なヘルパークラスに委譲する</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3><a class="toc-backref" href="#id50">　　プレゼンテーション層のデータ構造がビジネス層に公開されている</a><a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">HTTpServletRequesterといったプレゼンテーション層のデータ構造は、プレゼンテーション層の内部でしか使えないようにすべき。</div>
+<div class="line">これらの詳細をビジネス層や他のそうと共有すると、そうの間の結合度が高くなり、利用できるサービスの再利用性が大きく低下する。</div>
+<div class="line">ビジネスサービスのメソッドの子具に茶がHttpServletRequest型のパラメータを受け取るようになっている場合、</div>
+<div class="line">このサービスのクライアントは自分のリクエストをHttpServletRequestオブジェクトにラップしなければなりません。</div>
+<div class="line">更にビジネス層のサービスはプレゼンテーションオス固有のデータ構造とどのように相互作用するかを理解しなければならず、</div>
+<div class="line">ビジネス層のコードがより複雑になり、プレゼンテーション層とビジネス層の結合度が高くなる。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>プレゼンテーション層固有のデータ構造をビジネス層と共有するのではなく、その状態をより一般的なデータ構造にコピーし、それを共有する。</li>
+<li>プレゼンテーション層固有のデータ構造から関連する状態を取り出して、個々のパラメータだけ共有する。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3><a class="toc-backref" href="#id51">　　プレゼンテーション層のデータ構造がドメインオブジェクトに公開されている</a><a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">HttpServletRequestといったリエスト処理用のデータ構造をドメインオブジェクトと共有すると、あぷ襟ケーションにおけるこれら全く異なる二つの機能の結合度が高くなってしまう。</div>
+<div class="line">ドメインオブジェクトは再利用可能なコンポーネントであるべきで、その実装がプロトコルやそうに固有な詳細データに依存してしまうと、再利用の可能性は低くなる。</div>
+<div class="line">また、結合度の高いアプリケーションの保守やデバックは困難である。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>HttpServletRequestオブジェクトをパラメータとして渡すのではなく、リクエストオブジェクトから状態を一般的名データ構造にコピーし、そのオブジェクトをドメインオブジェクトとして共有する</li>
+<li>HttpServletRequestオブジェクトから関連する状態を取り出して、それぞれの状態を個々のパラメータとしてドメインオブジェクトに渡す。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">ドメインオブジェクトとは、実世界の中で問題領域を構成しているアプリケーション固有のオブジェクトのこと。例えば、ある書籍販売アプリケーションにおける書籍オブジェクトが、ドメインオブジェクトに相当する。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3><a class="toc-backref" href="#id52">　　フォームの重複送信を放置している</a><a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">クライアントか環境としてブラウザを使用する場合、アプリケーションがクライアント側の操作を制御する方法が』無く、</div>
+<div class="line">二重リクエストを送信してしまう可能性がある。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>クライアントからのリクエストフローを監視し、制御する</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3><a class="toc-backref" href="#id53">　　クライアントが機密リソースに直接アクセスできる</a><a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">情報にクライアントが直接アクセスする必要が無いのであれば、その情報は保護されるべき。</div>
+<div class="line">設定ファイルやプロパティファイル、JSP、クラスファイルが適切に保護されてなければ、クライアントは偶然or悪意をもって機密情報を取り出してしまう可能性がある。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>機密リソースを保護し、クライアントが直接アクセスできないようにする</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="jsp-setproperty-bean">
+<h3><a class="toc-backref" href="#id54">　　&lt;jsp:setProperty&gt;でBeanのプロパティがリセットされると想定している</a><a class="headerlink" href="#jsp-setproperty-bean" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">&lt;jsp:setProperty&gt;は、リクエストパラメータをJavaBeanヘルパーの同じ名前のプロパティにコピーする。</div>
+<div class="line">しかし、空の値をもったパラメータは無視されるが、開発者の多くは対応するJavaBeanのプロパティにnullや空の文字列が代入されると誤解している。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>Beansを使用する前にそのプロパティを初期化する</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id20">
+<h3><a class="toc-backref" href="#id55">　　コントローラーが肥大化する</a><a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">ビューとなる複数のJSPに繰り返し埋め込まれるコードは、リファクタリングの結果、コントローラーに移されることが多い。</div>
+<div class="line">コントローラに多くのコードを追加しすぎると、コントローラは重くなり、保守やテスト、デバックが厄介になる。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>コマンドオブジェクトをj使用して制御コードをカプセル化し、コントローラはそこに処理を委譲する。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id21">
+<h2><a class="toc-backref" href="#id56">ビジネス層における設計上の考慮すべき事項と悪い方法</a><a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="bean">
+<h3><a class="toc-backref" href="#id57">セッションBeanの使用</a><a class="headerlink" href="#bean" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">セッションBeanとは以下の仕様をもった分散ビジネスコンポーネントである。</div>
+</div>
+<ul class="simple">
+<li>セッションBeanは１つのクライアントあるいはユーザ専用として使われる。</li>
+<li>セッションBeanはクライアントセッションが持続しているあいだだけ存続する。</li>
+<li>セッションBeanはコンテナがクラッシュしたときには残らない。</li>
+<li>セッションBeanは永続オブジェクトではない。</li>
+<li>セッションBeanはタイムアウトを起こすことが出来る。</li>
+<li>セッションBeanはトランザクションを意識する。</li>
+<li>セッションBeanを使って、クライアントとビジネス層のコンポーネントとの間に、ステートフルなあるいはステートレスの対話をモデル化できる。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id22">
+<h3><a class="toc-backref" href="#id58">セッションBean　―ステートフルとステートレス</a><a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">EJBコンテナはエンタープライズBeanのライフサイクルとインスタンスを最適に管理するためにシステムのリソースを監視する責務を持ちます。</div>
+<div class="line">コンテナは、エンタープライズBeanのプールを管理し、呼び出しやリソース消費を最適化するために</div>
+<div class="line">エンタープライズBeanをメモリ領域に入れたり出したりする。(活性・非活性)</div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">対話型のビジネスプロセスでステートレスセッションBeanを使うと、メソッドの呼び出しのたびに状態をクライアントからBeanに渡すか、ビジネス層で再構築するか、あるいは永続ストレージから取り出さなければならない。そのため、ネットワークトラフィックのオーバヘッドや再構築時間、アクセス時間などが原因で巣ケーらビリティが低下する可能性がある。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id23">
+<h3><a class="toc-backref" href="#id59">エンティティBean中のビジネスロジック</a><a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">ビジネスロジック(プロセスやワークフロー、ビジネスルール、Дtあなどに関連する全てのロジック)をエンティティBeanに追加した場合におこりうることを調べるための質問の例</div>
+</div>
+<ul class="simple">
+<li>ビジネスロジックによって、エンティティBean間の新たな関係gあ必要になるか</li>
+<li>エンティティBeanが、ユーザとの相互作用のワークフローを管理する責務をもつことになるか</li>
+<li>他のビジネスコンポーネントが果たすべき責務を、エンティティBeanが引き受けることになるか</li>
+<li>Bean管理による永続化(BMP)ｗｐ使って実装するときに、Java Database Connectivity(JDBC)コードなどの、データアクセスに関するコードが、エンティティBeanに含まれることになるか</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">これらの質問のいずれかにYesの答えが出たら、ビジネスロジックをエンティティBeanに持ち込むことで有害な影響がある可能性がある。</div>
+<div class="line">エンティティBean』間の依存関係が出来るだけ設計に含まれないように確認しておくことは望ましい。</div>
+<div class="line">そのような依存関係が有ると、アプリケーション全体のパフォーマンスを低下させる危険性のあるオーバヘッドが生じる。</div>
+<div class="line"><br /></div>
+<div class="line">一般的にエンティティBeanには、それ自体とその依存オブジェクトのデータを管理するための、内部で実行できるビジネスロジックだけを含むべき。</div>
+<div class="line"><br /></div>
+<div class="line">エンティティBeanではなくセッションBeanに実装することを検討する必要がある。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id24">
+<h3><a class="toc-backref" href="#id60">ビジネス層およびインテグレーション層における悪い方法</a><a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id25">
+<h3><a class="toc-backref" href="#id61">　　オブジェクトモデルを直接エンティティBeanモデルにマッピングする</a><a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">EJBアプリケーションを設計するときに一般的に使われる方法の一つに、オブジェクトモデルを直接エンティティBeanにマッピングするという方法がとられる。</div>
+<div class="line">つまり、オブジェクトモデル内の各クラスをエンティティBeanに変換する方法をとる。</div>
+<div class="line">その結果、細粒度のエンティティBeanが数多く作られる。</div>
+<div class="line">エンタープライズBeanの数が増えると、コンテナやネットワークのオーバーヘッドが増加する。</div>
+<div class="line">また、このようなマッピングを行うと、オブジェクト間の関係はエンティティBean間の関係に変換される。</div>
+<div class="line">エンティティBean間の関係を作ることは、パフォーマンスを悪化させる危険性があるため、極力避けるべき。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+<div class="line">オブジェクトモデル内のオブジェクトの依存関係を見分け、</div>
+<div class="line">それを粗粒度のエンティティBeanとして設計する。</div>
+<div class="line">これによって、各エンティティBeanはオブジェクトモデル内の関係するオブジェクトの集合体として構成されることになり、</div>
+<div class="line">エンティティBeanの数が減る。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h3><a class="toc-backref" href="#id62">　　リレーショナルモデルを直接エンティティBeanモデルにマッピングする</a><a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">EJBモデルを設計するときに、リレーショナルテーブルの各行をエンティティBeanにモデル化するのは悪い方法です。</div>
+<div class="line">エンティティBeanは粗粒度のオブジェクトとして設計するのが最もいいが、このようなマッピングを行うと粗粒度のエンティティBeanが数多く作られてしまいスケーラビリティに悪影響を及ぼす。</div>
+<div class="line">また、このようなマッピングでは、テーブル間の関係(主キーや外部キー)をエンティティBean間の関係として実装することにもなります。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>既存のリレーショナルデータベースの設計をもとにEJBモデルを作るのではなく、オブジェクト指向のアプローチに従ってエンタープライズBeanを使ったアプリを設計する</li>
+<li>オブジェクトの依存関係を識別子、粗劉殿ビジネスオブジェクトを設計することで、エンティティBean巻の関係が発生しないようにする</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id27">
+<h3><a class="toc-backref" href="#id63">　　各ユースケースをセッションBeanにマッピングする</a><a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">各ユースケースに対して個別のセッションBeanを実装するという人がいる。</div>
+<div class="line">その結果、1種類の相互作用にのみ責任を持つ細粒度のコントローラが出来てしまう</div>
+<div class="line">欠点は、セッションBeanの数が増え、アプリケーションが非常に複雑になってしまうこと。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+<div class="line">Session Facadeパターンを使用して、関係の深い相互作用の集合を一つのセッションBeanに統合する。</div>
+<div class="line">その結果、アプリケーションにおけるセッションBeanの数が減り、Session Facadeパターンを適用した場合の長所を利用することが出来る。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="get-setbean">
+<h3><a class="toc-backref" href="#id64">　　get/setメソッドでエンタープライズBeanの属性を全て公開する</a><a class="headerlink" href="#get-setbean" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">get/setメソッドを使ってエンタープライズBeanの各属性を公開するのは、悪い方法です。</div>
+<div class="line">この方法では、クライアントは細粒度のリモート呼び出しを数多く行うことになり、層をまたがったネットワーク上の通信量が大きく増加する可能性がある。</div>
+<div class="line">すなわち、メソッド呼び出しはリモートで行われる可能性がある、パフォーマンスやスケーラビリティに影響するネットワークのオーバーヘッドが生じる。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>属性ごとにget/setメソッドを用意するのではなく、Value Objectを使用してデータ全体をクライアントとやり取りする</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id28">
+<h3><a class="toc-backref" href="#id65">　　サービスの検索をクライアントに埋め込む</a><a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">クライアントやプレゼンテーション層のオブジェクトが、エンタープライズBeanを検索しなければならないことが頻繁にある。</div>
+<div class="line">EJB環境では、コンテナがJNDIを使ってこのサービスを提供する。</div>
+<div class="line">サービスの検索機能をクライアント自身にもたせると、アプリケーションコードにおける検索用コードの割合が急激に増える。</div>
+<div class="line">そして、検索コードに何らかの変更を加えると、その変更はサービスを検索する全てのクライアントに伝播する。</div>
+<div class="line">また、クライアントに検索コードを埋め込むと、背後にある複雑な実装をクライアントが知らなければならず、クライアントは検索コードに依存してしまうことになる。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>Service Locatorを使用して、検索メカニズムの実装をカプセル化する</li>
+<li>セッションBeanやエンティティBeanといったビジネス上のコンポーネントの実装を、Business Delegateを使用してカプセル化する。その結果、クライアントから直接エンタープライズBeanやサービスを扱う必要がなくなり、クライアントコードが単純になる。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id29">
+<h3><a class="toc-backref" href="#id66">　　エンティティBeanを読み出し専用オブジェクトをとして使う</a><a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">エンティティBeanのメソッドはすべて、デプロイメント記述に指定されたトランザクション独立レベルにもとづくドランザクションセマンティクスに従う。</div>
+<div class="line">エンティティBeanを読み出し専用オブジェクトとして使うと、単に多くのリソースを浪費し永続ストレージに対して不必要な更新トランザクションを行うことになる。</div>
+<div class="line">これは、エンティティBeanのライフサイクルの中で、コンテナによってejbStore()メソッドが呼び出されるためである。</div>
+<div class="line">コンテナはメソッド呼び出しの間にデータが変更されたかどうかを知ることが出来ないため、データが変更されたと仮定してejbStore()メソッドを呼び出す必要がある。</div>
+<div class="line">つまり、コンテナは読み出し専用と読み書き可能なエンティティBeanを区別しない。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>Data Access Objectパターンを使い、データソースに対する全てのアクセスをカプセル化する。この結果、データアクセスコードを一箇所に集めるレイヤーができ、エンティティBeanのコードが単純になる。</li>
+<li>セッションBeanを使い、読み出し専用の機能へのアクセスを実装する。通常はDAOを使用したSession Facadeとして実装する。</li>
+<li>バリューオブジェクトの一覧を取得するために、Value List Handlerパターンを実装することも出来る。</li>
+<li>ビジネス層から複雑なデータモデルを取得するために、Value Object Assemblerパターンを実装することも出来る。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id30">
+<h3><a class="toc-backref" href="#id67">　　エンティティBeanを細粒度のオブジェクトとして使う</a><a class="headerlink" href="#id30" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">エンティティBeanはトランザクション機能をもつ粗粒度の永続ビジネスコンポーネントを表現するためのもの。</div>
+<div class="line">エンティティBeanを使用して細粒度のオブジェクトを表現すると、ネットワーク通信やコンテナのオーバーヘッドが増加する。</div>
+<div class="line">これは、アプリケーションのパフォーマンスやスケーラビリティに悪影響を及ぼす。</div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">細粒殿オブジェクトとは、別のオブジェクトへの関連が無ければほとんど意味を成さないオブジェクトのこと。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>既存のRDBMSスキーマにもとづいてエンタープライズBeanを設計する</li>
+<li>オブジェクトモデルを使ってエンタープライズBeanを設計する</li>
+<li>粗粒度のエンティティBeanやセッションBeanを設計する。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id31">
+<h3><a class="toc-backref" href="#id68">　　エンティティBeanに依存するオブジェクトの構造全体を格納する</a><a class="headerlink" href="#id31" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">エンティティBean内部で依存オブジェクトの複雑なツリー構造が使われている場合、依存オブジェクトのツリー構造全体をロードしたり格納したりすると、パフォーマンスが急激に悪くなることがある。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+</div>
+<ul class="simple">
+<li>以前下位の格納操作時以降に変更のあった依存オブジェクトを識別し、そのオブジェクトだけを永続ストレージに格納する。</li>
+<li>もっとも頻繁にアクセスされ、必要とされるデータだけをロードする戦略を実装する。それ以外の依存オブジェクトは必要に応じてロードする。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="ejbejb">
+<h3><a class="toc-backref" href="#id69">　　EJB関連の例外をEJBに関係のないクライアントに公開する</a><a class="headerlink" href="#ejbejb" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">エンタープライズBeanはビジネスアプリケーションの例外をクライアントに送出できる。</div>
+<div class="line">アプリケーションが例外を送出すると、コンテナは単純にその例外をクライアントに送出する。</div>
+<div class="line">エンタープライズBeanやコンテナが、エンタープライズBeanに関連したシステム障害に遭遇したときにEJB関連の例外が起こり、アプリケーション開発者へ通知される可能性がある。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+<div class="line">Business Delegateを使用して、クライアントをビジネス層から切り離し、ビジネス層の実装をクライアントから隠蔽する。</div>
+<div class="line">Business Delegateは、すべてのサービス例外を横取りし、必要に応じてアプリケーション例外を送出する。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id32">
+<h3><a class="toc-backref" href="#id70">　　エンティティBeanの検索メソッドを使って大規模な検索セットを返す</a><a class="headerlink" href="#id32" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">EJBの検索メソッドを使用してエンティティBeanの大規模な集合を検索する場合、リモートの参照先が返される。</div>
+<div class="line">その結果、クライアントは各リモート参照のメソッドを呼び出してデータを取得しなければならない。</div>
+<div class="line">この操作はリモート予備代sとなるため、集合内のエンティティBeanの参照ごとにリモート呼び出しを行おうとすると、大きなコストがかかりパフォーマンスに影響する。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+<div class="line">リモート参照ではなく、セッションBeanやDAOを使って、バリューオブジェクトのリストを取得するための問い合わせを実装する。</div>
+<div class="line">また、EJBの検索メソッドではなくDAOを使って検索を行う。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id33">
+<h3><a class="toc-backref" href="#id71">　　クライアントがビジネスコンポーネントからデータを集めている</a><a class="headerlink" href="#id33" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">一般的にクライアント(ビジネス層またはプレゼンテーション層)は、ビジネス層に含まれるアプリケーションのデータモデルを使用する。</div>
+<div class="line">モデルはエンティティBean、セッションBean、またはビジネス層の任意のオブジェクトといったビジネスコンポーネントによって実装されているため、</div>
+<div class="line">クライアントはさまざまなビジネスコンポーネントからデータを取得してモデルを構築しなければならない。</div>
+<div class="line">こういったクライアントの作業により、クライアントからビジネス層への複数の呼び出しが原因となるネットワークのオーバヘッドが発生する。</div>
+<div class="line">さらに、クライアントはアプリケーションモデルと密接に結合されている。</div>
+<div class="line">各種のクライアントが存在するアプリケーションでは、この結合度に関するもんぢあの影響は何倍にもなりかねない。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+<div class="line">クライアントがモデルを構築しなくてもいいようにする。必要なアプリケーションを構築する責任をもつビジネスコンポーネントを実装する。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id34">
+<h3><a class="toc-backref" href="#id72">　　長期にわたるトランザクションにエンタープライズBeanを使用する</a><a class="headerlink" href="#id34" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">エンタープライズBeanのメソッドがクライアントからのリクエストを処理するのにかなりの時間を必要とする場合、エンタープライズBeanが使用するメモリやスレッドといったコンテナリソースもブロックされてしまう。</div>
+<div class="line">これにより、パフォーマンスに大きな影響がでて、システムリソースが枯渇する可能性がある。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+<div class="line">Java Messafe Service(JMS)APIにより、メッセージ指向ミドルウェア(MOM)を使って、長期にわたるドランザクションを実現するように非同期処理サービスを実装する。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id35">
+<h3><a class="toc-backref" href="#id73">　　ステートレスセッションBeanが呼び出しごとに対話状態を再構築する</a><a class="headerlink" href="#id35" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>問題概要</strong></div>
+<div class="line">セッションBeanで対話状態が必要であるにもかかわらず、ステートレスBeanを選択すると、メソッド呼び出しごとに対話状態を再構築する必要がある。</div>
+<div class="line">再構築によりパフォーマンスが大きく下がる可能性がある。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>解決方法</strong></div>
+<div class="line">ステートレスセッションBeanのモードを選択する前に、相互作用モデルを分析する。</div>
+<div class="line">ステートフルセッションBeanでメソッドy歩日だしをまたがって対話状態を保持する必要性と、</div>
+<div class="line">ステートレスセッションBeanで呼び出しごとに対話状態を再構築するコストを比較する。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row-fluid">
+<div class="related navbar ">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="2013_2H_04.html" title="プロになるためのWeb技術入門(書籍)" >次へ</a></li>
+        <li><a href="2013_2H_02.html" title="クラスローダーとJ2EEパッケージング戦略を理解する" >前へ</a></li>
+        <li><a href="../index.html">Wada_MEMO 2013.10.15 ドキュメント</a></li>
+        <li><a href="../Core.html" >コア技術学習</a></li>
+        <li><a href="2013_2H.html" >2013年下期　コア技術学習</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer>
+          &copy; Copyright 2013, Mizuki Wada.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

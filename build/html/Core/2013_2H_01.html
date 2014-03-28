@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>★WebSphere Application Server (WAS) 虎の巻 &mdash; Wada_MEMO 2013.10.15 ドキュメント</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootswatch-united.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="../_static/css/font-awesome-ie7.min.css">
+<![endif]-->
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+</style>
+<link rel="stylesheet" href="../_static/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootstrap-responsive.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '2013.10.15',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+<script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../_static/underscore.js"></script>
+<script type="text/javascript" src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/translations.js"></script>
+<script type="text/javascript" src="../_static/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.show-sidebar').click(function(e) {
+       e.preventDefault();
+       if ($(".show-sidebar").html() == "Open Table Of Contents") {
+          $('.for-mobile').removeClass('hidden-phone');
+          $(".show-sidebar").html("Close Table Of Contents");
+       } else {
+          $(".show-sidebar").html("Open Table Of Contents");
+       }
+    });
+  });
+</script>
+    <link rel="top" title="Wada_MEMO 2013.10.15 ドキュメント" href="../index.html" />
+    <link rel="up" title="2013年下期 コア技術学習" href="2013_2H.html" />
+    <link rel="next" title="クラスローダーとJ2EEパッケージング戦略を理解する" href="2013_2H_02.html" />
+    <link rel="prev" title="2013年下期 コア技術学習" href="2013_2H.html" /> 
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top ">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="../index.html">Wada_MEMO 2013.10.15 ドキュメント</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              
+                <li>
+                <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
+                </li>
+                <li>
+                <a href="2013_2H_02.html" title="クラスローダーとJ2EEパッケージング戦略を理解する" accesskey="N">次へ</a>
+                </li>
+                <li>
+                <a href="2013_2H.html" title="2013年下期 コア技術学習" accesskey="P">前へ</a>
+                </li>
+                <li>
+                <a href="../Core.html" >コア技術学習</a>
+                </li>
+                <li>
+                <a href="2013_2H.html" accesskey="U">2013年下期　コア技術学習</a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+
+      
+      <div class="row-fluid hidden-desktop hidden-tablet">
+      
+<div class="span3 ">
+  <a class="visible-phone btn btn-small show-sidebar" data-toggle="collapse" data-target=".for-mobile">Open Table Of Contents</a>
+  <div class="for-mobile sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">★WebSphere Application Server (WAS) 虎の巻</a><ul>
+<li><a class="reference internal" href="#id2">第1回「WebSphere Application Server (WAS) 概説」</a><ul>
+<li><a class="reference internal" href="#java-ee">2. Java EE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">第2回「WebSphere Application Server（WAS）の複数台構成」</a><ul>
+<li><a class="reference internal" href="#id4">3.2. セッション・アフィニティー</a></li>
+<li><a class="reference internal" href="#id5">3.4. セッション・パーシスタンスとセッションのフェイルオーバー</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jdbc">第3回「JDBCとデータベース接続」</a><ul>
+<li><a class="reference internal" href="#id6">1.5.  データソース</a></li>
+<li><a class="reference internal" href="#jndi">1.6. JNDI</a></li>
+<li><a class="reference internal" href="#id7">2.データベース接続構成</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jms">第4回「JMSとメッセージング・サービス接続」</a><ul>
+<li><a class="reference internal" href="#id8">1. メッセージング・サービス</a></li>
+<li><a class="reference internal" href="#id9">2.メッセージング・サービスへのアクセス</a></li>
+<li><a class="reference internal" href="#id10">3. メッセージング・サービス接続構成</a></li>
+<li><a class="reference internal" href="#mdb">4. MDB</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">第5回「リクエスト処理の流れ」</a><ul>
+<li><a class="reference internal" href="#web">2. クライアント～Webサーバーにおける処理</a></li>
+<li><a class="reference internal" href="#was">4. WASにおける処理</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ssl">第6回「SSL通信と証明書」</a><ul>
+<li><a class="reference internal" href="#id12">1. SSL通信とは</a></li>
+<li><a class="reference internal" href="#id13">SSL通信の流れ</a></li>
+<li><a class="reference internal" href="#id14">2. Webシステムでの証明書の取り扱い</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">第7回「WebSphere Application Server（WAS）のセッション管理」</a><ul>
+<li><a class="reference internal" href="#id16">3. セッション・パーシスタンス</a></li>
+<li><a class="reference internal" href="#id17">4. セッション管理の考慮点</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">(運用管理編)：第1回「定常運用」</a><ul>
+<li><a class="reference internal" href="#id19">2-4 WASログのメンテナンス</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id22">(運用管理編): 第2回「不定期運用」</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="2013_2H.html"
+                        title="前の章へ">2013年下期　コア技術学習</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="2013_2H_02.html"
+                        title="次の章へ">クラスローダーとJ2EEパッケージング戦略を理解する</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/Core/2013_2H_01.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div>
+      </div>
+      
+
+      <!-- row -->
+      <div class="row-fluid">
+         
+<div class="span3 visible-desktop visible-tablet">
+  <div class=" sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">★WebSphere Application Server (WAS) 虎の巻</a><ul>
+<li><a class="reference internal" href="#id2">第1回「WebSphere Application Server (WAS) 概説」</a><ul>
+<li><a class="reference internal" href="#java-ee">2. Java EE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">第2回「WebSphere Application Server（WAS）の複数台構成」</a><ul>
+<li><a class="reference internal" href="#id4">3.2. セッション・アフィニティー</a></li>
+<li><a class="reference internal" href="#id5">3.4. セッション・パーシスタンスとセッションのフェイルオーバー</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jdbc">第3回「JDBCとデータベース接続」</a><ul>
+<li><a class="reference internal" href="#id6">1.5.  データソース</a></li>
+<li><a class="reference internal" href="#jndi">1.6. JNDI</a></li>
+<li><a class="reference internal" href="#id7">2.データベース接続構成</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jms">第4回「JMSとメッセージング・サービス接続」</a><ul>
+<li><a class="reference internal" href="#id8">1. メッセージング・サービス</a></li>
+<li><a class="reference internal" href="#id9">2.メッセージング・サービスへのアクセス</a></li>
+<li><a class="reference internal" href="#id10">3. メッセージング・サービス接続構成</a></li>
+<li><a class="reference internal" href="#mdb">4. MDB</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">第5回「リクエスト処理の流れ」</a><ul>
+<li><a class="reference internal" href="#web">2. クライアント～Webサーバーにおける処理</a></li>
+<li><a class="reference internal" href="#was">4. WASにおける処理</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ssl">第6回「SSL通信と証明書」</a><ul>
+<li><a class="reference internal" href="#id12">1. SSL通信とは</a></li>
+<li><a class="reference internal" href="#id13">SSL通信の流れ</a></li>
+<li><a class="reference internal" href="#id14">2. Webシステムでの証明書の取り扱い</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">第7回「WebSphere Application Server（WAS）のセッション管理」</a><ul>
+<li><a class="reference internal" href="#id16">3. セッション・パーシスタンス</a></li>
+<li><a class="reference internal" href="#id17">4. セッション管理の考慮点</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">(運用管理編)：第1回「定常運用」</a><ul>
+<li><a class="reference internal" href="#id19">2-4 WASログのメンテナンス</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id22">(運用管理編): 第2回「不定期運用」</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="2013_2H.html"
+                        title="前の章へ">2013年下期　コア技術学習</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="2013_2H_02.html"
+                        title="次の章へ">クラスローダーとJ2EEパッケージング戦略を理解する</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/Core/2013_2H_01.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="span9">
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="websphere-application-server-was">
+<h1><a class="toc-backref" href="#id23">★WebSphere Application Server (WAS) 虎の巻</a><a class="headerlink" href="#websphere-application-server-was" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title first">目次</p>
+<ul class="simple">
+<li><a class="reference internal" href="#websphere-application-server-was" id="id23">★WebSphere Application Server (WAS) 虎の巻</a><ul>
+<li><a class="reference internal" href="#id2" id="id24">第1回「WebSphere Application Server (WAS) 概説」</a></li>
+<li><a class="reference internal" href="#id3" id="id25">第2回「WebSphere Application Server（WAS）の複数台構成」</a></li>
+<li><a class="reference internal" href="#jdbc" id="id26">第3回「JDBCとデータベース接続」</a></li>
+<li><a class="reference internal" href="#jms" id="id27">第4回「JMSとメッセージング・サービス接続」</a></li>
+<li><a class="reference internal" href="#id11" id="id28">第5回「リクエスト処理の流れ」</a></li>
+<li><a class="reference internal" href="#ssl" id="id29">第6回「SSL通信と証明書」</a></li>
+<li><a class="reference internal" href="#id15" id="id30">第7回「WebSphere Application Server（WAS）のセッション管理」</a></li>
+<li><a class="reference internal" href="#id18" id="id31">(運用管理編)：第1回「定常運用」</a></li>
+<li><a class="reference internal" href="#id22" id="id32">(運用管理編): 第2回「不定期運用」</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="line-block">
+<div class="line">下記サイトを参照して学習を実施。</div>
+<div class="line"><a class="reference external" href="http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki/">http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki/</a></div>
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id24">第1回「WebSphere Application Server (WAS) 概説」</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="java-ee">
+<h3>2. Java EE<a class="headerlink" href="#java-ee" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>Java EEのモデル</strong></div>
+<div class="line">アプリケーション・サーバーが提供するのはWeb層とビジネス層の2層です。</div>
+</div>
+<img alt="../_images/1_3.gif" src="../_images/1_3.gif" />
+<div class="line-block">
+<div class="line"><em>※EIS：Enterprise Information System, 企業情報システム</em></div>
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/1_4.gif" src="../_images/1_4.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/1_5.gif" src="../_images/1_5.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id25">第2回「WebSphere Application Server（WAS）の複数台構成」</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h3>3.2. セッション・アフィニティー<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">セッション・アフィニティーとは、セッションを使用したアプリケーションに対して、同一セッションIDを持つクライアントからの要求を毎回同じクラスター・メンバーに渡す方式です。</div>
+<div class="line">クラスターではデフォルトで有効となっており、重み付きラウンドロビンやランダムよりも優先されます。</div>
+</div>
+<img alt="../_images/2_8.gif" src="../_images/2_8.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>3.4. セッション・パーシスタンスとセッションのフェイルオーバー<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">セッション・パーシスタンス機能は、セッション情報を外部のデータストア（DBまたは他のアプリケーション・サーバー）に格納することによって、複数のアプリケーション・サーバーでセッション情報を共有（セッションのクラスター化）します。</div>
+<div class="line">セッションのクラスター化には以下の利点があります。</div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>セッションを使用するアプリケーションを、異なるノードにある複数のアプリケーション・サーバー上で実行することができ、効果的な負荷分散が実現できます。</li>
+<li>セッション途中で、このセッションの処理を行っていたアプリケーション・サーバー・プロセスがダウンした場合でも、セッションのフェイルオーバーが可能になります。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">考慮しなければいけない点もあります。</div>
+</div>
+<ul class="simple">
+<li>セッションを外部のデータストアに書き出すタイミングや、書き出すデータ量に応じてパフォーマンスに影響を与えるため、WASの管理者はこれらの設定について考慮する必要があります。</li>
+<li>アプリケーション開発者にとっても、セッション・データを外部のデータストアに書き出すため、セッション・オブジェクトはシリアライズ可能でなければならない、という制約があります。</li>
+<li>フェイルオーバーが発生した場合はセッションの状態が不整合になる可能性があることを考慮したアプリケーション・ロジックとする必要があります。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="jdbc">
+<h2><a class="toc-backref" href="#id26">第3回「JDBCとデータベース接続」</a><a class="headerlink" href="#jdbc" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>JDBCプロバイダー、JDBCドライバー</strong></div>
+</div>
+<img alt="../_images/3_2.gif" src="../_images/3_2.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id6">
+<h3>1.5.  データソース<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">アプリケーション・サーバー上で動作させる場合、アプリケーション開発者の作成したJavaプログラムは、データソースを参照してデータベースにアクセスすることができます。</div>
+<div class="line"><br /></div>
+<div class="line">アプリケーション・サーバー上にデータソースを定義するためには、まずJDBCプロバイダーを定義します。</div>
+<div class="line">そのJDBCプロバイダーに対して、データソースを定義します。</div>
+<div class="line">これらをアプリケーション・サーバーに設定することで、アプリケーションはデータソースを通じて接続を行うことが可能になります。</div>
+<div class="line">1つのデータソースに対し、1つのデータベースが結びつきますので、複数のデータベースにアクセスするアプリケーションでは複数のデータソースの設定が必要となります。</div>
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/3_4.gif" src="../_images/3_4.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="jndi">
+<h3>1.6. JNDI<a class="headerlink" href="#jndi" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">アプリケーションからデータベースへ接続を行う際、データベースへの接続情報をコーディングで直接指定することも可能です。</div>
+<div class="line">しかし、この方法ではデータベースが変更になるたびに修正が必要となるため、可搬性に劣ります。</div>
+<div class="line">可搬性を上げるために用いられるのがJNDIと呼ばれる仕組みです。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>デプロイメント記述子に参照を定義（リソース参照）</strong></div>
+</div>
+<img alt="../_images/3_6.gif" src="../_images/3_6.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>複数データベースの切り替え</strong></div>
+</div>
+<img alt="../_images/3_6.gif" src="../_images/3_6.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>2.データベース接続構成<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>2.1. アプリケーションの流れ</strong></div>
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple">
+<li>JNDI名を引数とし、DataSourceオブジェクトを取得</li>
+<li>DataSourceオブジェクトから接続オブジェクト（Connectionオブジェクト）を生成</li>
+<li>実行したいSQL文を引数にし、接続オブジェクトからStatementオブジェクトを生成</li>
+<li>データベースに対しSQL文を実行し、結果(ResultSetオブジェクトなど)を取得</li>
+<li>各オブジェクトをクローズ</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>2.3. 接続プールで設定できるパラメーター</strong></div>
+<div class="line"><br /></div>
+<div class="line">接続プールで設定できるパラメーターには以下のようなものがあります。</div>
+</div>
+<ul class="simple">
+<li>最大接続数</li>
+<li>最小接続数</li>
+<li>接続タイムアウト</li>
+<li>リープ時間</li>
+<li>未使用タイムアウト</li>
+<li>経過タイムアウト</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>2.4.ステートメントのキャッシュ</strong></div>
+<div class="line"><br /></div>
+<div class="line"><strong>StatementとPreparedStatementを用いた際の処理</strong></div>
+</div>
+<img alt="../_images/3_10.gif" src="../_images/3_10.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>2.5. 失効した接続オブジェクトへの対応</strong></div>
+<div class="line"><br /></div>
+<div class="line">アプリケーション・サーバーとデータベースの間でのネットワーク障害、データベースの障害、データベースの再起動などが発生すると、</div>
+<div class="line">接続プールにプールされている接続オブジェクトは無効となり、その接続オブジェクトを用いたデータベース操作は行えなくなります。</div>
+<div class="line">そのような失効した接続オブジェクトは接続プール内に残り続け、アプリケーションが接続プール内の接続オブジェクトを使用しようとした場合、StaleConnectionExceptionが発生します。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="jms">
+<h2><a class="toc-backref" href="#id27">第4回「JMSとメッセージング・サービス接続」</a><a class="headerlink" href="#jms" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id8">
+<h3>1. メッセージング・サービス<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Webシステムにおいてメッセージング・サービスと連携することで、Webアプリケーションの処理の一部を非同期に実行することが可能となります。</div>
+<div class="line">時間のかかる処理を非同期化することで、クライアントに対する見掛け上のレスポンスタイムや全体のスループットを向上させることができます。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>Webシステムの特徴</strong></div>
+</div>
+<img alt="../_images/4_01.gif" src="../_images/4_01.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>Webシステムにおける非同期処理</strong></div>
+</div>
+<img alt="../_images/4_02.gif" src="../_images/4_02.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">アプリケーションはクライアントからのリクエストを受け付け、処理をメッセージという形式でキュー（メッセージを保持する箱のようなもの）に送信します</div>
+<div class="line">そしてクライアントには処理を受け付けたというレスポンスを返します。</div>
+<div class="line">このように非同期処理によって、クライアント側の待ち時間を短縮することが可能になり、同時に時間のかかる処理は別のサブシステムに任せることができます。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>2.メッセージング・サービスへのアクセス<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>メッセージの送受信</strong></div>
+</div>
+<img alt="../_images/4_03.gif" src="../_images/4_03.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">JMSにおいては、JMS宛先があり、1つの送信アプリケーションが宛先に対して、メッセージをPUTします。</div>
+<div class="line">もう一方の受信アプリケーションは、処理可能なタイミング、つまり非同期にそのメッセージを宛先からGETし、処理を実行します。</div>
+<div class="line">送信アプリケーションをメッセージ・プロデューサーと呼び、受信アプリケーションをメッセージ・コンシューマーと呼びます。</div>
+<div class="line">宛先の実体はメッセージング・サービス上に存在するキューやトピックとなります。キューやトピックはメッセージを保管するために使用されます。</div>
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/4_04.gif" src="../_images/4_04.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>JMS基本構成図</strong></div>
+</div>
+<img alt="../_images/4_05.gif" src="../_images/4_05.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">JMSクライアントであるWebアプリケーションはWAS上で定義されたJMS接続ファクトリーとJMS宛先を参照してメッセージング・サービスへアクセスすることができます。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>JMS接続ファクトリーとJMS宛先</strong></div>
+</div>
+<img alt="../_images/4_06.gif" src="../_images/4_06.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>JNDIによるリソース参照</strong></div>
+</div>
+<img alt="../_images/4_07.gif" src="../_images/4_07.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">JMS接続ファクトリーとJMS宛先のJNDIを参照してアクセスを行います。</div>
+<div class="line">WAS側のJMS接続ファクトリーやJMS宛先にはJNDI名が定義されており、アプリケーション側でも仮のJNDI名が定義されています。</div>
+<div class="line">データベースと同様にリソース参照の仕組みを利用して、アプリケーションのインストール時にアプリケーション側とWAS側のJNDIを紐付けることで、アプリケーションとメッセージング・サービスの接続が実現します。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>3. メッセージング・サービス接続構成<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">JMS 1.1で定義されたJMS Common Interfaceを利用することで、PTPであるか、Pub/Subであるかに依存しないアプリケーションを開発できます。</div>
+</div>
+<ol class="arabic simple">
+<li>JNDI名を指定して接続ファクトリー(ConnectionFactory)オブジェクトをlookup</li>
+<li>JNDI名を指定して宛先(Destination)オブジェクトをlookup</li>
+<li>接続ファクトリー・オブジェクトから接続(Connection)オブジェクトを生成</li>
+<li>接続オブジェクトからSessionオブジェクトを生成</li>
+<li>Sessionオブジェクトから宛先オブジェクトを指定してMessageProducer/MessageConsumerオブジェクトを生成</li>
+<li>SessionオブジェクトからMessageオブジェクトを生成</li>
+<li>MessageProducer/MessageConsumerオブジェクトにMessageオブジェクトを指定してメッセージを送受信</li>
+<li>メッセージの送受信に成功したらSessionオブジェクトをコミット、失敗したらロールバック</li>
+<li>各オブジェクトをクローズ</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/4_08.gif" src="../_images/4_08.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>接続プールおよびセッション・プール</strong></div>
+</div>
+<img alt="../_images/4_09.gif" src="../_images/4_09.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">アプリケーションの流れの中で、メッセージング・サービスへのアクセスには接続オブジェクトを利用することを説明しました。</div>
+<div class="line">この接続オブジェクトの生成と消滅はメッセージング・サービスへの接続と切断を意味します。</div>
+<div class="line">メッセージの送受信の度に接続を繰り返すことでアプリケーション・サーバーやメッセージング・サービスに余分な負荷がかかることになります。</div>
+<div class="line">この接続処理のオーバーヘッドを緩和するために、一度作成した接続オブジェクトを接続プールに保持して、その後の接続要求に対して再利用することができます。</div>
+<div class="line">JMSアプリケーションでは接続プールに加えてセッション・プールも利用され、Sessionオブジェクトを使いまわすことができます。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line">参考： <a class="reference external" href="http://www.ibm.com/developerworks/jp/websphere/library/was/was_jms/">WAS および WebSphere MQ とともにJMS接続プールを使用する: （パート1）</a></div>
+<div class="line">参考： <a class="reference external" href="http://www.ibm.com/developerworks/jp/websphere/library/was/was_jms/2.html">WAS および WebSphere MQ とともにJMS接続プールを使用する: （パート2）</a></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="mdb">
+<h3>4. MDB<a class="headerlink" href="#mdb" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Webシステムがメッセージング・サービスと連携する際には、前述のJMSに加えてMDBを利用した非同期処理が可能です。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>MDBのしくみ</strong></div>
+</div>
+<img alt="../_images/4_10.gif" src="../_images/4_10.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">MDBでは、どのサーバーに接続して、どの宛先を監視するかといった設定をアクティベーション・スペック(Activation Specification：活動化仕様)に記述します。そしてEJBのデプロイメント時には、どのアクティベーション・スペックを利用するかを指定します。</div>
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/4_11.gif" src="../_images/4_11.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id28">第5回「リクエスト処理の流れ」</a><a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="web">
+<h3>2. クライアント～Webサーバーにおける処理<a class="headerlink" href="#web" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>リクエストがWebサーバーへ送信されるまでの流れ</strong></div>
+</div>
+<img alt="../_images/5_04.gif" src="../_images/5_04.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="was">
+<h3>4. WASにおける処理<a class="headerlink" href="#was" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>リソース定義</strong></div>
+</div>
+<img alt="../_images/5_12.gif" src="../_images/5_12.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="ssl">
+<h2><a class="toc-backref" href="#id29">第6回「SSL通信と証明書」</a><a class="headerlink" href="#ssl" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id12">
+<h3>1. SSL通信とは<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>通信を暗号化する</strong></div>
+<div class="line"><br /></div>
+<div class="line">インターネット上を流れるデータを第三者に読み取られないようにするためには、通信を暗号化する必要があります。</div>
+<div class="line"><br /></div>
+<div class="line">暗号化とは、ある特定の情報変換のルールと鍵と呼ばれるデータを使って、元の文書やデータ（平文）を第三者からは意味のないデータに変えてしまうことをいいます。</div>
+<div class="line">逆に、暗号化したデータを可読なデータに変換することを復号と呼びます。</div>
+<div class="line"><br /></div>
+<div class="line">データの送り手と受け手が事前に同じ鍵を保有し、暗号化と復号をその同じ鍵で行う方式を「共通鍵暗号化方式」と呼びます。</div>
+<div class="line">「共通鍵暗号方式」では、確実な共通鍵の受け渡し方法を考えなければなりません。もし、共通鍵が盗まれてしまったら第三者が簡単に暗号文を解読できてしまいます。また、通信相手ごとに鍵を用意する必要もあります。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>共通鍵暗号方式</strong></div>
+</div>
+<img alt="../_images/6_01.gif" src="../_images/6_01.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>公開鍵暗号方式</strong></div>
+</div>
+<img alt="../_images/6_02.gif" src="../_images/6_02.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">公開鍵は広くインターネットで公開されることになりますが、その公開鍵は本当にWebサイトで発行されたものでしょうか？</div>
+<div class="line">悪意のある偽サイトが本物そっくりに作っている場合、本物の公開鍵であることを証明する仕組みが必要になります。それが次に説明する <strong>電子証明書</strong> です。</div>
+<div class="line"><br /></div>
+<div class="line">認証局 (CA: Certificate Authority) と呼ばれる信頼できる第三者機関が、Webサイトの所有者情報と公開鍵が正当なものであることを確認し、認証局の電子署名を付けて電子証明書として発行します。</div>
+<div class="line">この電子署名にも公開鍵暗号方式と同様の仕組みが利用されます。</div>
+<div class="line"><br /></div>
+<div class="line">Webサイト側では、発行された証明書をサーバーに用意しておき、Webサイトにアクセスしたユーザーに送信します。</div>
+<div class="line">電子証明書を受けとったユーザーは、認証局の公開鍵を利用して電子署名を検証し、発行先情報や公開鍵が正当なものであることを確認できるため、安全で確実に本物のWebサイトにアクセスすることができます。</div>
+<div class="line"><br /></div>
+<div class="line">この仕組みを安全に利用するためには，信頼できる方法で認証局の公開鍵をユーザーに配布しておく必要があります。</div>
+<div class="line">一般的には，認証局の公開鍵はオペレーティング・システムやブラウザに組み込まれて配布されます。</div>
+<div class="line">これらの製品については，信頼できる方法で入手した正規品を利用することが重要です。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>SSL通信の流れ<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">安全にデータの受け渡しを行うための暗号化通信であるSSL通信を説明します。SSLはトランスポート層とセッション層の間で安全性、機密性を提供するプロトコルです。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>SSL通信の流れ</strong></div>
+</div>
+<img alt="../_images/6_04.gif" src="../_images/6_04.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>2. Webシステムでの証明書の取り扱い<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>セキュリティー要件の検討</strong></div>
+<div class="line"><br /></div>
+<div class="line">Webシステムで考えなければならないセキュリティーのリスクの代表例</div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>サービス妨害（DoS攻撃など）</li>
+<li>セキュリティーホール悪用</li>
+<li>なりすまし</li>
+<li>不正アクセス</li>
+<li>盗聴</li>
+<li>改ざん</li>
+<li>不正コード埋め込み</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">悪意のあるDoS攻撃などのアクセスを防ぐには、ゾーニングやファイアウォールの設定などのハードニングを行います。</div>
+<div class="line">なりすましを防ぐためには認証、不正アクセスを防ぐために認可などを検討します。</div>
+<div class="line">盗聴や改ざん、不正コード埋め込みといったネットワーク上のデータへのアクセスは証明書およびSSL通信を使って防ぎます。</div>
+<div class="line">インターネットを流れる大切なデータは暗号化が必須となりますが、社内システム間の通信の場合、暗号化ではなく、そもそも社内システムに侵入されることを防ぐ必要があります。</div>
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/6_05.gif" src="../_images/6_05.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">どこの通信をSSLにするかは安全性とパフォーマンスの兼ね合いになります。</div>
+<div class="line">すべての通信をSSLにすると、安全性は高まりますが、すべてのコンポーネントで暗号化と復号の処理が発生しますのでパフォーマンスは悪くなります。</div>
+<div class="line"><br /></div>
+<div class="line">図5のようにWebサーバーより先の経路は、ゾーニングされており、通信が読み取られることがない場合には、HTTP通信を検討してよいでしょう。</div>
+<div class="line">また、SSL通信を行う場合、通信を行う全てのコンポーネントに証明書を配置する必要があります。</div>
+<div class="line">Webサーバーからアプリケーション・サーバーの通信とWASのコンポーネント間通信をHTTP通信にするとSSLの暗号化・復号の重い処理がなくなるため、最適なパフォーマンスが得られます。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2><a class="toc-backref" href="#id30">第7回「WebSphere Application Server（WAS）のセッション管理」</a><a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id16">
+<h3>3. セッション・パーシスタンス<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">管理コンソールの分散環境設定にて設定する。</div>
+<div class="line"><br /></div>
+<div class="line">セッション・パーシスタンスは、以下のような場合に使用します。</div>
+</div>
+<ul class="simple">
+<li>あるクラスター・メンバーの障害時や停止時に、別のクラスター・メンバーにセッション情報をフェイルオーバーさせたい場合。</li>
+<li>クラスター構成でなくても、セッション情報が重要であり、サーバー障害時でもセッション情報を消失させたくない場合。</li>
+<li>メモリー上に保持するセッション数を制御したい場合。「メモリー内の最大セッション・カウント」を超えたセッションに対し、「オーバーフローの許可」をさせずに外部データストアに格納することで、メモリー上のセッション数を制御できます。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">外部ストアに保存されるセッション・データは全てシリアライズ可能である必要があります。</div>
+<div class="line">セッション・パーシスタンスを使用する場合は、アプリケーションの中で、HTTPセッションに格納するデータは全てjava.io.Serializableインターフェースを実装してください。</div>
+<div class="line">ローカル・セッションの場合はこの処理は必須ではありません。</div>
+<div class="line">しかしセッション・データがシリアライズ化されていないと、ローカル・セッションからセッション・パーシスタンスへ変更する際にアプリケーション・コードの変更が発生します。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>4. セッション管理の考慮点<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">パフォーマンス上の一般的な考慮点</div>
+<div class="line"><br /></div>
+<div class="line"><strong>4.1. セッション・サイズ</strong></div>
+<div class="line"><br /></div>
+<div class="line">セッション・オブジェクトのサイズが大きいと、それだけメモリーを消費します。</div>
+<div class="line">セッションの使用メモリーが増えれば、アプリケーション実行に関わる他のタスクが使用するメモリー領域が減ってしまいます。</div>
+<div class="line">これを防ぐには、いくつかの選択肢が考えられます。</div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>セッション・オブジェクトのサイズを削減する</li>
+<li>メモリー上のセッション数を削減する</li>
+<li>アプリケーション・サーバーを追加する</li>
+<li>不要なセッションを適切なタイミングで無効化する</li>
+<li>使用できるメモリーを増やす</li>
+<li>セッション・タイムアウトの時間を短くする</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">セッション・オブジェクトのサイズは、セッション・パーシスタンス使用時には特に重要です。</div>
+<div class="line">メモリー使用量への影響だけではなく、大きなデータをシリアライズして外部データストアに書きこむ処理にはオーバーヘッドがかかるからです。</div>
+<div class="line">一般的には、容易に取得できるデータや不要なデータはセッション・オブジェクトから削除して、セッションで管理するものは極力限定することが望まれます。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>4.2. セッションの共有</strong></div>
+<div class="line"><br /></div>
+<div class="line">サーブレット2.3では、セッション・オブジェクトにアクセスできるのは同一Webモジュールからと定義されています。従って、Webモジュールを跨ったセッションの共有はできません。</div>
+<div class="line">WASでは、共有セッション・コンテキストという拡張機能を使用すると、アプリケーション間でセッション・データを共有することができます。この機能を使用するには、IBMApplicationSessionというWAS固有のAPIを使用する必要があります。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>4.3. 障害復旧後のリクエスト・ディスパッチ動作の指定</strong></div>
+<div class="line"><br /></div>
+<div class="line">サーバー障害が発生した場合、クライアントからのリクエストがフェイルオーバーして処理が継続します。</div>
+<div class="line">サーバー障害復旧後には元のサーバーにフェイルバックします。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>4.4. JSESSIONIDのフォーマット変更</strong></div>
+<div class="line"><br /></div>
+<div class="line">下記リンクの『4.4. JSESSIONIDのフォーマット変更』</div>
+<div class="line"><a class="reference external" href="http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki/7.html">http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki/7.html</a></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id18">
+<h2><a class="toc-backref" href="#id31">(運用管理編)：第1回「定常運用」</a><a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/01_1.gif" src="../_images/01_1.gif" />
+<div class="line-block">
+<div class="line">IHS、WASを構成するプロセスの起動は、管理する側から管理される側という順序で実施することが一般的です。</div>
+<div class="line">停止はその逆となり、管理される側から管理する側という順序で実施することが一般的です。</div>
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt>IHS、WASの起動</dt>
+<dd><ol class="first last arabic simple">
+<li>デプロイメント・マネージャー・プロセス</li>
+<li>ノード・エージェント・プロセス</li>
+<li>アプリケーション・サーバー・プロセス</li>
+<li>(IHS管理サーバー・プロセス)</li>
+<li>IHSプロセス</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IHS、WASの停止</dt>
+<dd><ol class="first last arabic simple">
+<li>IHSプロセス</li>
+<li>(IHS管理サーバー・プロセス)</li>
+<li>アプリケーション・サーバー・プロセス</li>
+<li>ノード・エージェント・プロセス</li>
+<li>デプロイメント・マネージャー・プロセス</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">ノード・エージェント・プロセスはアプリケーション・サーバー・プロセスより先に起動していなければならないという、製品仕様上の制約があります</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">WAS・IHS起動停止コマンドに関しては、下記リンク参照。</div>
+<div class="line"><a class="reference external" href="http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki_man/1.html#sec2">http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki_man/1.html#sec2</a></div>
+<div class="line">∟ 1-2 IHSプロセスの起動・停止</div>
+<div class="line">∟ 1-3 WASプロセスの起動・停止</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id19">
+<h3>2-4 WASログのメンテナンス<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><dl class="first docutils">
+<dt>WASが出力する主なログ</dt>
+<dd><ul class="first last simple">
+<li>JVMログ</li>
+<li>プロセス・ログ</li>
+<li>診断トレース・ログ</li>
+<li>IBM保守ログ(アクティビティー・ログ)</li>
+<li>初期障害データ・キャプチャー(FFDC)ログ</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">IBM保守ログ以外のログはJVMプロセス単位、つまり、デプロイメント・マネージャー、ノード・エージェント、アプリケーション・サーバーの単位で出力されます。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>JVMログ</strong></div>
+<div class="line"><br /></div>
+<div class="line">JVMログはSystem.outログとSystem.errログで構成されており、それぞれJVMのSystem.outストリームとSystem.errストリームが記録されます。</div>
+<div class="line"><br /></div>
+<div class="line">&lt;<a href="#id33"><span class="problematic" id="id34">PROFILE_</span></a> ROOT&gt;/logs/&lt;サーバー名&gt;/SystemOut.log (デフォルト)</div>
+<div class="line">&lt;<a href="#id35"><span class="problematic" id="id36">PROFILE_</span></a> ROOT&gt;/logs/&lt;サーバー名&gt;/SystemErr.log (デフォルト)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>プロセス・ログ</strong></div>
+<div class="line"><br /></div>
+<div class="line">プロセス・ログは標準出力ログと標準エラー出力ログで構成されており、それぞれプロセスの標準出力ストリームと標準エラー出力ストリームが記録されます。</div>
+<div class="line">デフォルト設定では、正常時にログの出力はほとんどなく、プロセスの起動時に環境に関する情報が出力される程度です。</div>
+<div class="line">ただし、冗長ガーベッジ・コレクション(GC)を有効化している場合は、GC毎の詳細情報(GCログ)がプロセス・ログに出力されます。具体的な出力先は、AIX、Linux、Windows環境では標準エラー出力ログとなり、Solaris、HP-UX環境では標準出力ログとなります。</div>
+<div class="line"><br /></div>
+<div class="line">&lt;<a href="#id37"><span class="problematic" id="id38">PROFILE_</span></a> ROOT&gt;/logs/&lt;サーバー名&gt;/native_stdout.log (デフォルト)</div>
+<div class="line">&lt;<a href="#id39"><span class="problematic" id="id40">PROFILE_</span></a> ROOT&gt;/logs/&lt;サーバー名&gt;/native_stderr.log (デフォルト)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>診断トレース・ログ</strong></div>
+<div class="line"><br /></div>
+<div class="line">診断トレース・ログには、製品コンポーネントの内部処理に関する詳細情報が記録されます。</div>
+<div class="line">デフォルト設定ではトレース・レベルが「<a href="#id20"><span class="problematic" id="id21">*</span></a>=info」に設定されており、基本的にログの出力はありません。</div>
+<div class="line">問題分析のためにより詳細なレベルに設定すると、短時間に大量の情報が出力される場合があります。</div>
+<div class="line"><br /></div>
+<div class="line">&lt;<a href="#id41"><span class="problematic" id="id42">PROFILE_</span></a> ROOT&gt;/logs/&lt;server_name&gt;/trace.log (デフォルト)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>IBM保守ログ(アクティビティー・ログ)</strong></div>
+<div class="line"><br /></div>
+<div class="line">IBM保守ログ(アクティビティー・ログ)には、JVMログに記録されるWAS関連メッセージと問題分析のための情報が記録されます。</div>
+<div class="line">このログはノード上のJVMプロセス間で共用されており、1つのファイルに合わせて出力されます。</div>
+<div class="line">バイナリー・フォーマットのファイルであるため、内容の参照には専用のツールを使用します。</div>
+<div class="line">主にIBMのサポート・センターや開発部門が問題分析を行う際に使用するログです。</div>
+<div class="line"><br /></div>
+<div class="line">&lt;<a href="#id43"><span class="problematic" id="id44">PROFILE_</span></a> ROOT&gt;/logs/activity.log (デフォルト)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><strong>初期障害データ・キャプチャー(FFDC)ログ</strong></div>
+<div class="line"><br /></div>
+<div class="line">初期障害データ・キャプチャー(FFDC)ログには、製品コンポーネントの内部処理で障害が発生した際に、関連するイベントやエラーの情報が自動収集され、記録されます。</div>
+<div class="line">主にIBMのサポート・センターや開発部門が問題分析を行う際に使用するログです。</div>
+<div class="line"><br /></div>
+<div class="line">&lt;<a href="#id45"><span class="problematic" id="id46">PROFILE_</span></a> ROOT&gt;/logs/ffdc/&lt;サーバー名&gt;_*.log</div>
+<div class="line">&lt;<a href="#id47"><span class="problematic" id="id48">PROFILE_</span></a> ROOT&gt;/logs/ffdc/&lt;サーバー名&gt;_*.txt</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id22">
+<h2><a class="toc-backref" href="#id32">(運用管理編): 第2回「不定期運用」</a><a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition- admonition" id="index-0">
+<p class="first admonition-title">課題</p>
+<p class="last">後で読む：<a class="reference external" href="http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki_man/2.html">http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki_man/2.html</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition- admonition" id="index-1">
+<p class="first admonition-title">課題</p>
+<p class="last">後で読む：<a class="reference external" href="http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki_man/3.html">http://www.ibm.com/developerworks/jp/websphere/library/was/toranomaki_man/3.html</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row-fluid">
+<div class="related navbar ">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="2013_2H_02.html" title="クラスローダーとJ2EEパッケージング戦略を理解する" >次へ</a></li>
+        <li><a href="2013_2H.html" title="2013年下期 コア技術学習" >前へ</a></li>
+        <li><a href="../index.html">Wada_MEMO 2013.10.15 ドキュメント</a></li>
+        <li><a href="../Core.html" >コア技術学習</a></li>
+        <li><a href="2013_2H.html" >2013年下期　コア技術学習</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer>
+          &copy; Copyright 2013, Mizuki Wada.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>
