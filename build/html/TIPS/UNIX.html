@@ -60,7 +60,6 @@
   });
 </script>
     <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
-    <link rel="up" title="TIPS集" href="../TIPS.html" />
     <link rel="next" title="便利ツール" href="TOOL.html" />
     <link rel="prev" title="sakuraエディタ" href="sakura.html" /> 
   </head>
@@ -85,9 +84,6 @@
                 </li>
                 <li>
                 <a href="sakura.html" title="sakuraエディタ" accesskey="P">前へ</a>
-                </li>
-                <li>
-                <a href="../TIPS.html" accesskey="U">TIPS集</a>
                 </li>
               
             </ul>
@@ -285,6 +281,10 @@
                   
   <div class="section" id="unix">
 <h1><a class="toc-backref" href="#id38">UNIX コマンド</a><a class="headerlink" href="#unix" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">和田の解釈で書いているので、もし間違っているところがあったら教えていただきたいです。</p>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -668,8 +668,19 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">ノート</p>
-<p class="last">オプションに-laをつけると全ファイル詳細表示</p>
+<p class="last">オプションに-laをつけると全ファイル詳細表示。-lrtもよく使う。</p>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>オプションの説明</strong></div>
+</div>
+<ul class="simple">
+<li>『-l』：ファイルやフォルダを一行で表示する</li>
+<li>『-a』：全てのファイルを表示</li>
+<li>『-r』：逆順にソートして出力</li>
+<li>『-t』：修正時刻でソート。最新の修正が先頭。</li>
+<li>『-R』：再帰的に表示(フォルダのなかもみていく)</li>
+</ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -975,8 +986,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
         <li><a href="TOOL.html" title="便利ツール" >次へ</a></li>
         <li><a href="sakura.html" title="sakuraエディタ" >前へ</a></li>
-        <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li>
-        <li><a href="../TIPS.html" >TIPS集</a></li> 
+        <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
       
     </ul>
   </div>
@@ -986,7 +996,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
       <!-- footer -->
       <footer>
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
       </footer>
       <!-- /footer -->
 

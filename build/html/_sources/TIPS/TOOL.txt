@@ -81,7 +81,8 @@ ChgKey
 | 変換キーをIME-ON、かたかなひらがなキーをIME-OFFに割り当てている。
 |
 | http://www.karakaram.com/mac-ime
-
+|
+|
 
 
 ランチャー系
@@ -116,11 +117,25 @@ Launchy
 
 
 その他
-===========================
+======================
 
 WindowsでUNIXコマンドを使おう
 ====================================
 
 | てんてんさんのブログ
 | http://tenten0213.hatenablog.com/entry/2013/10/01/010808
+|
+
+ブラウザでTODOリスト
+=====================================
+
+| UGAちゃんのgithub
+| https://github.com/uggds/todolist.git
+|
+| チェックアウト後のやつ
+| \\\\172.19.90.33\\Tool\\UGATodo\\todolist
+|
+
+.. image:: ./image/UGATodo.PNG
+
 |

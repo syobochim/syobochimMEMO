@@ -21,10 +21,16 @@
 .. toctree::
    :maxdepth: 1
 
-   TIPS
+   TIPS/words
+   TIPS/DB2
+   TIPS/cmd
+   TIPS/Sphinx_MEMO
+   TIPS/sakura
+   TIPS/UNIX
+   TIPS/TOOL
+   TIPS/Excel
+   TIPS/mysql
    ruby/dotinstall
-   db/mysql
-
 
 |
 |
@@ -34,7 +40,4 @@ TODO List
 ====================
 
 .. todolist::
-
-
-.. todo:: コミュニティ系作りたい
 
