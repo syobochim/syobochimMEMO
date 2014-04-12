@@ -21,7 +21,6 @@
 .. toctree::
    :maxdepth: 1
 
-   TIPS/words
    TIPS/DB2
    TIPS/cmd
    TIPS/Sphinx_MEMO
