@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>sakuraエディタ &mdash; syobochim_MEMO 2013.10.15 ドキュメント</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootswatch-united.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="../_static/css/font-awesome-ie7.min.css">
+<![endif]-->
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+</style>
+<link rel="stylesheet" href="../_static/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootstrap-responsive.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '2013.10.15',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+<script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../_static/underscore.js"></script>
+<script type="text/javascript" src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/translations.js"></script>
+<script type="text/javascript" src="../_static/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.show-sidebar').click(function(e) {
+       e.preventDefault();
+       if ($(".show-sidebar").html() == "Open Table Of Contents") {
+          $('.for-mobile').removeClass('hidden-phone');
+          $(".show-sidebar").html("Close Table Of Contents");
+       } else {
+          $(".show-sidebar").html("Open Table Of Contents");
+       }
+    });
+  });
+</script>
+    <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
+    <link rel="next" title="UNIX コマンド" href="UNIX.html" />
+    <link rel="prev" title="Sphinx MEMO" href="Sphinx_MEMO.html" /> 
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top ">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              
+                <li>
+                <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
+                </li>
+                <li>
+                <a href="UNIX.html" title="UNIX コマンド" accesskey="N">次へ</a>
+                </li>
+                <li>
+                <a href="Sphinx_MEMO.html" title="Sphinx MEMO" accesskey="P">前へ</a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+
+      
+      <div class="row-fluid hidden-desktop hidden-tablet">
+      
+<div class="span3 ">
+  <a class="visible-phone btn btn-small show-sidebar" data-toggle="collapse" data-target=".for-mobile">Open Table Of Contents</a>
+  <div class="for-mobile sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">sakuraエディタ</a><ul>
+<li><a class="reference internal" href="#id2">矩形系</a><ul>
+<li><a class="reference internal" href="#id3">矩形選択</a></li>
+<li><a class="reference internal" href="#id4">矩形貼付</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">折り返し</a></li>
+<li><a class="reference internal" href="#id6">ジャンプ系</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Sphinx_MEMO.html"
+                        title="前の章へ">Sphinx MEMO</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="UNIX.html"
+                        title="次の章へ">UNIX コマンド</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/TIPS/sakura.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div>
+      </div>
+      
+
+      <!-- row -->
+      <div class="row-fluid">
+         
+<div class="span3 visible-desktop visible-tablet">
+  <div class=" sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">sakuraエディタ</a><ul>
+<li><a class="reference internal" href="#id2">矩形系</a><ul>
+<li><a class="reference internal" href="#id3">矩形選択</a></li>
+<li><a class="reference internal" href="#id4">矩形貼付</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">折り返し</a></li>
+<li><a class="reference internal" href="#id6">ジャンプ系</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Sphinx_MEMO.html"
+                        title="前の章へ">Sphinx MEMO</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="UNIX.html"
+                        title="次の章へ">UNIX コマンド</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/TIPS/sakura.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="span9">
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="sakura">
+<h1><a class="toc-backref" href="#id7">sakuraエディタ</a><a class="headerlink" href="#sakura" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title first">目次</p>
+<ul class="simple">
+<li><a class="reference internal" href="#sakura" id="id7">sakuraエディタ</a><ul>
+<li><a class="reference internal" href="#id2" id="id8">矩形系</a></li>
+<li><a class="reference internal" href="#id5" id="id9">折り返し</a></li>
+<li><a class="reference internal" href="#id6" id="id10">ジャンプ系</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">矩形系</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h3>矩形選択<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">四角く選択できる</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">shift</span> <span class="o">+</span> <span class="n">F6</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">Altキーを押しながらカーソルでみゅーんってしても出来る</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>矩形貼付<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">矩形選択したものをそのまま貼り付けられる</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Shift</span> <span class="o">+</span> <span class="n">F9</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id9">折り返し</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">自動折り返しを無くす</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Ctrl</span> <span class="o">+</span> <span class="n">Alt</span> <span class="o">+</span> <span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id10">ジャンプ系</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">指定した行数にジャンプ</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Ctrl</span> <span class="o">+</span> <span class="n">J</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row-fluid">
+<div class="related navbar ">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="UNIX.html" title="UNIX コマンド" >次へ</a></li>
+        <li><a href="Sphinx_MEMO.html" title="Sphinx MEMO" >前へ</a></li>
+        <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer>
+          &copy; Copyright 2013, syobochim.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

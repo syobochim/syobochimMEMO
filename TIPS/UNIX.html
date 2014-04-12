@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>UNIX コマンド &mdash; syobochim_MEMO 2013.10.15 ドキュメント</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootswatch-united.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="../_static/css/font-awesome-ie7.min.css">
+<![endif]-->
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+</style>
+<link rel="stylesheet" href="../_static/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootstrap-responsive.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '2013.10.15',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+<script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../_static/underscore.js"></script>
+<script type="text/javascript" src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/translations.js"></script>
+<script type="text/javascript" src="../_static/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.show-sidebar').click(function(e) {
+       e.preventDefault();
+       if ($(".show-sidebar").html() == "Open Table Of Contents") {
+          $('.for-mobile').removeClass('hidden-phone');
+          $(".show-sidebar").html("Close Table Of Contents");
+       } else {
+          $(".show-sidebar").html("Open Table Of Contents");
+       }
+    });
+  });
+</script>
+    <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
+    <link rel="next" title="便利ツール" href="TOOL.html" />
+    <link rel="prev" title="sakuraエディタ" href="sakura.html" /> 
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top ">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              
+                <li>
+                <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
+                </li>
+                <li>
+                <a href="TOOL.html" title="便利ツール" accesskey="N">次へ</a>
+                </li>
+                <li>
+                <a href="sakura.html" title="sakuraエディタ" accesskey="P">前へ</a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+
+      
+      <div class="row-fluid hidden-desktop hidden-tablet">
+      
+<div class="span3 ">
+  <a class="visible-phone btn btn-small show-sidebar" data-toggle="collapse" data-target=".for-mobile">Open Table Of Contents</a>
+  <div class="for-mobile sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">UNIX コマンド</a><ul>
+<li><a class="reference internal" href="#id2">相対パスと絶対パス</a><ul>
+<li><a class="reference internal" href="#id3">絶対パス</a></li>
+<li><a class="reference internal" href="#id4">相対パス</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">ワイルドカード</a></li>
+<li><a class="reference internal" href="#id6">標準入力/標準出力/標準エラー出力</a></li>
+<li><a class="reference internal" href="#redirect">リダイレクト</a><ul>
+<li><a class="reference internal" href="#id9">おまけ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">パイプ</a></li>
+<li><a class="reference internal" href="#alias">alias(コマンドだけど意味を知っててほしい)</a></li>
+<li><a class="reference internal" href="#root">root</a></li>
+<li><a class="reference internal" href="#permission">パーミッション（権限）</a></li>
+<li><a class="reference internal" href="#id12">コマンド各種</a><ul>
+<li><a class="reference internal" href="#id13">ディレクトリ移動</a></li>
+<li><a class="reference internal" href="#id14">アクセス権設定</a></li>
+<li><a class="reference internal" href="#id15">コピー</a></li>
+<li><a class="reference internal" href="#id16">ディスクの使用状況参照</a></li>
+<li><a class="reference internal" href="#id17">ディレクトリのディスク使用量を再帰的に表示</a></li>
+<li><a class="reference internal" href="#id18">ファイル検索</a></li>
+<li><a class="reference internal" href="#grep">ファイルからパターン検索(Grep)</a></li>
+<li><a class="reference internal" href="#id21">コマンド履歴の表示</a></li>
+<li><a class="reference internal" href="#id22">テキストを見る</a></li>
+<li><a class="reference internal" href="#id23">ファイル・ディレクトリの情報を表示</a></li>
+<li><a class="reference internal" href="#id24">フォルダの作成</a></li>
+<li><a class="reference internal" href="#id25">ファイル・ディレクトリ移動・名前変更</a></li>
+<li><a class="reference internal" href="#id26">プロセス状態の表示</a></li>
+<li><a class="reference internal" href="#id27">現在のディレクトリの場所を表示</a></li>
+<li><a class="reference internal" href="#id28">ファイル・ディレクトリを削除</a></li>
+<li><a class="reference internal" href="#id29">文字列の置換を行う</a></li>
+<li><a class="reference internal" href="#id30">行を並び替える(ソート)</a></li>
+<li><a class="reference internal" href="#id31">ユーザーの切替、管理権限の取得</a></li>
+<li><a class="reference internal" href="#id32">ファイルの末尾部分を表示する</a></li>
+<li><a class="reference internal" href="#id33">ログアウト(というかエディタの終了？)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#memo">その他コマンド(ここから下は普通のコマンド集MEMO!課題とは関係ないよ！)</a><ul>
+<li><a class="reference internal" href="#id34">使用されているシェルの種類を調べる</a></li>
+<li><a class="reference internal" href="#id35">ファイルのバイト数／単語数／行数を出力する</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#table">コマンドまとめ(TABLE形式)</a></li>
+<li><a class="reference internal" href="#tips-tips">その他TIPS(ここから下は普通のTIPS集!課題とは関係ないよ！)</a></li>
+<li><a class="reference internal" href="#id36">コードの行数を確認する</a></li>
+<li><a class="reference internal" href="#morelesscat">ファイル表示(more・less・cat)の違い</a></li>
+<li><a class="reference internal" href="#id39">シェルスクリプトで使用シェルを宣言</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="sakura.html"
+                        title="前の章へ">sakuraエディタ</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="TOOL.html"
+                        title="次の章へ">便利ツール</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/TIPS/UNIX.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div>
+      </div>
+      
+
+      <!-- row -->
+      <div class="row-fluid">
+         
+<div class="span3 visible-desktop visible-tablet">
+  <div class=" sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">UNIX コマンド</a><ul>
+<li><a class="reference internal" href="#id2">相対パスと絶対パス</a><ul>
+<li><a class="reference internal" href="#id3">絶対パス</a></li>
+<li><a class="reference internal" href="#id4">相対パス</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">ワイルドカード</a></li>
+<li><a class="reference internal" href="#id6">標準入力/標準出力/標準エラー出力</a></li>
+<li><a class="reference internal" href="#redirect">リダイレクト</a><ul>
+<li><a class="reference internal" href="#id9">おまけ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">パイプ</a></li>
+<li><a class="reference internal" href="#alias">alias(コマンドだけど意味を知っててほしい)</a></li>
+<li><a class="reference internal" href="#root">root</a></li>
+<li><a class="reference internal" href="#permission">パーミッション（権限）</a></li>
+<li><a class="reference internal" href="#id12">コマンド各種</a><ul>
+<li><a class="reference internal" href="#id13">ディレクトリ移動</a></li>
+<li><a class="reference internal" href="#id14">アクセス権設定</a></li>
+<li><a class="reference internal" href="#id15">コピー</a></li>
+<li><a class="reference internal" href="#id16">ディスクの使用状況参照</a></li>
+<li><a class="reference internal" href="#id17">ディレクトリのディスク使用量を再帰的に表示</a></li>
+<li><a class="reference internal" href="#id18">ファイル検索</a></li>
+<li><a class="reference internal" href="#grep">ファイルからパターン検索(Grep)</a></li>
+<li><a class="reference internal" href="#id21">コマンド履歴の表示</a></li>
+<li><a class="reference internal" href="#id22">テキストを見る</a></li>
+<li><a class="reference internal" href="#id23">ファイル・ディレクトリの情報を表示</a></li>
+<li><a class="reference internal" href="#id24">フォルダの作成</a></li>
+<li><a class="reference internal" href="#id25">ファイル・ディレクトリ移動・名前変更</a></li>
+<li><a class="reference internal" href="#id26">プロセス状態の表示</a></li>
+<li><a class="reference internal" href="#id27">現在のディレクトリの場所を表示</a></li>
+<li><a class="reference internal" href="#id28">ファイル・ディレクトリを削除</a></li>
+<li><a class="reference internal" href="#id29">文字列の置換を行う</a></li>
+<li><a class="reference internal" href="#id30">行を並び替える(ソート)</a></li>
+<li><a class="reference internal" href="#id31">ユーザーの切替、管理権限の取得</a></li>
+<li><a class="reference internal" href="#id32">ファイルの末尾部分を表示する</a></li>
+<li><a class="reference internal" href="#id33">ログアウト(というかエディタの終了？)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#memo">その他コマンド(ここから下は普通のコマンド集MEMO!課題とは関係ないよ！)</a><ul>
+<li><a class="reference internal" href="#id34">使用されているシェルの種類を調べる</a></li>
+<li><a class="reference internal" href="#id35">ファイルのバイト数／単語数／行数を出力する</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#table">コマンドまとめ(TABLE形式)</a></li>
+<li><a class="reference internal" href="#tips-tips">その他TIPS(ここから下は普通のTIPS集!課題とは関係ないよ！)</a></li>
+<li><a class="reference internal" href="#id36">コードの行数を確認する</a></li>
+<li><a class="reference internal" href="#morelesscat">ファイル表示(more・less・cat)の違い</a></li>
+<li><a class="reference internal" href="#id39">シェルスクリプトで使用シェルを宣言</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="sakura.html"
+                        title="前の章へ">sakuraエディタ</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="TOOL.html"
+                        title="次の章へ">便利ツール</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/TIPS/UNIX.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="span9">
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="unix">
+<h1><a class="toc-backref" href="#id40">UNIX コマンド</a><a class="headerlink" href="#unix" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="contents topic" id="id1">
+<p class="topic-title first">目次</p>
+<ul class="simple">
+<li><a class="reference internal" href="#unix" id="id40">UNIX コマンド</a><ul>
+<li><a class="reference internal" href="#id2" id="id41">相対パスと絶対パス</a><ul>
+<li><a class="reference internal" href="#id3" id="id42">絶対パス</a></li>
+<li><a class="reference internal" href="#id4" id="id43">相対パス</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5" id="id44">ワイルドカード</a></li>
+<li><a class="reference internal" href="#id6" id="id45">標準入力/標準出力/標準エラー出力</a></li>
+<li><a class="reference internal" href="#redirect" id="id46">リダイレクト</a><ul>
+<li><a class="reference internal" href="#id9" id="id47">おまけ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10" id="id48">パイプ</a></li>
+<li><a class="reference internal" href="#alias" id="id49">alias(コマンドだけど意味を知っててほしい)</a></li>
+<li><a class="reference internal" href="#root" id="id50">root</a></li>
+<li><a class="reference internal" href="#permission" id="id51">パーミッション（権限）</a></li>
+<li><a class="reference internal" href="#id12" id="id52">コマンド各種</a><ul>
+<li><a class="reference internal" href="#id13" id="id53">ディレクトリ移動</a></li>
+<li><a class="reference internal" href="#id14" id="id54">アクセス権設定</a></li>
+<li><a class="reference internal" href="#id15" id="id55">コピー</a></li>
+<li><a class="reference internal" href="#id16" id="id56">ディスクの使用状況参照</a></li>
+<li><a class="reference internal" href="#id17" id="id57">ディレクトリのディスク使用量を再帰的に表示</a></li>
+<li><a class="reference internal" href="#id18" id="id58">ファイル検索</a></li>
+<li><a class="reference internal" href="#grep" id="id59">ファイルからパターン検索(Grep)</a></li>
+<li><a class="reference internal" href="#id21" id="id60">コマンド履歴の表示</a></li>
+<li><a class="reference internal" href="#id22" id="id61">テキストを見る</a></li>
+<li><a class="reference internal" href="#id23" id="id62">ファイル・ディレクトリの情報を表示</a></li>
+<li><a class="reference internal" href="#id24" id="id63">フォルダの作成</a></li>
+<li><a class="reference internal" href="#id25" id="id64">ファイル・ディレクトリ移動・名前変更</a></li>
+<li><a class="reference internal" href="#id26" id="id65">プロセス状態の表示</a></li>
+<li><a class="reference internal" href="#id27" id="id66">現在のディレクトリの場所を表示</a></li>
+<li><a class="reference internal" href="#id28" id="id67">ファイル・ディレクトリを削除</a></li>
+<li><a class="reference internal" href="#id29" id="id68">文字列の置換を行う</a></li>
+<li><a class="reference internal" href="#id30" id="id69">行を並び替える(ソート)</a></li>
+<li><a class="reference internal" href="#id31" id="id70">ユーザーの切替、管理権限の取得</a></li>
+<li><a class="reference internal" href="#id32" id="id71">ファイルの末尾部分を表示する</a></li>
+<li><a class="reference internal" href="#id33" id="id72">ログアウト(というかエディタの終了？)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#memo" id="id73">その他コマンド(ここから下は普通のコマンド集MEMO!課題とは関係ないよ！)</a><ul>
+<li><a class="reference internal" href="#id34" id="id74">使用されているシェルの種類を調べる</a></li>
+<li><a class="reference internal" href="#id35" id="id75">ファイルのバイト数／単語数／行数を出力する</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#table" id="id76">コマンドまとめ(TABLE形式)</a></li>
+<li><a class="reference internal" href="#tips-tips" id="id77">その他TIPS(ここから下は普通のTIPS集!課題とは関係ないよ！)</a></li>
+<li><a class="reference internal" href="#id36" id="id78">コードの行数を確認する</a></li>
+<li><a class="reference internal" href="#morelesscat" id="id79">ファイル表示(more・less・cat)の違い</a></li>
+<li><a class="reference internal" href="#id39" id="id80">シェルスクリプトで使用シェルを宣言</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id41">相対パスと絶対パス</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">一番上の階層(windowsで言うところのC:\)からのパスを全部書くのが絶対パス。</div>
+<div class="line">今いる場所からの移動を考えるのが相対パス。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id42">絶対パス</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">パス名がスラッシュ( / )で始まる場合はルートディレクトリからの相対位置を示す。</div>
+<div class="line">これを <strong>絶対パス名</strong> とか、フルパス名と呼ぶ。</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">ディレクトリはフォルダって意味だよ！</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">ルートディレクトリ：ディレクトリ階層構造の一番上のディレクトリ。スラッシュ（/）一文字がルートディレクトリを表わす。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id43">相対パス</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">パス名がスラッシュ（/）以外で始まる場合はカレントディレクトリからの相対位置を示す。これを <strong>相対パス名</strong> と呼ぶ。</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">カレントディレクトリ：ユーザが現在作業を行っているディレクトリ。コマンドやファイル名などを入力する際に、相対パスの基準となる。</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">自分が現在いる場所のパスは『./』。ひとつ上の階層は『../』。これは『/』(スラッシュ)から始まっていないので、相対パス！(たぶん)</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id44">ワイルドカード</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">ファイルの検索などに使用することが出来る、正規表現のこと。</div>
+<div class="line"><br /></div>
+<div class="line">ワイルドカードまとめ↓</div>
+</div>
+<table border="1" class="docutils">
+<caption>ワイルドカード</caption>
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>?</td>
+<td>任意の1文字</td>
+</tr>
+<tr class="row-even"><td><ul class="first last simple">
+<li>(←アスタリスク「＊」)</li>
+</ul>
+</td>
+<td>任意の文字列</td>
+</tr>
+<tr class="row-odd"><td>[...]</td>
+<td>カッコ内の文字のうちのどれか1文字。[01234]は[0-4]、[bcdefg]は[b-g]のようにも書ける。</td>
+</tr>
+<tr class="row-even"><td>[^...]</td>
+<td>カッコ内の文字以外の1文字。[...] の逆。</td>
+</tr>
+<tr class="row-odd"><td>{... , ...}</td>
+<td>コンマで区切られた文字列のうちのどれか。</td>
+</tr>
+<tr class="row-even"><td>~</td>
+<td>ファイル名先頭において、ユーザーのホームディレクトリへの絶対パス</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>使用例 (javaファイルを検索)</li>
+</ul>
+<div class="highlight-python"><pre>find ./ -name '*.java'</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id45">標準入力/標準出力/標準エラー出力</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">『標準入力』：ターミナル(コンソール)上からコマンドの値(もしくはコマンド)を入力すること</div>
+<div class="line">『標準出力』：ターミナル(コンソール)上にコマンドの結果を出力すること</div>
+<div class="line">『標準エラー出力』：ターミナル(コンソール)上にコマンドのエラー結果を出力すること</div>
+<div class="line"><br /></div>
+<div class="line">コレに関しては、 <a class="reference internal" href="#redirect"><em>リダイレクト</em></a> を読んだ方がわかる気がする。</div>
+<div class="line"><br /></div>
+<div class="line">詳しい解説はこちら： <a class="reference external" href="http://www.creatology.jp/unix/outin.html">標準入出力</a></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="redirect">
+<span id="id8"></span><h2><a class="toc-backref" href="#id46">リダイレクト</a><a class="headerlink" href="#redirect" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">標準入出力に対してコマンドの入出力をファイルを使用して行うこと。</div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>コマンドの結果をファイルに出力するとき</li>
+</ul>
+<div class="highlight-python"><pre>[command] &gt; [filename]  ：上書き保存
+[command] &gt;&gt; [filename] ：ファイル末尾に追記保存</pre>
+</div>
+<ul class="simple">
+<li>コマンドの入力をファイルから行うとき</li>
+</ul>
+<div class="highlight-python"><pre>[command] &lt; [filename]  ：ファイルから入力</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id47">おまけ</a><a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">ファイル出力について</div>
+<div class="line">エラー出力の表示先を設定することが出来る。</div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">&gt; や &gt;&gt; をそのまま使うと、ターミナル上にエラーが出力される(標準エラー出力)ので、log(書き出しファイル)に記録が残らない！</p>
+</div>
+<ul class="simple">
+<li><strong>エラー表示方法</strong></li>
+</ul>
+<div class="highlight-python"><pre>[command] &gt;&amp; [filename]    ※sh, bash, csh, tcshに使用可能</pre>
+</div>
+<div class="line-block">
+<div class="line">または</div>
+</div>
+<div class="highlight-python"><pre>[command] &gt; [filename] 2&gt;&amp;1   ※sh, bashに使用可能</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">上記２種類のコマンドは、標準出力および標準エラー出力をファイルに書き出してくれる。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>※２つ目のコマンドについて補足</strong></div>
+<div class="line">sh, bashでは、標準出力と標準エラー出力は下記のように番号付けされています。</div>
+</div>
+<div class="highlight-python"><pre>1 = 標準出力
+2 = 標準エラー出力</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id48">パイプ</a><a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition- admonition" id="index-0">
+<p class="first admonition-title">課題</p>
+<p class="last">かく</p>
+</div>
+</div>
+<div class="section" id="alias">
+<h2><a class="toc-backref" href="#id49">alias(コマンドだけど意味を知っててほしい)</a><a class="headerlink" href="#alias" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition- admonition" id="index-1">
+<p class="first admonition-title">課題</p>
+<p class="last">かく</p>
+</div>
+</div>
+<div class="section" id="root">
+<h2><a class="toc-backref" href="#id50">root</a><a class="headerlink" href="#root" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition- admonition" id="index-2">
+<p class="first admonition-title">課題</p>
+<p class="last">かく</p>
+</div>
+</div>
+<div class="section" id="permission">
+<span id="id11"></span><h2><a class="toc-backref" href="#id51">パーミッション（権限）</a><a class="headerlink" href="#permission" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition- admonition" id="index-3">
+<p class="first admonition-title">課題</p>
+<p class="last">かく</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2><a class="toc-backref" href="#id52">コマンド各種</a><a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id13">
+<h3><a class="toc-backref" href="#id53">ディレクトリ移動</a><a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>cd [directory name]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3><a class="toc-backref" href="#id54">アクセス権設定</a><a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>chmod (option) [a+w] [file name]
+chmod (option) [644] [file name]</pre>
+</div>
+<div class="line-block">
+<div class="line">アクセス権に関しては、 <a class="reference internal" href="#permission"><em>パーミッション(権限)</em></a> を参照。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h3><a class="toc-backref" href="#id55">コピー</a><a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>cp (option) [source file] [target file]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3><a class="toc-backref" href="#id56">ディスクの使用状況参照</a><a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>df [-a] [-k] [-T] [-t FSType] [-l] [Linux]
+df [-a] [-k|-m|-g] [-t FSType] [-l] [FreeBSD]
+df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
+</div>
+<p>よく使うのは</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">df</span> <span class="o">-</span><span class="n">kP</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">-k ： 1キロバイト単位で表示</div>
+<div class="line">-P ： POSIX準拠の512バイトブロックで表示</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3><a class="toc-backref" href="#id57">ディレクトリのディスク使用量を再帰的に表示</a><a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">du</span> <span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span> <span class="p">[</span><span class="n">DIR</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3><a class="toc-backref" href="#id58">ファイル検索</a><a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>find [search directory] (option)</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">使用方法</div>
+</div>
+<div class="highlight-python"><pre>find ./ -name *.java</pre>
+</div>
+<div class="line-block">
+<div class="line">『./』ディレクトリ(現在いるディレクトリ)のなかのファイル名が『<a href="#id19"><span class="problematic" id="id20">*</span></a>.java』のものを検索</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="grep">
+<h3><a class="toc-backref" href="#id59">ファイルからパターン検索(Grep)</a><a class="headerlink" href="#grep" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>grep (option) [検索文字列] [file name]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id21">
+<h3><a class="toc-backref" href="#id60">コマンド履歴の表示</a><a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">history</span> <span class="p">(</span><span class="n">option</span><span class="p">)</span> <span class="p">[</span><span class="n">number</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id22">
+<h3><a class="toc-backref" href="#id61">テキストを見る</a><a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>less (option) [file name]</pre>
+</div>
+<div class="line-block">
+<div class="line">more・catとの違いは  <a class="reference internal" href="#more-less-cat"><em>ファイル表示(more・less・cat)の違い</em></a> を参照。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id23">
+<h3><a class="toc-backref" href="#id62">ファイル・ディレクトリの情報を表示</a><a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>ls (option) [directory name]</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">オプションに-laをつけると全ファイル詳細表示。-lrtもよく使う。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>オプションの説明</strong></div>
+</div>
+<ul class="simple">
+<li>『-l』：ファイルやフォルダを一行で表示する</li>
+<li>『-a』：全てのファイルを表示</li>
+<li>『-r』：逆順にソートして出力</li>
+<li>『-t』：修正時刻でソート。最新の修正が先頭。</li>
+<li>『-R』：再帰的に表示(フォルダのなかもみていく)</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id24">
+<h3><a class="toc-backref" href="#id63">フォルダの作成</a><a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>mkdir (option) [directory name]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id25">
+<h3><a class="toc-backref" href="#id64">ファイル・ディレクトリ移動・名前変更</a><a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>mv (option) [old file] [new file]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h3><a class="toc-backref" href="#id65">プロセス状態の表示</a><a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ps</span> <span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">f</span><span class="p">][</span><span class="n">u</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="o">-</span><span class="n">e</span><span class="p">][</span><span class="o">-</span><span class="n">l</span><span class="o">|</span><span class="n">l</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">プロセスの状態を一覧形式で表示します。</div>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt>オプション</dt>
+<dd><ul class="first last simple">
+<li>a  : 全ユーザのプロセスの状態を表示します。</li>
+<li>f  : プロセスの親子関係をツリー状にして表示します。</li>
+<li>u  : プロセスのユーザ名と開始時刻を表示内容に付加します。</li>
+<li>x  : 制御端末を持たないデーモンなどのプロセスも合わせて表示します。</li>
+<li>-e : 全プロセスの情報を表示します。</li>
+<li>-l : 詳細情報を表示します。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id27">
+<h3><a class="toc-backref" href="#id66">現在のディレクトリの場所を表示</a><a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pwd</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id28">
+<h3><a class="toc-backref" href="#id67">ファイル・ディレクトリを削除</a><a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>rm (option) [file name]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id29">
+<h3><a class="toc-backref" href="#id68">文字列の置換を行う</a><a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">sed</span>
+</pre></div>
+</div>
+<div class="admonition- admonition" id="index-4">
+<p class="first admonition-title">課題</p>
+<p class="last">説明ちゃんとかく</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id30">
+<h3><a class="toc-backref" href="#id69">行を並び替える(ソート)</a><a class="headerlink" href="#id30" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">sort</span> <span class="p">(</span><span class="n">option</span><span class="p">)</span> <span class="p">[</span><span class="nb">file</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id31">
+<h3><a class="toc-backref" href="#id70">ユーザーの切替、管理権限の取得</a><a class="headerlink" href="#id31" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>su (option) [user name]</pre>
+</div>
+<div class="line-block">
+<div class="line">sudo (管理者権限で実行) とかよくする</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id32">
+<h3><a class="toc-backref" href="#id71">ファイルの末尾部分を表示する</a><a class="headerlink" href="#id32" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>tail [-c BYTE] [-n LINE] [FILE...]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id33">
+<h3><a class="toc-backref" href="#id72">ログアウト(というかエディタの終了？)</a><a class="headerlink" href="#id33" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">exit</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="memo">
+<h2><a class="toc-backref" href="#id73">その他コマンド(ここから下は普通のコマンド集MEMO!課題とは関係ないよ！)</a><a class="headerlink" href="#memo" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id34">
+<h3><a class="toc-backref" href="#id74">使用されているシェルの種類を調べる</a><a class="headerlink" href="#id34" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>echo $SHELL</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">シェルの種類によってコマンドや記載方法が変わる。</div>
+<div class="line">シェルスクリプトは一般的にbashで記載。</div>
+<div class="line"><br /></div>
+<div class="line">各シェルの詳細はこちら：<a class="reference external" href="http://www2u.biglobe.ne.jp/~hsaka/docs/shell.html">http://www2u.biglobe.ne.jp/~hsaka/docs/shell.html</a></div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">ちなみにzOSはbashでした。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id35">
+<h3><a class="toc-backref" href="#id75">ファイルのバイト数／単語数／行数を出力する</a><a class="headerlink" href="#id35" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">wc</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">L</span><span class="p">]</span> <span class="p">[</span><span class="n">FILE</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>オプションめも</strong></div>
+<div class="line"><br /></div>
+<div class="line"><strong>-c</strong></div>
+<div class="line">FILE...に指定したファイルの総バイト数を出力します。改行コードやタブコードなどの制御コードも1バイトとします。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>-l</strong></div>
+<div class="line">FILE...に指定したファイルの総行数を出力します。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>-w</strong></div>
+<div class="line">FILE...に指定したファイルの総単語数を出力します。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>-L</strong></div>
+<div class="line">FILE...に指定したファイルの内容で、もっとも長い行のバイト数を出力します。改行コードのバイト数は含みません。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="table">
+<h2><a class="toc-backref" href="#id76">コマンドまとめ(TABLE形式)</a><a class="headerlink" href="#table" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils">
+<caption>UNIXcmd</caption>
+<colgroup>
+<col width="20%" />
+<col width="50%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>cd</td>
+<td>ディレクトリ移動</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>chmod</td>
+<td>アクセス権設定</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>cp</td>
+<td>コピー</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>df</td>
+<td>ディスクの使用状況参照</td>
+<td>df -kP</td>
+</tr>
+<tr class="row-odd"><td>du</td>
+<td>ディレクトリのディスク使用量を表示</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>find</td>
+<td>ファイル検索</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>grep</td>
+<td>ファイルからパターン検索(Grep)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>history(!)</td>
+<td>コマンド履歴の表示</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>less</td>
+<td>テキストを見る</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>ls</td>
+<td>ファイル・ディレクトリの情報を表示</td>
+<td>ls -la</td>
+</tr>
+<tr class="row-odd"><td>mkdir</td>
+<td>フォルダの作成</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>mv</td>
+<td>ファイル・ディレクトリ移動・名前変更</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>ps</td>
+<td>プロセス状態の表示</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>pwd</td>
+<td>現在のディレクトリの場所を表示</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>rm</td>
+<td>ファイル・ディレクトリを削除</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>sed</td>
+<td>文字列の置換を行う</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>sort</td>
+<td>行を並び替える(ソート)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>su</td>
+<td>ユーザーの切替、管理権限の取得</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>tail</td>
+<td>ファイルの末尾部分を表示する</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>exit</td>
+<td>ログアウト(というか終了？)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>wc</td>
+<td>ファイルのバイト数／単語数／行数を出力する</td>
+<td>※課題範囲外</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tips-tips">
+<h2><a class="toc-backref" href="#id77">その他TIPS(ここから下は普通のTIPS集!課題とは関係ないよ！)</a><a class="headerlink" href="#tips-tips" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id36">
+<h2><a class="toc-backref" href="#id78">コードの行数を確認する</a><a class="headerlink" href="#id36" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><pre>find ./ -name '*.java' | xargs cat | wc -l</pre>
+</div>
+<div class="line-block">
+<div class="line">『./』ディレクトリの『<a href="#id37"><span class="problematic" id="id38">*</span></a>.java』ファイルにあるコードの行数を検索</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="morelesscat">
+<span id="more-less-cat"></span><h2><a class="toc-backref" href="#id79">ファイル表示(more・less・cat)の違い</a><a class="headerlink" href="#morelesscat" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils">
+<caption>ファイル表示(more・less・cat)の違い</caption>
+<colgroup>
+<col width="12%" />
+<col width="29%" />
+<col width="29%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">more</th>
+<th class="head">less</th>
+<th class="head">cat</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>機能</td>
+<td>ファイルの中身を表示する。</td>
+<td>ファイルの中身を表示する。</td>
+<td>ファイルの中身を連結して表示する。</td>
+</tr>
+<tr class="row-odd"><td>特記事項</td>
+<td>スクロールできるが、末行まで表示すると表示が終了。</td>
+<td>スクロールできる。qを入力するまで表示は終了しない。</td>
+<td>一画面分しか見ることができない。(スクロールはできない)</td>
+</tr>
+<tr class="row-even"><td>使い方例</td>
+<td>more aaa.php</td>
+<td>less bbb.cgi</td>
+<td>cat ccc.txt ddd.php &gt; eee.txt</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id39">
+<h2><a class="toc-backref" href="#id80">シェルスクリプトで使用シェルを宣言</a><a class="headerlink" href="#id39" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">シェルの種類によってシェルのコマンドや記載方法に差異がある。</div>
+<div class="line">そのため、シェルスクリプト作成の際は、</div>
+<div class="line">先頭行にて使用するシェルを宣言し、動作を統一させる必要がある。</div>
+<div class="line">bash(シェルスクリプトで一般的なシェル)を使用する場合は、</div>
+<div class="line">シェルスクリプトファイルの先頭に↓を記載する。</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row-fluid">
+<div class="related navbar ">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="TOOL.html" title="便利ツール" >次へ</a></li>
+        <li><a href="sakura.html" title="sakuraエディタ" >前へ</a></li>
+        <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer>
+          &copy; Copyright 2013, syobochim.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

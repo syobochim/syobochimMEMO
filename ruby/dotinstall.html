@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>rubyMEMO &mdash; syobochim_MEMO 2013.10.15 ドキュメント</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootswatch-united.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="../_static/css/font-awesome-ie7.min.css">
+<![endif]-->
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+</style>
+<link rel="stylesheet" href="../_static/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootstrap-responsive.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '2013.10.15',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+<script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../_static/underscore.js"></script>
+<script type="text/javascript" src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/translations.js"></script>
+<script type="text/javascript" src="../_static/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.show-sidebar').click(function(e) {
+       e.preventDefault();
+       if ($(".show-sidebar").html() == "Open Table Of Contents") {
+          $('.for-mobile').removeClass('hidden-phone');
+          $(".show-sidebar").html("Close Table Of Contents");
+       } else {
+          $(".show-sidebar").html("Open Table Of Contents");
+       }
+    });
+  });
+</script>
+    <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
+    <link rel="prev" title="MYSQL とか SQL とか MEMO" href="../TIPS/mysql.html" /> 
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top ">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              
+                <li>
+                <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
+                </li>
+                <li>
+                <a href="../TIPS/mysql.html" title="MYSQL とか SQL とか MEMO" accesskey="P">前へ</a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+
+      
+      <div class="row-fluid hidden-desktop hidden-tablet">
+      
+<div class="span3 ">
+  <a class="visible-phone btn btn-small show-sidebar" data-toggle="collapse" data-target=".for-mobile">Open Table Of Contents</a>
+  <div class="for-mobile sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">rubyMEMO</a><ul>
+<li><a class="reference internal" href="#id2">はじめに</a></li>
+<li><a class="reference internal" href="#id3">アプリケーションの始め方</a></li>
+<li><a class="reference internal" href="#scafold">Scafoldしよう！</a></li>
+<li><a class="reference internal" href="#id4">タスク管理アプリを作ってみよう</a></li>
+<li><a class="reference internal" href="#model">Modelを作ろう！</a></li>
+<li><a class="reference internal" href="#rails-db-rails-console">rails db/ rails console を使おう！</a></li>
+<li><a class="reference internal" href="#controller">Controller を作ろう！</a></li>
+<li><a class="reference internal" href="#project">Project の一覧を表示させる</a></li>
+<li><a class="reference internal" href="#root">rootの設定をしよう</a></li>
+<li><a class="reference internal" href="#id5">共通テンプレートを編集しよう！</a></li>
+<li><a class="reference internal" href="#id6">詳細画面を作ろう！</a></li>
+<li><a class="reference internal" href="#id7">新規作成フォームを作ろう！</a></li>
+<li><a class="reference internal" href="#id8">データを保存してみよう！</a></li>
+<li><a class="reference internal" href="#validation">Validationを設定しよう！</a><ul>
+<li><a class="reference internal" href="#render-redirect-to">render と redirect_to の違い</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">エラーメッセージを表示しよう</a></li>
+<li><a class="reference internal" href="#id10">編集フォームを作ろう</a></li>
+<li><a class="reference internal" href="#id11">データを更新しよう</a><ul>
+<li><a class="reference internal" href="#dry">DRY をわすれるな！</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">データを削除しよう！</a></li>
+<li><a class="reference internal" href="#before-action">before_action を使ってみよう</a></li>
+<li><a class="reference internal" href="#task">Taskの設定をしていこう！</a></li>
+<li><a class="reference internal" href="#association">Association の設定をしよう</a></li>
+<li><a class="reference internal" href="#tasks">Tasksの新規作成フォームを作ろう</a></li>
+<li><a class="reference internal" href="#id13">Tasks を保存しよう！</a></li>
+<li><a class="reference internal" href="#id14">Tasks の削除をする</a></li>
+<li><a class="reference internal" href="#ceck-box-tag">ceck_box_tagを使おう！</a></li>
+<li><a class="reference internal" href="#toggle">toggle アクションを作ろう</a></li>
+<li><a class="reference internal" href="#id15">Task数を表示させよう</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../TIPS/mysql.html"
+                        title="前の章へ">MYSQL とか SQL とか MEMO</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ruby/dotinstall.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div>
+      </div>
+      
+
+      <!-- row -->
+      <div class="row-fluid">
+         
+<div class="span3 visible-desktop visible-tablet">
+  <div class=" sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">rubyMEMO</a><ul>
+<li><a class="reference internal" href="#id2">はじめに</a></li>
+<li><a class="reference internal" href="#id3">アプリケーションの始め方</a></li>
+<li><a class="reference internal" href="#scafold">Scafoldしよう！</a></li>
+<li><a class="reference internal" href="#id4">タスク管理アプリを作ってみよう</a></li>
+<li><a class="reference internal" href="#model">Modelを作ろう！</a></li>
+<li><a class="reference internal" href="#rails-db-rails-console">rails db/ rails console を使おう！</a></li>
+<li><a class="reference internal" href="#controller">Controller を作ろう！</a></li>
+<li><a class="reference internal" href="#project">Project の一覧を表示させる</a></li>
+<li><a class="reference internal" href="#root">rootの設定をしよう</a></li>
+<li><a class="reference internal" href="#id5">共通テンプレートを編集しよう！</a></li>
+<li><a class="reference internal" href="#id6">詳細画面を作ろう！</a></li>
+<li><a class="reference internal" href="#id7">新規作成フォームを作ろう！</a></li>
+<li><a class="reference internal" href="#id8">データを保存してみよう！</a></li>
+<li><a class="reference internal" href="#validation">Validationを設定しよう！</a><ul>
+<li><a class="reference internal" href="#render-redirect-to">render と redirect_to の違い</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">エラーメッセージを表示しよう</a></li>
+<li><a class="reference internal" href="#id10">編集フォームを作ろう</a></li>
+<li><a class="reference internal" href="#id11">データを更新しよう</a><ul>
+<li><a class="reference internal" href="#dry">DRY をわすれるな！</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">データを削除しよう！</a></li>
+<li><a class="reference internal" href="#before-action">before_action を使ってみよう</a></li>
+<li><a class="reference internal" href="#task">Taskの設定をしていこう！</a></li>
+<li><a class="reference internal" href="#association">Association の設定をしよう</a></li>
+<li><a class="reference internal" href="#tasks">Tasksの新規作成フォームを作ろう</a></li>
+<li><a class="reference internal" href="#id13">Tasks を保存しよう！</a></li>
+<li><a class="reference internal" href="#id14">Tasks の削除をする</a></li>
+<li><a class="reference internal" href="#ceck-box-tag">ceck_box_tagを使おう！</a></li>
+<li><a class="reference internal" href="#toggle">toggle アクションを作ろう</a></li>
+<li><a class="reference internal" href="#id15">Task数を表示させよう</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../TIPS/mysql.html"
+                        title="前の章へ">MYSQL とか SQL とか MEMO</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ruby/dotinstall.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="span9">
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="rubymemo">
+<h1><a class="toc-backref" href="#id16">rubyMEMO</a><a class="headerlink" href="#rubymemo" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title first">目次</p>
+<ul class="simple">
+<li><a class="reference internal" href="#rubymemo" id="id16">rubyMEMO</a><ul>
+<li><a class="reference internal" href="#id2" id="id17">はじめに</a></li>
+<li><a class="reference internal" href="#id3" id="id18">アプリケーションの始め方</a></li>
+<li><a class="reference internal" href="#scafold" id="id19">Scafoldしよう！</a></li>
+<li><a class="reference internal" href="#id4" id="id20">タスク管理アプリを作ってみよう</a></li>
+<li><a class="reference internal" href="#model" id="id21">Modelを作ろう！</a></li>
+<li><a class="reference internal" href="#rails-db-rails-console" id="id22">rails db/ rails console を使おう！</a></li>
+<li><a class="reference internal" href="#controller" id="id23">Controller を作ろう！</a></li>
+<li><a class="reference internal" href="#project" id="id24">Project の一覧を表示させる</a></li>
+<li><a class="reference internal" href="#root" id="id25">rootの設定をしよう</a></li>
+<li><a class="reference internal" href="#id5" id="id26">共通テンプレートを編集しよう！</a></li>
+<li><a class="reference internal" href="#id6" id="id27">詳細画面を作ろう！</a></li>
+<li><a class="reference internal" href="#id7" id="id28">新規作成フォームを作ろう！</a></li>
+<li><a class="reference internal" href="#id8" id="id29">データを保存してみよう！</a></li>
+<li><a class="reference internal" href="#validation" id="id30">Validationを設定しよう！</a><ul>
+<li><a class="reference internal" href="#render-redirect-to" id="id31">render と redirect_to の違い</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9" id="id32">エラーメッセージを表示しよう</a></li>
+<li><a class="reference internal" href="#id10" id="id33">編集フォームを作ろう</a></li>
+<li><a class="reference internal" href="#id11" id="id34">データを更新しよう</a><ul>
+<li><a class="reference internal" href="#dry" id="id35">DRY をわすれるな！</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12" id="id36">データを削除しよう！</a></li>
+<li><a class="reference internal" href="#before-action" id="id37">before_action を使ってみよう</a></li>
+<li><a class="reference internal" href="#task" id="id38">Taskの設定をしていこう！</a></li>
+<li><a class="reference internal" href="#association" id="id39">Association の設定をしよう</a></li>
+<li><a class="reference internal" href="#tasks" id="id40">Tasksの新規作成フォームを作ろう</a></li>
+<li><a class="reference internal" href="#id13" id="id41">Tasks を保存しよう！</a></li>
+<li><a class="reference internal" href="#id14" id="id42">Tasks の削除をする</a></li>
+<li><a class="reference internal" href="#ceck-box-tag" id="id43">ceck_box_tagを使おう！</a></li>
+<li><a class="reference internal" href="#toggle" id="id44">toggle アクションを作ろう</a></li>
+<li><a class="reference internal" href="#id15" id="id45">Task数を表示させよう</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id17">はじめに</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">このページは、 <a class="reference external" href="http://dotinstall.com/">dotinstall</a> のRuby on Rails 4 入門でやっていることを</div>
+<div class="line">つらつらとメモしたものです。</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id18">アプリケーションの始め方</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">myappというアプリケーションを始める。</div>
+</div>
+<div class="highlight-python"><pre>$ rails new myapp</pre>
+</div>
+<div class="line-block">
+<div class="line">↑のコマンドで、自動で必要なフォルダを作成してくれる。</div>
+<div class="line">作成されたフォルダに移動後、</div>
+</div>
+<div class="highlight-python"><pre>$ rails s</pre>
+</div>
+<div class="line-block">
+<div class="line">でサーバーを起動。</div>
+<div class="line">s は <strong>s</strong> erver の意味。</div>
+<div class="line">JavaScriptランタイムエラーが発生したら、Gemfileを修正する必要がある</div>
+<div class="line">一回サーバを停止して(Ctrl + c)</div>
+<div class="line">Gemfileを開いて、</div>
+</div>
+<div class="highlight-python"><pre>gem 'therubyracer', platforms: ruby</pre>
+</div>
+<div class="line-block">
+<div class="line">のコメントアウトを外す。</div>
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python"><pre>bundle install</pre>
+</div>
+<div class="line-block">
+<div class="line">で必要なものをダウンロードして、</div>
+<div class="line">再度</div>
+</div>
+<div class="highlight-python"><pre>$ rails s</pre>
+</div>
+<div class="line-block">
+<div class="line">をして、</div>
+<div class="line"><a class="reference external" href="http://localhost:3000">http://localhost:3000</a></div>
+<div class="line">にアクセスできたらOK</div>
+</div>
+</div>
+<div class="section" id="scafold">
+<h2><a class="toc-backref" href="#id19">Scafoldしよう！</a><a class="headerlink" href="#scafold" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line"><strong>Scafold</strong> 　…　シンプルなアプリケーションの枠組みを作ってくれる</div>
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python"><pre>$ rails generate scaffold users name:string score:integer</pre>
+</div>
+<div class="line-block">
+<div class="line">で、Userっていうインスタンスに、</div>
+<div class="line">string 型の name と integer 型の score というデータを作成してくれる。</div>
+<div class="line"><br /></div>
+<div class="line">scaffold ができたら、DBにデータをマイグレーションする。</div>
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python"><pre>$ rake db:migrate</pre>
+</div>
+<div class="line-block">
+<div class="line">でマイグレーションは簡単！</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="http://localhost:3000/users">http://localhost:3000/users</a></div>
+<div class="line">にアクセスすると、DBへのデータ登録・編集・削除を行うことが出来るアプリケーションが出来てる！</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">マイグレーションとは、プログラムやデータの移行・変換作業のこと。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id20">タスク管理アプリを作ってみよう</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">新しいアプリケーションを作る。</div>
+<div class="line">すでにbundle installが済んでいる場合は、</div>
+<div class="line">bundle install をスキップすることができる。</div>
+</div>
+<div class="highlight-python"><pre>rails new taskapp --skip-bundle</pre>
+</div>
+<div class="line-block">
+<div class="line">taskappというアプリケーションが作成される。</div>
+<div class="line">あとは、アプリケーションの始め方に書いてあるように、</div>
+<div class="line">ディレクトリ移動後にGemfile の修正を行う。</div>
+</div>
+</div>
+<div class="section" id="model">
+<h2><a class="toc-backref" href="#id21">Modelを作ろう！</a><a class="headerlink" href="#model" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">アプリケーションはModelからつくっていく。</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">MVC(Model-View-Controle) とは、</div>
+<div class="line"><strong>Model</strong>    ... データを管理するもの</div>
+<div class="line"><strong>View</strong>     ... 画面</div>
+<div class="line"><strong>Controle</strong> ... Model と Controle を操るもの</div>
+<div class="line"><br /></div>
+<div class="line">Modelを作るコマンドは、</div>
+</div>
+<div class="highlight-python"><pre>$ rails generate model Project title:String</pre>
+</div>
+<div class="line-block">
+<div class="line">ただし、generate は <strong>g</strong> に省力することができるし、</div>
+<div class="line">項目の作成もデフォルトはstring型に設定されているので、</div>
+</div>
+<div class="highlight-python"><pre>$ rails g model Project title</pre>
+</div>
+<div class="line-block">
+<div class="line">と省略することができる。</div>
+<div class="line">このコマンドを打つことで、さらにファイルが作成される。</div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last"><strong>命名規則：</strong> Model 名は、最初の１文字にして、単数系にすること！</p>
+</div>
+<div class="line-block">
+<div class="line">そのあとは、</div>
+</div>
+<div class="highlight-python"><pre>$ rake db:migtate</pre>
+</div>
+<div class="line-block">
+<div class="line">すれば、DBへの適用はOK！！</div>
+</div>
+</div>
+<div class="section" id="rails-db-rails-console">
+<h2><a class="toc-backref" href="#id22">rails db/ rails console を使おう！</a><a class="headerlink" href="#rails-db-rails-console" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ターミナルで、</p>
+<div class="highlight-python"><pre>rails db</pre>
+</div>
+<div class="line-block">
+<div class="line">を入力すると、現在つながっているDBへ接続することができる！</div>
+<div class="line">MySQLに接続するために、</div>
+<div class="line">config/databese.ymlを下記のように書き換えた。</div>
+</div>
+<div class="highlight-python"><pre>development:
+  adapter: mysql2
+  encoding: utf8
+  database: sample_development
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: sample_test
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: sample_production
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock</pre>
+</div>
+<div class="line-block">
+<div class="line">socketは個人個人で違う？</div>
+<div class="line">mysqlが入ってるところかな？</div>
+<div class="line">これを設定した後は、改めて</div>
+</div>
+<div class="highlight-python"><pre>rake db:create</pre>
+</div>
+<div class="line-block">
+<div class="line">をしないといけなかった。</div>
+</div>
+<img alt="../_images/rails_db.png" src="../_images/rails_db.png" />
+<div class="line-block">
+<div class="line">できた！</div>
+<div class="line"><br /></div>
+<div class="line">rails console では、モデルをインタラクティブにいじれる！</div>
+<div class="line">ターミナル上で、</div>
+</div>
+<div class="highlight-python"><pre>rails console</pre>
+</div>
+<img alt="../_images/rails_console.png" src="../_images/rails_console.png" />
+<div class="line-block">
+<div class="line">この、rails consoleにて、DBへのデータ入力等ができる</div>
+</div>
+<div class="highlight-python"><pre>p = Project.new(title: "p1")</pre>
+</div>
+<div class="line-block">
+<div class="line">で、titleにp1って入ったものができる。</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">p</span><span class="o">.</span><span class="n">save</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">で、DBへ保存！</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">p</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">で、実際にい入ったデータをみることができる</div>
+<div class="line">宣言とsaveの2つを合わせたコマンドが↓</div>
+</div>
+<div class="highlight-python"><pre>Project.create(title: "p2")</pre>
+</div>
+<div class="line-block">
+<div class="line">すべてのデータをみるのは、↓</div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Project</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">rails db を起動して、データをみたら、いい感じに入っているのが確認できる</div>
+</div>
+<img alt="../_images/rails_db2.png" src="../_images/rails_db2.png" />
+<div class="line-block">
+<div class="line">みんなでデータを共有するときは、</div>
+<div class="line">db/seeds.rb ファイルにデータを書いていけばいい！</div>
+<div class="line">参考：<a class="reference external" href="http://www.rubylife.jp/rails/model/index10.html">http://www.rubylife.jp/rails/model/index10.html</a></div>
+<div class="line"><br /></div>
+<div class="line">適用するときは、</div>
+</div>
+<div class="highlight-python"><pre>rake db:seed</pre>
+</div>
+<div class="line-block">
+<div class="line">を使用する！</div>
+<div class="line"><br /></div>
+<div class="line">dbを削除するときは</div>
+</div>
+<div class="highlight-python"><pre>rake db:drop</pre>
+</div>
+</div>
+<div class="section" id="controller">
+<h2><a class="toc-backref" href="#id23">Controller を作ろう！</a><a class="headerlink" href="#controller" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>controlleer を作成するコマンド</p>
+<div class="highlight-python"><pre>$ rails g controller Projects</pre>
+</div>
+<p>で、Projectsっていうコントローラーができる</p>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">命名規則：Contoroller の命名は、最初の１文字が大文字の複数系にすること！</p>
+</div>
+<div class="line-block">
+<div class="line">コントローラーが作成できたら、</div>
+<div class="line">config/routes.rb を編集する。</div>
+</div>
+<div class="highlight-python"><pre>Taskapp::Application.routes.draw do
+  resources :projects
+end</pre>
+</div>
+<div class="line-block">
+<div class="line">コメントアウトした部分を除いて、↑みたいな感じにする</div>
+<div class="line"><br /></div>
+<div class="line">コマンドにて、</div>
+</div>
+<div class="highlight-python"><pre>rake routes</pre>
+</div>
+<div class="line-block">
+<div class="line">をすると、routeの確認ができる。</div>
+</div>
+<img alt="../_images/rake_routes.png" src="../_images/rake_routes.png" />
+</div>
+<div class="section" id="project">
+<h2><a class="toc-backref" href="#id24">Project の一覧を表示させる</a><a class="headerlink" href="#project" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<img alt="../_images/Project_all.png" src="../_images/Project_all.png" />
+<div class="line-block">
+<div class="line">↑より、indexというものでプロジェクトの一覧を作ることができることを読み解く！</div>
+<div class="line">(...?)</div>
+<div class="line"><br /></div>
+<div class="line">app/controllers/projets_controllers.rb</div>
+<div class="line">を開いて、indexアクションを作っていく！</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ProjectsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="vi">@projects</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">all</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">index アクションを作成できたら、</div>
+<div class="line">それを表示するViewをつくる！</div>
+<div class="line">app/views/projects  フォルダに、ファイルを新規作成する。</div>
+<div class="line">今回は、indexのViewをつくるので、</div>
+<div class="line">ファイル名は、index.html.erbにした。</div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">命名規則：View名は、Controllerで宣言した名前と合わせること！</p>
+</div>
+<div class="line-block">
+<div class="line">ファイルの中身はこんな感じ</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Projects</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
+
+<span class="sr">&lt;ul&gt;</span>
+<span class="sr">    &lt;% @projects.each do |project| %&gt;</span>
+<span class="sr">    &lt;li&gt;&lt;%= project.title %&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">&lt;% %&gt; の中に、処理を書く。</div>
+<div class="line">&lt;%= %&gt;の中に、値を書く。</div>
+</div>
+<img alt="../_images/Project_all.png" src="../_images/Project_all.png" />
+<div class="line-block">
+<div class="line">↑より、/projectsでindexにアクセスすることがわかるので、</div>
+<div class="line">サーバーを起動($ rails s)して、</div>
+<div class="line"><a class="reference external" href="http://localhost:3000/projects">http://localhost:3000/projects</a></div>
+<div class="line">にアクセスすると、登録したタイトルが表示される。</div>
+</div>
+<img alt="../_images/index.png" src="../_images/index.png" />
+</div>
+<div class="section" id="root">
+<h2><a class="toc-backref" href="#id25">rootの設定をしよう</a><a class="headerlink" href="#root" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">rootingを設定していく。</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">rootingとは、URLとアクションを関連づけるもの</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="http://localhost:3000/projects">http://localhost:3000/projects</a>  を</div>
+<div class="line"><a class="reference external" href="http://localhost:3000/">http://localhost:3000/</a>  のURLでアクセスできるように設定していく。</div>
+<div class="line"><br /></div>
+<div class="line">config/routes.rb ファイルを開く</div>
+<div class="line"><br /></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">root</span> <span class="s1">&#39;projects#index&#39;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">を追加すると、</div>
+<div class="line"><a class="reference external" href="http://localhost:3000/projects">http://localhost:3000/projects</a>  の画面に、</div>
+<div class="line"><a class="reference external" href="http://localhost:3000/">http://localhost:3000/</a>  のURLでアクセスできるようになった！</div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">rootは大元って意味。</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">他にも、いろいろな設定がコメントアウトされて載っている。
+rootingの設定を変えたいときは参考にすること。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id26">共通テンプレートを編集しよう！</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">共通のテンプレートの編集方法</div>
+<div class="line">app/views/layouts/applocation.html.erb</div>
+<div class="line">ファイルを編集して、共通テンプレートを変えていく</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;%=</span> <span class="k">yield</span> <span class="o">%&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">に、それぞれのviewで書いたものが挿入されていく</div>
+<div class="line"><br /></div>
+<div class="line">image の挿入方法</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;%=</span> <span class="n">image_tag</span> <span class="s2">&quot;logo.png&quot;</span> <span class="o">%&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">logo.png は、app/assert/images フォルダ内に格納すること。</div>
+<div class="line"><br /></div>
+<div class="line">link の挿入方法</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span> <span class="o">%&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Homeって文字がリンクになった、root (localhost:3000)へのリンクができる。</div>
+<div class="line"><br /></div>
+<div class="line">これは、</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="n">projects_path</span> <span class="o">%&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ってやってもOK。</div>
+<div class="line">projects_pathについては、</div>
+</div>
+<img alt="../_images/rake_routes2.png" src="../_images/rake_routes2.png" />
+<div class="line-block">
+<div class="line">で、矢印が指している箇所の後に「_path」をつけると、</div>
+<div class="line">そのURIの場所に飛ぶようになっている！</div>
+<div class="line"><br /></div>
+<div class="line">共通のimg / JavaScript / CSS は、</div>
+<div class="line">app/assert/ フォルダの下で定めている。</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id27">詳細画面を作ろう！</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<img alt="../_images/rake_routes_show.png" src="../_images/rake_routes_show.png" />
+<div class="line-block">
+<div class="line">名前：project</div>
+<div class="line">作成するページのURL ：/projects/:id</div>
+<div class="line">URLに取ってくる値：id</div>
+<div class="line">View名：show</div>
+<div class="line"><br /></div>
+<div class="line">で、ページを作る！</div>
+<div class="line"><br /></div>
+<div class="line">まずは、Controllerを編集する</div>
+<div class="line">project_controller.rb に下記を追加する</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">show</span>
+  <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">app/views/projects フォルダに移動して、</div>
+<div class="line">index.html.erb に、詳細ページへのリンクを作成する</div>
+<div class="line">&lt;li&gt;の中身をリンクにするので、↓みたいに書き換えていく</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;%=</span> <span class="n">link_to</span> <span class="n">project</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">project_path</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="sx">%&gt;&lt;/li&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">link_to でリンク作成</div>
+<div class="line">project.title がリンクにされる文字</div>
+<div class="line">project_path で遷移先を指定 (rake routes の project で定めている箇所に遷移)</div>
+<div class="line">遷移先への引数は id</div>
+<div class="line"><br /></div>
+<div class="line">show.html.erb ファイルを作成して、</div>
+<div class="line">詳細画面の中身を書いていく</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&lt;%=</span> <span class="vi">@project</span><span class="o">.</span><span class="n">title</span> <span class="sx">%&gt;&lt;/h1&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">こんな画面ができる！</div>
+<div class="line"><br /></div>
+<div class="line"><strong>index</strong></div>
+</div>
+<img alt="../_images/link_index.png" src="../_images/link_index.png" />
+<div class="line-block">
+<div class="line"><strong>詳細ページ</strong></div>
+</div>
+<img alt="../_images/detail.png" src="../_images/detail.png" />
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id28">新規作成フォームを作ろう！</a><a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">新しいProjectを作成するページを作成していく</div>
+<div class="line"><br /></div>
+<div class="line"><strong>全体の流れ</strong></div>
+</div>
+<img alt="../_images/rake_routes_new.png" src="../_images/rake_routes_new.png" />
+<div class="line-block">
+<div class="line">new ページに新規登録するためのフォームを作成して、</div>
+</div>
+<img alt="../_images/rake_routes_create.png" src="../_images/rake_routes_create.png" />
+<div class="line-block">
+<div class="line">create でデータを登録する！</div>
+<div class="line"><br /></div>
+<div class="line"><strong>では、やっていきましょう！</strong></div>
+<div class="line">index.html.erb に、new 画面へのリンクを作成する</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Projects</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
+
+<span class="sr">&lt;ul&gt;</span>
+<span class="sr">  &lt;% @projects.each do |project| %&gt;</span>
+<span class="sr">       &lt;li&gt;&lt;%= link_to project.title, project_pathoject.id) %&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">&lt;/ul&gt;</span>
+
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Add New&quot;</span><span class="p">,</span> <span class="n">new_project_path</span> <span class="sx">%&gt;&lt;/p&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">リンクが出来たら、Controllerを追加していく</div>
+<div class="line">projects_controller.rb</div>
+<div class="line">に下記を追加。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">new</span>
+  <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">new</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Actionができたら、Viewを作成する。</div>
+<div class="line">new.html.erb ファイルを作成したら、</div>
+<div class="line">中身を書いていく</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Add</span> <span class="kp">new</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
+
+<span class="sr">&lt;%= form_for @project do |f| %&gt;</span>
+
+<span class="sr">&lt;p&gt;</span>
+<span class="sr">  &lt;%= f.label :title %&gt;</span>
+<span class="sr">  &lt;%= f.text_field :title %&gt;</span>
+<span class="sr">&lt;/</span><span class="n">P</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+  <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">submit</span> <span class="sx">%&gt;</span>
+<span class="sx">&lt;/p&gt;</span>
+
+<span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">label ... ラベル</div>
+<div class="line">text_field ... テキストボックス</div>
+<div class="line">submit ...サブミットボタン</div>
+<div class="line"><br /></div>
+<div class="line">これで、↓の画面ができる！</div>
+</div>
+<img alt="../_images/new_page.png" src="../_images/new_page.png" />
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id29">データを保存してみよう！</a><a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">↑で作成したフォームに入力した値をPOSTで登録していく！</div>
+</div>
+<img alt="../_images/rake_routes_create.png" src="../_images/rake_routes_create.png" />
+<div class="line-block">
+<div class="line">ControllerにActionを追加</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">create</span>
+  <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">project_params</span><span class="p">)</span>
+  <span class="vi">@project</span><span class="o">.</span><span class="n">save</span>
+  <span class="n">redirect_to</span> <span class="n">projects_path</span>
+<span class="k">end</span>
+
+<span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">project_params</span>
+    <span class="n">params</span><span class="o">[</span><span class="ss">:project</span><span class="o">].</span><span class="n">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">)</span>
+  <span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">project_param は下の def で定義している。</div>
+<div class="line">フォームからPOSTでわたされたものはprivate内で改めて定義する必要がある。</div>
+<div class="line">(セキュリティ上、フィルタリングをする必要がある。)</div>
+<div class="line">redirect_to でページ遷移</div>
+</div>
+</div>
+<div class="section" id="validation">
+<h2><a class="toc-backref" href="#id30">Validationを設定しよう！</a><a class="headerlink" href="#validation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">↑で情報の登録機能を作成したが、</div>
+<div class="line">今の状態では入力値が何もなくても登録できてしまう。</div>
+<div class="line">そのため、精査機能(Validationn)を作成して、</div>
+<div class="line">データの入力を規制する。</div>
+<div class="line"><br /></div>
+<div class="line">app/models/project.rb ファイルにValidationの設定を書いていく</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Project</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+  <span class="n">validates</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">title にValidationをつける。</div>
+<div class="line">presence は、入力必須精査って意味。</div>
+<div class="line">これをtrueにすることで、titleが空のときは精査ではじく処理を定義。</div>
+<div class="line"><br /></div>
+<div class="line">このままでは、newページの入力値が空な場合でも、</div>
+<div class="line">プロジェクト一覧ページに遷移してしまうので、</div>
+<div class="line">精査エラーのときはnewページのまま遷移しないように設定する必要がある。</div>
+<div class="line">projects_controller.rb を編集していく</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">create</span>
+  <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">project_params</span><span class="p">)</span>
+  <span class="k">if</span> <span class="vi">@project</span><span class="o">.</span><span class="n">save</span>
+    <span class="n">redirect_to</span> <span class="n">projects_path</span>
+  <span class="k">else</span>
+   <span class="n">render</span> <span class="s1">&#39;new&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">&#64;project.save はboolean型なので、if分の条件分岐に使用することができる</p>
+</div>
+<div class="line-block">
+<div class="line">render で 遷移先を new ページと定義</div>
+<div class="line"><br /></div>
+</div>
+<div class="section" id="render-redirect-to">
+<h3><a class="toc-backref" href="#id31">render と redirect_to の違い</a><a class="headerlink" href="#render-redirect-to" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>render</strong> はViewを指定する。</div>
+<div class="line">エラーメッセージ表示のために、元の画面に差し戻す際などに利用する。</div>
+<div class="line"><br /></div>
+<div class="line"><strong>redirect_to</strong> はリダイレクトによる処理の委譲をする。</div>
+<div class="line">リクエストを別のアクションに委譲する。</div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id32">エラーメッセージを表示しよう</a><a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">精査エラーが発生したときのエラーメッセージをnewページに表示させる。</div>
+<div class="line"><br /></div>
+<div class="line">new.html.erb ファイルを編集する。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="sx">% if </span><span class="vi">@project</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">any?</span> <span class="sx">%&gt;</span>
+<span class="sx">&lt;%= @project.errors.inspect %&gt;</span>
+<span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">↑を追記。</div>
+<div class="line">errors.inspect でエラーの内容を表示することができる。</div>
+<div class="line">精査エラーとなる値(今回は空文字)を入力してサブミットすると、</div>
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/error_inspect.png" src="../_images/error_inspect.png" />
+<div class="line-block">
+<div class="line">とエラー内容が表示される。</div>
+<div class="line">エラー内容をみると、 message には、title 項目に配列型で値が格納されていることが読み取れる。</div>
+<div class="line">なので、new.html.erb ファイルの追加した部分を↓のように変える。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="sx">% if </span><span class="vi">@project</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">any?</span> <span class="sx">%&gt;</span>
+<span class="sx">&lt;%= @project.errors.messages[:title][0] %&gt;</span>
+<span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">すると、エラーメッセージが下記のように表示される。</div>
+</div>
+<img alt="../_images/error_msg1.png" src="../_images/error_msg1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">任意の値にエラーメッセージを変更することも可能。</div>
+<div class="line">project.rb にエラーメッセージを定義していく。</div>
+<div class="line"><br /></div>
+<div class="line">先ほど追加した箇所を下のように変更</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Project</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+  <span class="n">validates</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="p">{</span> <span class="ss">message</span><span class="p">:</span> <span class="s2">&quot;入力してください。&quot;</span> <span class="p">}</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これで、エラーメッセージが変わった。</div>
+</div>
+<img alt="../_images/error_msg2.png" src="../_images/error_msg2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">ほかにも、さまざまな精査を追加することができる</div>
+<div class="line"><br /></div>
+<div class="line">たとえば、3文字以上でないと精査エラーになるとしたければ、</div>
+<div class="line">下記のようにかく。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Project</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+  <span class="n">validates</span> <span class="ss">:title</span><span class="p">,</span>
+    <span class="ss">presence</span><span class="p">:</span> <span class="p">{</span> <span class="ss">message</span><span class="p">:</span> <span class="s2">&quot;入力してください。&quot;</span> <span class="p">},</span>
+    <span class="ss">length</span><span class="p">:</span> <span class="p">{</span> <span class="ss">minimum</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="ss">message</span><span class="p">:</span> <span class="s2">&quot;短すぎ！&quot;</span> <span class="p">}</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id33">編集フォームを作ろう</a><a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">編集は、edit と update を使用する</div>
+</div>
+<img alt="../_images/rake_routes_edit.png" src="../_images/rake_routes_edit.png" />
+<div class="line-block">
+<div class="line">view を編集していく</div>
+<div class="line">idex.html.erb を下のように書き換える（liタグの中身を編集）</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Projects</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
+
+<span class="sr">&lt;ul&gt;</span>
+<span class="sr">      &lt;% @projects.each do |project| %&gt;</span>
+<span class="sr">        &lt;li&gt;</span>
+<span class="sr">          &lt;%= link_to project.title, project_path(project.id) %&gt;</span>
+<span class="sr">          &lt;%= link_to &quot;[Edit]&quot;, edit_project_path(project.id) %&gt;</span>
+<span class="sr">        &lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">&lt;/ul&gt;</span>
+
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Add New&quot;</span><span class="p">,</span> <span class="n">new_project_path</span> <span class="sx">%&gt;&lt;/p&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">すると、↓みたいになる。</div>
+</div>
+<img alt="../_images/index_edit.png" src="../_images/index_edit.png" />
+<div class="line-block">
+<div class="line">ページが出来たら Action を作る！</div>
+<div class="line">project_controller.rb を開いて、</div>
+<div class="line">下記を追加する</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">edit</span>
+  <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">そのあと、Viewを作成していく。</div>
+<div class="line">edit.html.erb を作成する。</div>
+<div class="line">new.html.erb をコピーして、タイトル(h1タグ内)をEdit等に変えればとりあえずOK！</div>
+<div class="line"><br /></div>
+<div class="line">ページは↓のようになる。</div>
+</div>
+<img alt="../_images/view_edit.png" src="../_images/view_edit.png" />
+<div class="line-block">
+<div class="line">矢印が指しているボタンを見ると、</div>
+<div class="line">new ページのときはCreateだったのに、</div>
+<div class="line">edit ページではUpdateになっている！</div>
+<div class="line">かしこい！！</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id34">データを更新しよう</a><a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">Controller に update アクションを作成する</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">update</span>
+  <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+  <span class="k">if</span> <span class="vi">@project</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">project_params</span><span class="p">)</span>
+    <span class="n">redirect_to</span> <span class="n">projects_path</span>
+  <span class="k">else</span>
+    <span class="n">render</span> <span class="s1">&#39;edit&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これで、先ほどのEdit画面のフォームに入力した値を反映させることができる。</div>
+<div class="line">また、設定した精査エラーに関しても、同じように出力される！</div>
+<div class="line"><br /></div>
+</div>
+<div class="section" id="dry">
+<h3><a class="toc-backref" href="#id35">DRY をわすれるな！</a><a class="headerlink" href="#dry" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>しかし！</strong></div>
+<div class="line">new ページと Edit ページの内容が、ほぼほぼ同じになっているのは、</div>
+<div class="line">DRYの精神に反している！！</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">DRY ... Don&#8217;t repeat yourself 　同じことを繰り返すな！</p>
+</div>
+<div class="line-block">
+<div class="line">共通部分の下記を、/app/views/projects フォルダ内に</div>
+<div class="line"><strong>_</strong> form.html.erb　というファイルを作って切り出す！</div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">共通部分のファイル名は、先頭にアンダーバー(_)をつけること！</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">今回は、下記の部分を切り出した。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="sx">%= form_for @project do |f| %&gt;</span>
+
+<span class="sx">&lt;p&gt;</span>
+<span class="sx">  &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:title</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;%= f.text_field :title %&gt;</span>
+  <span class="o">&lt;</span><span class="sx">% if </span><span class="vi">@project</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">any?</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;%= @project.errors.messages[:title][0] %&gt;</span>
+  <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">&lt;/P&gt;</span>
+
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+  <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">submit</span> <span class="sx">%&gt;</span>
+<span class="sx">&lt;/p&gt;</span>
+
+<span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">切り出した後の new , edit は、↓みたいな感じ。</div>
+<div class="line"><br /></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Add</span> <span class="kp">new</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
+
+<span class="sr">&lt;%= render &#39;form&#39; %&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>シンプル！！</strong></div>
+<div class="line"><br /></div>
+<div class="line">render に指定した、form と、 _form.html.erb がリンクしている！</div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2><a class="toc-backref" href="#id36">データを削除しよう！</a><a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<img alt="../_images/rake_routes_destroy.png" src="../_images/rake_routes_destroy.png" />
+<div class="line-block">
+<div class="line">Actionクラスはdestroy!!</div>
+<div class="line">まずはリンクを作成する</div>
+<div class="line">index.html.erb ファイルに下記を追加。</div>
+<div class="line">Editボタンの下に追記しました。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;[Delete]&quot;</span><span class="p">,</span> <span class="n">project_path</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="nb">method</span><span class="p">:</span> <span class="ss">:delete</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="p">{</span> <span class="ss">confirm</span><span class="p">:</span> <span class="s2">&quot;are you sure?&quot;</span> <span class="p">}</span> <span class="o">%&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">delete メソッドの呼び出しを行う。</div>
+<div class="line">確認(confirm)メッセージとして、「are you sure?」を設定。</div>
+<div class="line"><br /></div>
+<div class="line">次にActionを書いていく</div>
+<div class="line">projects_controller.rb に追記</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">destroy</span>
+  <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+  <span class="vi">@project</span><span class="o">.</span><span class="n">destroy</span>
+  <span class="n">redirect_to</span> <span class="n">projects_path</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これで、index ページにあるデータを消していくことができる！</div>
+</div>
+<img alt="../_images/index_delete.png" src="../_images/index_delete.png" />
+</div>
+<div class="section" id="before-action">
+<h2><a class="toc-backref" href="#id37">before_action を使ってみよう</a><a class="headerlink" href="#before-action" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">ここまでで、Controller いろいろと書いてきたが</div>
+<div class="line">DRYになっていない箇所がいくつかある！</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ProjectsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+
+   <span class="k">def</span> <span class="nf">index</span>
+     <span class="vi">@projects</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">all</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">show</span>
+     <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">new</span>
+     <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">new</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">create</span>
+     <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">project_params</span><span class="p">)</span>
+     <span class="k">if</span> <span class="vi">@project</span><span class="o">.</span><span class="n">save</span>
+       <span class="n">redirect_to</span> <span class="n">projects_path</span>
+     <span class="k">else</span>
+       <span class="n">render</span> <span class="s1">&#39;new&#39;</span>
+     <span class="k">end</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">edit</span>
+     <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">update</span>
+     <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+     <span class="k">if</span> <span class="vi">@project</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">project_params</span><span class="p">)</span>
+       <span class="n">redirect_to</span> <span class="n">projects_path</span>
+     <span class="k">else</span>
+       <span class="n">render</span> <span class="s1">&#39;edit&#39;</span>
+     <span class="k">end</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">destroy</span>
+     <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+     <span class="vi">@project</span><span class="o">.</span><span class="n">destroy</span>
+     <span class="n">redirect_to</span> <span class="n">projects_path</span>
+   <span class="k">end</span>
+
+   <span class="kp">private</span>
+
+     <span class="k">def</span> <span class="nf">project_params</span>
+       <span class="n">params</span><span class="o">[</span><span class="ss">:project</span><span class="o">].</span><span class="n">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">)</span>
+     <span class="k">end</span>
+ <span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">&#64;project = Project.find(params[:id]) の部分が何度も出てきている！</div>
+<div class="line">同じ記述は切り出す！！</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">before_action は、すべてのメソッドの最初に実行。
+after_action は、すべてのメソッドの最後に実行。</p>
+</div>
+<div class="line-block">
+<div class="line">今回、&#64;project = Project.find(params[:id]) が出てくるのは、</div>
+<div class="line">show, edit, update, destroy だけなので、only でメソッドで、実行メソッドを指定する。</div>
+<div class="line">処理はprivate内に記載。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ProjectsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+
+   <span class="n">before_action</span> <span class="ss">:set_project</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:show</span><span class="p">,</span> <span class="ss">:edit</span><span class="p">,</span> <span class="ss">:update</span><span class="p">,</span> <span class="ss">:destroy</span><span class="o">]</span>
+
+   <span class="k">def</span> <span class="nf">index</span>
+     <span class="vi">@projects</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">all</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">show</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">new</span>
+     <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">new</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">create</span>
+     <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">project_params</span><span class="p">)</span>
+     <span class="k">if</span> <span class="vi">@project</span><span class="o">.</span><span class="n">save</span>
+       <span class="n">redirect_to</span> <span class="n">projects_path</span>
+     <span class="k">else</span>
+       <span class="n">render</span> <span class="s1">&#39;new&#39;</span>
+     <span class="k">end</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">edit</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">update</span>
+     <span class="k">if</span> <span class="vi">@project</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">project_params</span><span class="p">)</span>
+       <span class="n">redirect_to</span> <span class="n">projects_path</span>
+     <span class="k">else</span>
+       <span class="n">render</span> <span class="s1">&#39;edit&#39;</span>
+     <span class="k">end</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">destroy</span>
+     <span class="vi">@project</span><span class="o">.</span><span class="n">destroy</span>
+     <span class="n">redirect_to</span> <span class="n">projects_path</span>
+   <span class="k">end</span>
+
+   <span class="kp">private</span>
+
+     <span class="k">def</span> <span class="nf">project_params</span>
+       <span class="n">params</span><span class="o">[</span><span class="ss">:project</span><span class="o">].</span><span class="n">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">)</span>
+     <span class="k">end</span>
+
+     <span class="k">def</span> <span class="nf">set_project</span>
+       <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+     <span class="k">end</span>
+ <span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">すっきり！</div>
+</div>
+</div>
+<div class="section" id="task">
+<h2><a class="toc-backref" href="#id38">Taskの設定をしていこう！</a><a class="headerlink" href="#task" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">Project の詳細ページにTask機能を追加していきましょう！</div>
+<div class="line"><br /></div>
+<div class="line">新しくTaskアプリを作成する。</div>
+</div>
+<div class="highlight-python"><pre>$ rails g model Task title done:boolean project:references</pre>
+</div>
+<div class="line-block">
+<div class="line">で、新しく Model を作成する。</div>
+<div class="line">project:references で、事前に作っている project と関連付けさせることができる。</div>
+<div class="line"><br /></div>
+<div class="line">done (Taskを実施したか) は、最初はfalseに設定しておく。</div>
+<div class="line">db/migrate/xxxx_create_tasks.rb</div>
+<div class="line">ファイルを編集する。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CreateTasks</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Migration</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:tasks</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:title</span>
+      <span class="n">t</span><span class="o">.</span><span class="n">boolean</span> <span class="ss">:done</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="kp">false</span>
+      <span class="n">t</span><span class="o">.</span><span class="n">references</span> <span class="ss">:project</span><span class="p">,</span> <span class="ss">index</span><span class="p">:</span> <span class="kp">true</span>
+
+      <span class="n">t</span><span class="o">.</span><span class="n">timestamps</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">default: false</div>
+<div class="line">を追加した。</div>
+<div class="line"><br /></div>
+<div class="line">編集後に</div>
+</div>
+<div class="highlight-python"><pre>rake db:migrate</pre>
+</div>
+<div class="line-block">
+<div class="line">した後、Controllerを作成すれば準備OK！</div>
+</div>
+<div class="highlight-python"><pre>rails g controller Tasks</pre>
+</div>
+</div>
+<div class="section" id="association">
+<h2><a class="toc-backref" href="#id39">Association の設定をしよう</a><a class="headerlink" href="#association" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">app/models フォルダの中に、</div>
+</div>
+<ul class="simple">
+<li>task.rb</li>
+<li>project.rb</li>
+</ul>
+<div class="line-block">
+<div class="line">ファイルがある。</div>
+<div class="line">task.rb ファイルの中をみると、</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Task</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+  <span class="n">belongs_to</span> <span class="ss">:project</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">project が結び付けられているのがわかる</div>
+<div class="line"><br /></div>
+<div class="line">project.rb には、task と project の関連付けができていないので</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">has_many</span> <span class="ss">:tasks</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">を追記する。</div>
+<div class="line">has_many は、Project１つに対して、Taskが複数あるという意味。(1 対 多)</div>
+<div class="line"><br /></div>
+<div class="line">続いて、routing を関連付けていく</div>
+<div class="line">config/routes.rb ファイルを編集する。</div>
+<div class="line">下記の記述を追記。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">resources</span> <span class="ss">:projects</span> <span class="k">do</span>
+  <span class="n">resources</span> <span class="ss">:tasks</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:create</span><span class="p">,</span> <span class="ss">:destroy</span><span class="o">]</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Taskの機能は生成と削除だけでいいので、</div>
+<div class="line">create と destroy 機能のみをつける</div>
+<div class="line"><br /></div>
+<div class="line">これで、</div>
+</div>
+<div class="highlight-python"><pre>$ rake routes</pre>
+</div>
+<div class="line-block">
+<div class="line">すると、↓みたいにtasksの項目が追加されていることがわかる。</div>
+</div>
+<img alt="../_images/rake_routes_task.png" src="../_images/rake_routes_task.png" />
+</div>
+<div class="section" id="tasks">
+<h2><a class="toc-backref" href="#id40">Tasksの新規作成フォームを作ろう</a><a class="headerlink" href="#tasks" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">server を起動した後、</div>
+<div class="line">app/views/projects フォルダ内の show.html.erb ファイルを編集して、</div>
+<div class="line">ページを作る。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&lt;</span><span class="sx">%= @project.title %&gt;&lt;/h1&gt;</span>
+
+<span class="sx">&lt;ul&gt;</span>
+<span class="sx">  &lt;% @project.tasks.each do |task| %&gt;</span>
+<span class="sx">  &lt;li&gt;</span>
+<span class="sx">    &lt;%=</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;/li&gt;</span>
+<span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">&lt;li&gt;</span>
+  <span class="o">&lt;</span><span class="sx">%= form_for [@project, @project.tasks.build] do |f| %&gt;</span>
+<span class="sx">   &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:title</span> <span class="sx">%&gt;</span>
+<span class="sx">   &lt;%= f.submit %&gt;</span>
+   <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx"> &lt;/li&gt;</span>
+ <span class="o">&lt;</span><span class="sr">/ul&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">project と task が結びついているので、&#64;project.tasks で値をとることができる</div>
+<div class="line">form_for のところの[&#64;project, &#64;project.tasks.build] は決まり文句。</div>
+<div class="line">project と task を関連付けてデータを作成してくれる。</div>
+</div>
+<img alt="../_images/view_task.png" src="../_images/view_task.png" />
+</div>
+<div class="section" id="id13">
+<h2><a class="toc-backref" href="#id41">Tasks を保存しよう！</a><a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">Controller を作成する</div>
+<div class="line">app/controllers/tasks_controller.rb を開く</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">TasksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="vi">@project</span> <span class="o">=</span> <span class="no">Project</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:project_id</span><span class="o">]</span><span class="p">)</span>
+    <span class="vi">@task</span> <span class="o">=</span> <span class="vi">@project</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">task_params</span><span class="p">)</span>
+    <span class="n">redirect_to</span> <span class="n">project_path</span><span class="p">(</span><span class="vi">@project</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+    <span class="k">def</span> <span class="nf">task_params</span>
+      <span class="n">params</span><span class="o">[</span><span class="ss">:task</span><span class="o">].</span><span class="n">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">)</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">project で作ったのとおんなじ感じ</div>
+<div class="line"><br /></div>
+<div class="line">validationを定める</div>
+<div class="line">app/models/task.rb</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Task</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+  <span class="n">belongs_to</span> <span class="ss">:project</span>
+    <span class="n">validates</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これで作成機能はつくれる！</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2><a class="toc-backref" href="#id42">Tasks の削除をする</a><a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">Taskの削除機能を作成する</div>
+<div class="line">app/views/projects/show.html.erb に削除リンクを追加する。</div>
+<div class="line"><br /></div>
+</div>
+<img alt="../_images/rake_routes_task_destroy.png" src="../_images/rake_routes_task_destroy.png" />
+<div class="line-block">
+<div class="line">より、tasks#destroy は</div>
+<div class="line">taskの :project_id と :id が必要であることがわかる。</div>
+<div class="line">遷移させるpath は project_task 。</div>
+<div class="line">よって、show.html.erb は下記のようになる。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&lt;</span><span class="sx">%= @project.title %&gt;&lt;/h1&gt;</span>
+
+<span class="sx">&lt;ul&gt;</span>
+<span class="sx">  &lt;% @project.tasks.each do |task| %&gt;</span>
+<span class="sx">  &lt;li&gt;</span>
+<span class="sx">    &lt;%=</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="sx">%&gt;</span>
+<span class="sx">    &lt;%= link_to &quot;[Delete]&quot;, project_task_path(task.project_id, task.id), method: :delete, data: { confirm: &quot;are you sure?&quot; } %&gt;</span>
+   <span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr"> &lt;% end %&gt;</span>
+<span class="sr"> &lt;li&gt;</span>
+<span class="sr">   &lt;%= form_for [@project, @project.tasks.build] do |f| %&gt;</span>
+<span class="sr">   &lt;%= f.text_field :title %&gt;</span>
+<span class="sr">   &lt;%= f.submit %&gt;</span>
+<span class="sr">   &lt;% end %&gt;</span>
+<span class="sr"> &lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">また、app/controllers/task_controller.rb には、下記を追加する。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">destroy</span>
+  <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+  <span class="vi">@task</span><span class="o">.</span><span class="n">destroy</span>
+  <span class="n">redirect_to</span> <span class="n">project_path</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:project_id</span><span class="o">]</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">rails routesにて destroy した際に id が返却されることがわかるので、</div>
+<div class="line">find の引数は :id !</div>
+</div>
+</div>
+<div class="section" id="ceck-box-tag">
+<h2><a class="toc-backref" href="#id43">ceck_box_tagを使おう！</a><a class="headerlink" href="#ceck-box-tag" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">Taskを管理するためのチェックボックスを作ろう！</div>
+<div class="line">show.html.erb にcheck_box_tag部分を追加</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&lt;</span><span class="sx">%= @project.title %&gt;&lt;/h1&gt;</span>
+
+<span class="sx">&lt;ul&gt;</span>
+<span class="sx">  &lt;% @project.tasks.each do |task| %&gt;</span>
+<span class="sx">  &lt;li&gt;</span>
+<span class="sx">    &lt;%=</span> <span class="n">check_box_tag</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">done</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;data-id&#39;</span> <span class="o">=&gt;</span> <span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s1">&#39;data-project_id&#39;</span> <span class="o">=&gt;</span> <span class="n">task</span><span class="o">.</span><span class="n">project_id</span><span class="p">}</span> <span class="sx">%&gt;</span>
+<span class="sx">    &lt;%= task.title %&gt;</span>
+    <span class="o">&lt;</span><span class="sx">%= link_to &quot;[Delete]&quot;, project_task_path(task.project_id, task.id), method: :delete, data: { confirm: &quot;are you sure?&quot; } %&gt;</span>
+<span class="sx">  &lt;/li&gt;</span>
+<span class="sx">&lt;% end %&gt;</span>
+<span class="sx">&lt;li&gt;</span>
+<span class="sx">  &lt;%=</span> <span class="n">form_for</span> <span class="o">[</span><span class="vi">@project</span><span class="p">,</span> <span class="vi">@project</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">build</span><span class="o">]</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;%= f.text_field :title %&gt;</span>
+  <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">submit</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;% end %&gt;</span>
+<span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">check_box_tag 要素名, 値, checked = false, {その他設定したい値}</p>
+</div>
+<div class="line-block">
+<div class="line">今回は name, valueは空。checkedにはtask.doneをそのまま適用。</div>
+<div class="line">data-id には task.id、data-project_id にはtask.project_idを適用。</div>
+<div class="line">実際に生成されたHTMLは下記のようになる</div>
+</div>
+<div class="highlight-python"><pre>&lt;index data-id="2" data-project_id= "1" id="" name="" type="checkbox" value="" /&gt;</pre>
+</div>
+<div class="line-block">
+<div class="line">このあと、data-id と data-project_id を使用して、jQuery で Ajaxをなげる処理を作成していく！</div>
+</div>
+</div>
+<div class="section" id="toggle">
+<h2><a class="toc-backref" href="#id44">toggle アクションを作ろう</a><a class="headerlink" href="#toggle" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">チェックボックスをクリックしたときに</div>
+<div class="line">Actionを動作させるようにする。</div>
+<div class="line">show.html.erbの一番下に下記を追加する。</div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input[type=checkbox]&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/projects/&#39;</span><span class="o">+</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;project_id&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/tasks/&#39;</span><span class="o">+</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/toggle&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">このjQueryで、POST形式の /project/:project_id/tasks/:id/toggle パスでActionが投げられる。</div>
+<div class="line"><br /></div>
+<div class="line">↑のパスをroutesに定義する。</div>
+<div class="line">config/routes.rb に下記を追加する。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">post</span> <span class="s1">&#39;/projects/:project_id/tasks/:id/toggle&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tasks#toggle&#39;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">rake routes すると、↓みたいに新しくroutesが追加されている。</div>
+</div>
+<img alt="../_images/rake_routes_toggle.png" src="../_images/rake_routes_toggle.png" />
+<div class="line-block">
+<div class="line">routes が出来たら、Controllerを作成する。</div>
+<div class="line"><br /></div>
+<div class="line">app/controllers/tasks_controller.rb</div>
+<div class="line">に下記を追加する</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">toggle</span>
+  <span class="n">render</span> <span class="ss">nothing</span><span class="p">:</span> <span class="kp">true</span>
+  <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+  <span class="vi">@task</span><span class="o">.</span><span class="n">done</span> <span class="o">=</span> <span class="o">!</span><span class="vi">@task</span><span class="o">.</span><span class="n">done</span>
+  <span class="vi">@task</span><span class="o">.</span><span class="n">save</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">render nothing:true はテンプレートを使用しないって意味。</div>
+<div class="line">(toggleはページ遷移しないため、テンプレートは不要。)</div>
+<div class="line">&#64;task.done = <a class="reference external" href="mailto:!&#37;&#52;&#48;task&#46;done">!<span>&#64;</span>task<span>&#46;</span>done</a></div>
+<div class="line">で、真偽値の値を逆にする。</div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">何か問題がある場合は、JavaScriptコンソール(ブラウザにてF12して出てくる)でエラーが出る。</p>
+</div>
+</div>
+<div class="section" id="id15">
+<h2><a class="toc-backref" href="#id45">Task数を表示させよう</a><a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">プロジェクト一覧にタスクの一覧を表示させる。</div>
+<div class="line"><br /></div>
+<div class="line">app/views/projects/index.html.erb</div>
+<div class="line">に残りのタスク数を表示させる。</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Projects</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
+
+<span class="sr">&lt;ul&gt;</span>
+<span class="sr">      &lt;% @projects.each do |project| %&gt;</span>
+<span class="sr">        &lt;li&gt;</span>
+<span class="sr">        &lt;%= link_to project.title, project_path(project.id) %&gt; (&lt;%= project.tasks.count %&gt;)</span>
+<span class="sr">          &lt;%= link_to &quot;[Edit]&quot;, edit_project_path(project.id) %&gt;</span>
+<span class="sr">          &lt;%= link_to &quot;[Delete]&quot;, project_path(project.id), method: :delete, data: { confirm: &quot;are you sure?&quot; } %&gt;</span>
+<span class="sr">        &lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">&lt;/ul&gt;</span>
+
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Add New&quot;</span><span class="p">,</span> <span class="n">new_project_path</span> <span class="sx">%&gt;&lt;/p&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">(&lt;%= project.tasks.count %&gt;) の部分を追加することで、</div>
+</div>
+<img alt="../_images/index_task.png" src="../_images/index_task.png" />
+<div class="line-block">
+<div class="line">みたいに、全てのタスク数が表示される！</div>
+<div class="line"><br /></div>
+<div class="line">残りのタスク数を表示するには、modelに検索条件を追加すれば良い</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">scope</span> <span class="ss">:unfinished</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">where</span><span class="p">(</span><span class="ss">done</span><span class="p">:</span> <span class="kp">false</span><span class="p">)</span> <span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これで、done が false のやつを数えてくれる。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Projects</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
+
+<span class="sr">&lt;ul&gt;</span>
+<span class="sr">      &lt;% @projects.each do |project| %&gt;</span>
+<span class="sr">        &lt;li&gt;</span>
+<span class="sr">        &lt;%= link_to project.title, project_path(project.id) %&gt; (&lt;%= project.tasks.unfinished.count %&gt;/</span><span class="o">&lt;</span><span class="sx">%= project.tasks.count %&gt;)</span>
+
+<span class="sx">          &lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;[Edit]&quot;</span><span class="p">,</span> <span class="n">edit_project_path</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="sx">%&gt;</span>
+<span class="sx">          &lt;%= link_to &quot;[Delete]&quot;, project_path(project.id), method: :delete, data: { confirm: &quot;are you sure?&quot; } %&gt;</span>
+        <span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">      &lt;% end %&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Add New&quot;</span><span class="p">,</span> <span class="n">new_project_path</span> <span class="sx">%&gt;&lt;/p&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">&lt;%= project.tasks.unfinished.count %&gt; で done が false のTasks数を表示。</div>
+<div class="line"><br /></div>
+<div class="line">結果は↓みたいな感じになる。</div>
+</div>
+<img alt="../_images/index_tasks.png" src="../_images/index_tasks.png" />
+<div class="line-block">
+<div class="line">これで終わり！！！</div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row-fluid">
+<div class="related navbar ">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="../TIPS/mysql.html" title="MYSQL とか SQL とか MEMO" >前へ</a></li>
+        <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer>
+          &copy; Copyright 2013, syobochim.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>
