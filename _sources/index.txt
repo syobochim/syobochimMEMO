@@ -29,6 +29,7 @@
    TIPS/TOOL
    TIPS/Excel
    TIPS/mysql
+   TIPS/Git
    ruby/dotinstall
 
 |
