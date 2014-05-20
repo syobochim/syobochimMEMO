@@ -108,6 +108,7 @@
 <li><a class="reference internal" href="#">Excel</a><ul>
 <li><a class="reference internal" href="#id2">文字列が含まれているかチェック</a></li>
 <li><a class="reference internal" href="#id3">文字列の置換</a></li>
+<li><a class="reference internal" href="#id4">文字のエスケープ</a></li>
 </ul>
 </li>
 </ul>
@@ -152,6 +153,7 @@
 <li><a class="reference internal" href="#">Excel</a><ul>
 <li><a class="reference internal" href="#id2">文字列が含まれているかチェック</a></li>
 <li><a class="reference internal" href="#id3">文字列の置換</a></li>
+<li><a class="reference internal" href="#id4">文字のエスケープ</a></li>
 </ul>
 </li>
 </ul>
@@ -192,13 +194,14 @@
                 <div class="body">
                   
   <div class="section" id="excel">
-<h1><a class="toc-backref" href="#id4">Excel</a><a class="headerlink" href="#excel" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1><a class="toc-backref" href="#id5">Excel</a><a class="headerlink" href="#excel" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="contents topic" id="id1">
 <p class="topic-title first">目次</p>
 <ul class="simple">
-<li><a class="reference internal" href="#excel" id="id4">Excel</a><ul>
-<li><a class="reference internal" href="#id2" id="id5">文字列が含まれているかチェック</a></li>
-<li><a class="reference internal" href="#id3" id="id6">文字列の置換</a></li>
+<li><a class="reference internal" href="#excel" id="id5">Excel</a><ul>
+<li><a class="reference internal" href="#id2" id="id6">文字列が含まれているかチェック</a></li>
+<li><a class="reference internal" href="#id3" id="id7">文字列の置換</a></li>
+<li><a class="reference internal" href="#id4" id="id8">文字のエスケープ</a></li>
 </ul>
 </li>
 </ul>
@@ -207,7 +210,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id5">文字列が含まれているかチェック</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">文字列が含まれているかチェック</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">セルに下記のように入力。</div>
 <div class="line">例）</div>
@@ -221,13 +224,36 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id6">文字列の置換</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">文字列の置換</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">文字列を置換する</div>
 </div>
 <div class="highlight-python"><pre>=SUBSTITUTE(文字列,検索文字列,置換文字列,対象)</pre>
 </div>
 <div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id8">文字のエスケープ</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">ダブルクォーテーションのエスケープはダブルクォーテーションを使用</div>
+</div>
+<div class="highlight-python"><pre>"    // ←をエスケープするには
+""   // ←を使用</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">ワイルドカードをエスケープするときはチルダを使用</div>
+</div>
+<div class="highlight-python"><pre>*   // 任意の文字列(*)は
+~*  // を使用
+
+?   // 任意の一文字(?)は
+~?  // を使用</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 </div>
@@ -262,7 +288,7 @@
       <!-- footer -->
       <footer>
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
       </footer>
       <!-- /footer -->
 
