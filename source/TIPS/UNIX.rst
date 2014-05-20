@@ -599,3 +599,16 @@ root
   grep -oP 'bbb[\s\S]*?ddd' test.txt
 
 |
+|
+
+ディレクトリの中のファイルを一括置換する
+=============================================
+
+| hogeをfugaに置換
+
+::
+
+  find . -type f | xargs sed -i 's/hoge/fuga/g'
+
+|
+|
