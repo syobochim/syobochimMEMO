@@ -154,6 +154,9 @@
 <li><a class="reference internal" href="#id36">コードの行数を確認する</a></li>
 <li><a class="reference internal" href="#morelesscat">ファイル表示(more・less・cat)の違い</a></li>
 <li><a class="reference internal" href="#id39">シェルスクリプトで使用シェルを宣言</a></li>
+<li><a class="reference internal" href="#id40">あるディレクトリ内のファイルをGrep</a></li>
+<li><a class="reference internal" href="#id41">複数行を検索する方法</a></li>
+<li><a class="reference internal" href="#id44">ディレクトリの中のファイルを一括置換する</a></li>
 </ul>
 </li>
 </ul>
@@ -244,6 +247,9 @@
 <li><a class="reference internal" href="#id36">コードの行数を確認する</a></li>
 <li><a class="reference internal" href="#morelesscat">ファイル表示(more・less・cat)の違い</a></li>
 <li><a class="reference internal" href="#id39">シェルスクリプトで使用シェルを宣言</a></li>
+<li><a class="reference internal" href="#id40">あるディレクトリ内のファイルをGrep</a></li>
+<li><a class="reference internal" href="#id41">複数行を検索する方法</a></li>
+<li><a class="reference internal" href="#id44">ディレクトリの中のファイルを一括置換する</a></li>
 </ul>
 </li>
 </ul>
@@ -284,62 +290,65 @@
                 <div class="body">
                   
   <div class="section" id="unix">
-<h1><a class="toc-backref" href="#id40">UNIX コマンド</a><a class="headerlink" href="#unix" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1><a class="toc-backref" href="#id45">UNIX コマンド</a><a class="headerlink" href="#unix" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <div class="contents topic" id="id1">
 <p class="topic-title first">目次</p>
 <ul class="simple">
-<li><a class="reference internal" href="#unix" id="id40">UNIX コマンド</a><ul>
-<li><a class="reference internal" href="#id2" id="id41">相対パスと絶対パス</a><ul>
-<li><a class="reference internal" href="#id3" id="id42">絶対パス</a></li>
-<li><a class="reference internal" href="#id4" id="id43">相対パス</a></li>
+<li><a class="reference internal" href="#unix" id="id45">UNIX コマンド</a><ul>
+<li><a class="reference internal" href="#id2" id="id46">相対パスと絶対パス</a><ul>
+<li><a class="reference internal" href="#id3" id="id47">絶対パス</a></li>
+<li><a class="reference internal" href="#id4" id="id48">相対パス</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5" id="id44">ワイルドカード</a></li>
-<li><a class="reference internal" href="#id6" id="id45">標準入力/標準出力/標準エラー出力</a></li>
-<li><a class="reference internal" href="#redirect" id="id46">リダイレクト</a><ul>
-<li><a class="reference internal" href="#id9" id="id47">おまけ</a></li>
+<li><a class="reference internal" href="#id5" id="id49">ワイルドカード</a></li>
+<li><a class="reference internal" href="#id6" id="id50">標準入力/標準出力/標準エラー出力</a></li>
+<li><a class="reference internal" href="#redirect" id="id51">リダイレクト</a><ul>
+<li><a class="reference internal" href="#id9" id="id52">おまけ</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id10" id="id48">パイプ</a></li>
-<li><a class="reference internal" href="#alias" id="id49">alias(コマンドだけど意味を知っててほしい)</a></li>
-<li><a class="reference internal" href="#root" id="id50">root</a></li>
-<li><a class="reference internal" href="#permission" id="id51">パーミッション（権限）</a></li>
-<li><a class="reference internal" href="#id12" id="id52">コマンド各種</a><ul>
-<li><a class="reference internal" href="#id13" id="id53">ディレクトリ移動</a></li>
-<li><a class="reference internal" href="#id14" id="id54">アクセス権設定</a></li>
-<li><a class="reference internal" href="#id15" id="id55">コピー</a></li>
-<li><a class="reference internal" href="#id16" id="id56">ディスクの使用状況参照</a></li>
-<li><a class="reference internal" href="#id17" id="id57">ディレクトリのディスク使用量を再帰的に表示</a></li>
-<li><a class="reference internal" href="#id18" id="id58">ファイル検索</a></li>
-<li><a class="reference internal" href="#grep" id="id59">ファイルからパターン検索(Grep)</a></li>
-<li><a class="reference internal" href="#id21" id="id60">コマンド履歴の表示</a></li>
-<li><a class="reference internal" href="#id22" id="id61">テキストを見る</a></li>
-<li><a class="reference internal" href="#id23" id="id62">ファイル・ディレクトリの情報を表示</a></li>
-<li><a class="reference internal" href="#id24" id="id63">フォルダの作成</a></li>
-<li><a class="reference internal" href="#id25" id="id64">ファイル・ディレクトリ移動・名前変更</a></li>
-<li><a class="reference internal" href="#id26" id="id65">プロセス状態の表示</a></li>
-<li><a class="reference internal" href="#id27" id="id66">現在のディレクトリの場所を表示</a></li>
-<li><a class="reference internal" href="#id28" id="id67">ファイル・ディレクトリを削除</a></li>
-<li><a class="reference internal" href="#id29" id="id68">文字列の置換を行う</a></li>
-<li><a class="reference internal" href="#id30" id="id69">行を並び替える(ソート)</a></li>
-<li><a class="reference internal" href="#id31" id="id70">ユーザーの切替、管理権限の取得</a></li>
-<li><a class="reference internal" href="#id32" id="id71">ファイルの末尾部分を表示する</a></li>
-<li><a class="reference internal" href="#id33" id="id72">ログアウト(というかエディタの終了？)</a></li>
+<li><a class="reference internal" href="#id10" id="id53">パイプ</a></li>
+<li><a class="reference internal" href="#alias" id="id54">alias(コマンドだけど意味を知っててほしい)</a></li>
+<li><a class="reference internal" href="#root" id="id55">root</a></li>
+<li><a class="reference internal" href="#permission" id="id56">パーミッション（権限）</a></li>
+<li><a class="reference internal" href="#id12" id="id57">コマンド各種</a><ul>
+<li><a class="reference internal" href="#id13" id="id58">ディレクトリ移動</a></li>
+<li><a class="reference internal" href="#id14" id="id59">アクセス権設定</a></li>
+<li><a class="reference internal" href="#id15" id="id60">コピー</a></li>
+<li><a class="reference internal" href="#id16" id="id61">ディスクの使用状況参照</a></li>
+<li><a class="reference internal" href="#id17" id="id62">ディレクトリのディスク使用量を再帰的に表示</a></li>
+<li><a class="reference internal" href="#id18" id="id63">ファイル検索</a></li>
+<li><a class="reference internal" href="#grep" id="id64">ファイルからパターン検索(Grep)</a></li>
+<li><a class="reference internal" href="#id21" id="id65">コマンド履歴の表示</a></li>
+<li><a class="reference internal" href="#id22" id="id66">テキストを見る</a></li>
+<li><a class="reference internal" href="#id23" id="id67">ファイル・ディレクトリの情報を表示</a></li>
+<li><a class="reference internal" href="#id24" id="id68">フォルダの作成</a></li>
+<li><a class="reference internal" href="#id25" id="id69">ファイル・ディレクトリ移動・名前変更</a></li>
+<li><a class="reference internal" href="#id26" id="id70">プロセス状態の表示</a></li>
+<li><a class="reference internal" href="#id27" id="id71">現在のディレクトリの場所を表示</a></li>
+<li><a class="reference internal" href="#id28" id="id72">ファイル・ディレクトリを削除</a></li>
+<li><a class="reference internal" href="#id29" id="id73">文字列の置換を行う</a></li>
+<li><a class="reference internal" href="#id30" id="id74">行を並び替える(ソート)</a></li>
+<li><a class="reference internal" href="#id31" id="id75">ユーザーの切替、管理権限の取得</a></li>
+<li><a class="reference internal" href="#id32" id="id76">ファイルの末尾部分を表示する</a></li>
+<li><a class="reference internal" href="#id33" id="id77">ログアウト(というかエディタの終了？)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#memo" id="id73">その他コマンド(ここから下は普通のコマンド集MEMO!課題とは関係ないよ！)</a><ul>
-<li><a class="reference internal" href="#id34" id="id74">使用されているシェルの種類を調べる</a></li>
-<li><a class="reference internal" href="#id35" id="id75">ファイルのバイト数／単語数／行数を出力する</a></li>
+<li><a class="reference internal" href="#memo" id="id78">その他コマンド(ここから下は普通のコマンド集MEMO!課題とは関係ないよ！)</a><ul>
+<li><a class="reference internal" href="#id34" id="id79">使用されているシェルの種類を調べる</a></li>
+<li><a class="reference internal" href="#id35" id="id80">ファイルのバイト数／単語数／行数を出力する</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#table" id="id76">コマンドまとめ(TABLE形式)</a></li>
-<li><a class="reference internal" href="#tips-tips" id="id77">その他TIPS(ここから下は普通のTIPS集!課題とは関係ないよ！)</a></li>
-<li><a class="reference internal" href="#id36" id="id78">コードの行数を確認する</a></li>
-<li><a class="reference internal" href="#morelesscat" id="id79">ファイル表示(more・less・cat)の違い</a></li>
-<li><a class="reference internal" href="#id39" id="id80">シェルスクリプトで使用シェルを宣言</a></li>
+<li><a class="reference internal" href="#table" id="id81">コマンドまとめ(TABLE形式)</a></li>
+<li><a class="reference internal" href="#tips-tips" id="id82">その他TIPS(ここから下は普通のTIPS集!課題とは関係ないよ！)</a></li>
+<li><a class="reference internal" href="#id36" id="id83">コードの行数を確認する</a></li>
+<li><a class="reference internal" href="#morelesscat" id="id84">ファイル表示(more・less・cat)の違い</a></li>
+<li><a class="reference internal" href="#id39" id="id85">シェルスクリプトで使用シェルを宣言</a></li>
+<li><a class="reference internal" href="#id40" id="id86">あるディレクトリ内のファイルをGrep</a></li>
+<li><a class="reference internal" href="#id41" id="id87">複数行を検索する方法</a></li>
+<li><a class="reference internal" href="#id44" id="id88">ディレクトリの中のファイルを一括置換する</a></li>
 </ul>
 </li>
 </ul>
@@ -349,7 +358,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id41">相対パスと絶対パス</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id46">相対パスと絶対パス</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">一番上の階層(windowsで言うところのC:\)からのパスを全部書くのが絶対パス。</div>
 <div class="line">今いる場所からの移動を考えるのが相対パス。</div>
@@ -357,7 +366,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="id3">
-<h3><a class="toc-backref" href="#id42">絶対パス</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id47">絶対パス</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="line-block">
 <div class="line">パス名がスラッシュ( / )で始まる場合はルートディレクトリからの相対位置を示す。</div>
 <div class="line">これを <strong>絶対パス名</strong> とか、フルパス名と呼ぶ。</div>
@@ -372,7 +381,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h3><a class="toc-backref" href="#id43">相対パス</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id48">相対パス</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="line-block">
 <div class="line">パス名がスラッシュ（/）以外で始まる場合はカレントディレクトリからの相対位置を示す。これを <strong>相対パス名</strong> と呼ぶ。</div>
 </div>
@@ -391,7 +400,7 @@
 </div>
 </div>
 <div class="section" id="id5">
-<h2><a class="toc-backref" href="#id44">ワイルドカード</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id49">ワイルドカード</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">ファイルの検索などに使用することが出来る、正規表現のこと。</div>
 <div class="line"><br /></div>
@@ -441,7 +450,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h2><a class="toc-backref" href="#id45">標準入力/標準出力/標準エラー出力</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id50">標準入力/標準出力/標準エラー出力</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">『標準入力』：ターミナル(コンソール)上からコマンドの値(もしくはコマンド)を入力すること</div>
 <div class="line">『標準出力』：ターミナル(コンソール)上にコマンドの結果を出力すること</div>
@@ -455,7 +464,7 @@
 </div>
 </div>
 <div class="section" id="redirect">
-<span id="id8"></span><h2><a class="toc-backref" href="#id46">リダイレクト</a><a class="headerlink" href="#redirect" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<span id="id8"></span><h2><a class="toc-backref" href="#id51">リダイレクト</a><a class="headerlink" href="#redirect" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">標準入出力に対してコマンドの入出力をファイルを使用して行うこと。</div>
 <div class="line"><br /></div>
@@ -475,7 +484,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="id9">
-<h3><a class="toc-backref" href="#id47">おまけ</a><a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id52">おまけ</a><a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="line-block">
 <div class="line">ファイル出力について</div>
 <div class="line">エラー出力の表示先を設定することが出来る。</div>
@@ -513,28 +522,28 @@
 </div>
 </div>
 <div class="section" id="id10">
-<h2><a class="toc-backref" href="#id48">パイプ</a><a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id53">パイプ</a><a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="admonition- admonition" id="index-0">
 <p class="first admonition-title">課題</p>
 <p class="last">かく</p>
 </div>
 </div>
 <div class="section" id="alias">
-<h2><a class="toc-backref" href="#id49">alias(コマンドだけど意味を知っててほしい)</a><a class="headerlink" href="#alias" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id54">alias(コマンドだけど意味を知っててほしい)</a><a class="headerlink" href="#alias" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="admonition- admonition" id="index-1">
 <p class="first admonition-title">課題</p>
 <p class="last">かく</p>
 </div>
 </div>
 <div class="section" id="root">
-<h2><a class="toc-backref" href="#id50">root</a><a class="headerlink" href="#root" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id55">root</a><a class="headerlink" href="#root" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="admonition- admonition" id="index-2">
 <p class="first admonition-title">課題</p>
 <p class="last">かく</p>
 </div>
 </div>
 <div class="section" id="permission">
-<span id="id11"></span><h2><a class="toc-backref" href="#id51">パーミッション（権限）</a><a class="headerlink" href="#permission" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<span id="id11"></span><h2><a class="toc-backref" href="#id56">パーミッション（権限）</a><a class="headerlink" href="#permission" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="admonition- admonition" id="index-3">
 <p class="first admonition-title">課題</p>
 <p class="last">かく</p>
@@ -565,9 +574,9 @@
 </div>
 </div>
 <div class="section" id="id12">
-<h2><a class="toc-backref" href="#id52">コマンド各種</a><a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id57">コマンド各種</a><a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id13">
-<h3><a class="toc-backref" href="#id53">ディレクトリ移動</a><a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id58">ディレクトリ移動</a><a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>cd [directory name]</pre>
 </div>
 <div class="line-block">
@@ -575,7 +584,7 @@
 </div>
 </div>
 <div class="section" id="id14">
-<h3><a class="toc-backref" href="#id54">アクセス権設定</a><a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id59">アクセス権設定</a><a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>chmod (option) [a+w] [file name]
 chmod (option) [644] [file name]</pre>
 </div>
@@ -585,7 +594,7 @@ chmod (option) [644] [file name]</pre>
 </div>
 </div>
 <div class="section" id="id15">
-<h3><a class="toc-backref" href="#id55">コピー</a><a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id60">コピー</a><a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>cp (option) [source file] [target file]</pre>
 </div>
 <div class="line-block">
@@ -593,7 +602,7 @@ chmod (option) [644] [file name]</pre>
 </div>
 </div>
 <div class="section" id="id16">
-<h3><a class="toc-backref" href="#id56">ディスクの使用状況参照</a><a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id61">ディスクの使用状況参照</a><a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>df [-a] [-k] [-T] [-t FSType] [-l] [Linux]
 df [-a] [-k|-m|-g] [-t FSType] [-l] [FreeBSD]
 df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
@@ -609,7 +618,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id17">
-<h3><a class="toc-backref" href="#id57">ディレクトリのディスク使用量を再帰的に表示</a><a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id62">ディレクトリのディスク使用量を再帰的に表示</a><a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">du</span> <span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span> <span class="p">[</span><span class="n">DIR</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -618,7 +627,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id18">
-<h3><a class="toc-backref" href="#id58">ファイル検索</a><a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id63">ファイル検索</a><a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>find [search directory] (option)</pre>
 </div>
 <div class="line-block">
@@ -633,7 +642,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="grep">
-<h3><a class="toc-backref" href="#id59">ファイルからパターン検索(Grep)</a><a class="headerlink" href="#grep" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id64">ファイルからパターン検索(Grep)</a><a class="headerlink" href="#grep" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>grep (option) [検索文字列] [file name]</pre>
 </div>
 <div class="line-block">
@@ -641,7 +650,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id21">
-<h3><a class="toc-backref" href="#id60">コマンド履歴の表示</a><a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id65">コマンド履歴の表示</a><a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">history</span> <span class="p">(</span><span class="n">option</span><span class="p">)</span> <span class="p">[</span><span class="n">number</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -650,7 +659,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id22">
-<h3><a class="toc-backref" href="#id61">テキストを見る</a><a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id66">テキストを見る</a><a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>less (option) [file name]</pre>
 </div>
 <div class="line-block">
@@ -659,7 +668,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id23">
-<h3><a class="toc-backref" href="#id62">ファイル・ディレクトリの情報を表示</a><a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id67">ファイル・ディレクトリの情報を表示</a><a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>ls (option) [directory name]</pre>
 </div>
 <div class="admonition note">
@@ -682,7 +691,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id24">
-<h3><a class="toc-backref" href="#id63">フォルダの作成</a><a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id68">フォルダの作成</a><a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>mkdir (option) [directory name]</pre>
 </div>
 <div class="line-block">
@@ -690,7 +699,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id25">
-<h3><a class="toc-backref" href="#id64">ファイル・ディレクトリ移動・名前変更</a><a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id69">ファイル・ディレクトリ移動・名前変更</a><a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>mv (option) [old file] [new file]</pre>
 </div>
 <div class="line-block">
@@ -698,7 +707,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id26">
-<h3><a class="toc-backref" href="#id65">プロセス状態の表示</a><a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id70">プロセス状態の表示</a><a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">ps</span> <span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">f</span><span class="p">][</span><span class="n">u</span><span class="p">][</span><span class="n">x</span><span class="p">][</span><span class="o">-</span><span class="n">e</span><span class="p">][</span><span class="o">-</span><span class="n">l</span><span class="o">|</span><span class="n">l</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -726,7 +735,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id27">
-<h3><a class="toc-backref" href="#id66">現在のディレクトリの場所を表示</a><a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id71">現在のディレクトリの場所を表示</a><a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">pwd</span>
 </pre></div>
 </div>
@@ -735,7 +744,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id28">
-<h3><a class="toc-backref" href="#id67">ファイル・ディレクトリを削除</a><a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id72">ファイル・ディレクトリを削除</a><a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>rm (option) [file name]</pre>
 </div>
 <div class="line-block">
@@ -743,7 +752,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id29">
-<h3><a class="toc-backref" href="#id68">文字列の置換を行う</a><a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id73">文字列の置換を行う</a><a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">sed</span>
 </pre></div>
 </div>
@@ -756,7 +765,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id30">
-<h3><a class="toc-backref" href="#id69">行を並び替える(ソート)</a><a class="headerlink" href="#id30" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id74">行を並び替える(ソート)</a><a class="headerlink" href="#id30" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">sort</span> <span class="p">(</span><span class="n">option</span><span class="p">)</span> <span class="p">[</span><span class="nb">file</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -765,7 +774,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id31">
-<h3><a class="toc-backref" href="#id70">ユーザーの切替、管理権限の取得</a><a class="headerlink" href="#id31" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id75">ユーザーの切替、管理権限の取得</a><a class="headerlink" href="#id31" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>su (option) [user name]</pre>
 </div>
 <div class="line-block">
@@ -774,7 +783,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id32">
-<h3><a class="toc-backref" href="#id71">ファイルの末尾部分を表示する</a><a class="headerlink" href="#id32" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id76">ファイルの末尾部分を表示する</a><a class="headerlink" href="#id32" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>tail [-c BYTE] [-n LINE] [FILE...]</pre>
 </div>
 <div class="line-block">
@@ -782,7 +791,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id33">
-<h3><a class="toc-backref" href="#id72">ログアウト(というかエディタの終了？)</a><a class="headerlink" href="#id33" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id77">ログアウト(というかエディタの終了？)</a><a class="headerlink" href="#id33" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="nb">exit</span>
 </pre></div>
 </div>
@@ -792,9 +801,9 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="memo">
-<h2><a class="toc-backref" href="#id73">その他コマンド(ここから下は普通のコマンド集MEMO!課題とは関係ないよ！)</a><a class="headerlink" href="#memo" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id78">その他コマンド(ここから下は普通のコマンド集MEMO!課題とは関係ないよ！)</a><a class="headerlink" href="#memo" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id34">
-<h3><a class="toc-backref" href="#id74">使用されているシェルの種類を調べる</a><a class="headerlink" href="#id34" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id79">使用されているシェルの種類を調べる</a><a class="headerlink" href="#id34" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>echo $SHELL</pre>
 </div>
 <div class="line-block">
@@ -815,7 +824,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="id35">
-<h3><a class="toc-backref" href="#id75">ファイルのバイト数／単語数／行数を出力する</a><a class="headerlink" href="#id35" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><a class="toc-backref" href="#id80">ファイルのバイト数／単語数／行数を出力する</a><a class="headerlink" href="#id35" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">wc</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">L</span><span class="p">]</span> <span class="p">[</span><span class="n">FILE</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -838,7 +847,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="table">
-<h2><a class="toc-backref" href="#id76">コマンドまとめ(TABLE形式)</a><a class="headerlink" href="#table" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id81">コマンドまとめ(TABLE形式)</a><a class="headerlink" href="#table" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <table border="1" class="docutils">
 <caption>UNIXcmd</caption>
 <colgroup>
@@ -935,10 +944,10 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </table>
 </div>
 <div class="section" id="tips-tips">
-<h2><a class="toc-backref" href="#id77">その他TIPS(ここから下は普通のTIPS集!課題とは関係ないよ！)</a><a class="headerlink" href="#tips-tips" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id82">その他TIPS(ここから下は普通のTIPS集!課題とは関係ないよ！)</a><a class="headerlink" href="#tips-tips" title="このヘッドラインへのパーマリンク">¶</a></h2>
 </div>
 <div class="section" id="id36">
-<h2><a class="toc-backref" href="#id78">コードの行数を確認する</a><a class="headerlink" href="#id36" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id83">コードの行数を確認する</a><a class="headerlink" href="#id36" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-python"><pre>find ./ -name '*.java' | xargs cat | wc -l</pre>
 </div>
 <div class="line-block">
@@ -947,7 +956,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 </div>
 <div class="section" id="morelesscat">
-<span id="more-less-cat"></span><h2><a class="toc-backref" href="#id79">ファイル表示(more・less・cat)の違い</a><a class="headerlink" href="#morelesscat" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<span id="more-less-cat"></span><h2><a class="toc-backref" href="#id84">ファイル表示(more・less・cat)の違い</a><a class="headerlink" href="#morelesscat" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <table border="1" class="docutils">
 <caption>ファイル表示(more・less・cat)の違い</caption>
 <colgroup>
@@ -983,7 +992,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </table>
 </div>
 <div class="section" id="id39">
-<h2><a class="toc-backref" href="#id80">シェルスクリプトで使用シェルを宣言</a><a class="headerlink" href="#id39" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id85">シェルスクリプトで使用シェルを宣言</a><a class="headerlink" href="#id39" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">シェルの種類によってシェルのコマンドや記載方法に差異がある。</div>
 <div class="line">そのため、シェルスクリプト作成の際は、</div>
@@ -993,6 +1002,54 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
 </pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id40">
+<h2><a class="toc-backref" href="#id86">あるディレクトリ内のファイルをGrep</a><a class="headerlink" href="#id40" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><pre>find /etc -type f -print | xargs grep hoge /dev/null</pre>
+</div>
+<div class="line-block">
+<div class="line">find コマンドで /etc 以下の通常のファイル(ディレクトリなど以外)を探し(-type f)、ファイル名を表示させます(-print)。</div>
+<div class="line">xargs コマンドは find の出力したファイル名を展開して「grep hoge /dev/nlll ファイル名リスト」というコマンドを実行します。</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id41">
+<h2><a class="toc-backref" href="#id87">複数行を検索する方法</a><a class="headerlink" href="#id41" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><pre>grep -P 'bbb[\s\S]*?ddd' test.txt</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">「bbbで始まってdddで終わる文字列」</div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>-Pオプションは、Perl風の正規表現を使うという意味。</li>
+<li>[sS]は改行文字も含めたすべての文字1文字にマッチ。</li>
+<li><a href="#id42"><span class="problematic" id="id43">*</span></a>?で、[sS]の繰り返しのうちもっとも短いものにマッチ。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">求める文字列を含む行ごとすべて表示されてしまっている。もし厳密にマッチする部分のみが欲しいのなら、grepに-oオプション(only-matchingの意味)をさらに追加すればよい。</div>
+</div>
+<div class="highlight-python"><pre>grep -oP 'bbb[\s\S]*?ddd' test.txt</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id44">
+<h2><a class="toc-backref" href="#id88">ディレクトリの中のファイルを一括置換する</a><a class="headerlink" href="#id44" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">hogeをfugaに置換</div>
+</div>
+<div class="highlight-python"><pre>find . -type f | xargs sed -i 's/hoge/fuga/g'</pre>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1030,7 +1087,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]</pre>
       <!-- footer -->
       <footer>
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
       </footer>
       <!-- /footer -->
 

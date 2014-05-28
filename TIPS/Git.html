@@ -60,7 +60,7 @@
   });
 </script>
     <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
-    <link rel="next" title="rubyMEMO" href="../ruby/dotinstall.html" />
+    <link rel="next" title="Gradle" href="Gradle.html" />
     <link rel="prev" title="MYSQL とか SQL とか MEMO" href="mysql.html" /> 
   </head>
   <body>
@@ -80,7 +80,7 @@
                 <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
                 </li>
                 <li>
-                <a href="../ruby/dotinstall.html" title="rubyMEMO" accesskey="N">次へ</a>
+                <a href="Gradle.html" title="Gradle" accesskey="N">次へ</a>
                 </li>
                 <li>
                 <a href="mysql.html" title="MYSQL とか SQL とか MEMO" accesskey="P">前へ</a>
@@ -106,13 +106,29 @@
   <h3><a href="../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Git</a><ul>
-<li><a class="reference internal" href="#id2">ブランチの移動</a></li>
-<li><a class="reference internal" href="#id3">ログの見方</a><ul>
-<li><a class="reference internal" href="#id4">ブランチを資格的に確認する</a></li>
-<li><a class="reference internal" href="#id5">現在のリポジトリで行われた作業ログを確認する</a></li>
+<li><a class="reference internal" href="#id2">参考</a></li>
+<li><a class="reference internal" href="#id3">ブランチの移動</a></li>
+<li><a class="reference internal" href="#id4">ログの見方</a><ul>
+<li><a class="reference internal" href="#id5">ブランチを資格的に確認する</a></li>
+<li><a class="reference internal" href="#id6">現在のリポジトリで行われた作業ログを確認する</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">リポジトリの状態をある時点に完全に戻す</a></li>
+<li><a class="reference internal" href="#id7">リポジトリの状態をある時点に完全に戻す</a></li>
+<li><a class="reference internal" href="#id8">マージする</a></li>
+<li><a class="reference internal" href="#id9">コミット操作</a><ul>
+<li><a class="reference internal" href="#id10">直近のコミットメッセージを修正する</a></li>
+<li><a class="reference internal" href="#id11">歴史を改ざんする</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">リモートリポジトリへの操作</a><ul>
+<li><a class="reference internal" href="#id13">リモートリポジトリを追加する</a></li>
+<li><a class="reference internal" href="#push">最初のpush</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">リモートリポジトリからの操作</a><ul>
+<li><a class="reference internal" href="#id15">リモートリポジトリの特定のブランチをチェックアウト</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -121,8 +137,8 @@
   <p class="topless"><a href="mysql.html"
                         title="前の章へ">MYSQL とか SQL とか MEMO</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="../ruby/dotinstall.html"
-                        title="次の章へ">rubyMEMO</a></p>
+  <p class="topless"><a href="Gradle.html"
+                        title="次の章へ">Gradle</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/TIPS/Git.txt"
@@ -155,13 +171,29 @@
   <h3><a href="../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Git</a><ul>
-<li><a class="reference internal" href="#id2">ブランチの移動</a></li>
-<li><a class="reference internal" href="#id3">ログの見方</a><ul>
-<li><a class="reference internal" href="#id4">ブランチを資格的に確認する</a></li>
-<li><a class="reference internal" href="#id5">現在のリポジトリで行われた作業ログを確認する</a></li>
+<li><a class="reference internal" href="#id2">参考</a></li>
+<li><a class="reference internal" href="#id3">ブランチの移動</a></li>
+<li><a class="reference internal" href="#id4">ログの見方</a><ul>
+<li><a class="reference internal" href="#id5">ブランチを資格的に確認する</a></li>
+<li><a class="reference internal" href="#id6">現在のリポジトリで行われた作業ログを確認する</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">リポジトリの状態をある時点に完全に戻す</a></li>
+<li><a class="reference internal" href="#id7">リポジトリの状態をある時点に完全に戻す</a></li>
+<li><a class="reference internal" href="#id8">マージする</a></li>
+<li><a class="reference internal" href="#id9">コミット操作</a><ul>
+<li><a class="reference internal" href="#id10">直近のコミットメッセージを修正する</a></li>
+<li><a class="reference internal" href="#id11">歴史を改ざんする</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">リモートリポジトリへの操作</a><ul>
+<li><a class="reference internal" href="#id13">リモートリポジトリを追加する</a></li>
+<li><a class="reference internal" href="#push">最初のpush</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">リモートリポジトリからの操作</a><ul>
+<li><a class="reference internal" href="#id15">リモートリポジトリの特定のブランチをチェックアウト</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -170,8 +202,8 @@
   <p class="topless"><a href="mysql.html"
                         title="前の章へ">MYSQL とか SQL とか MEMO</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="../ruby/dotinstall.html"
-                        title="次の章へ">rubyMEMO</a></p>
+  <p class="topless"><a href="Gradle.html"
+                        title="次の章へ">Gradle</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/TIPS/Git.txt"
@@ -202,20 +234,37 @@
                 <div class="body">
                   
   <div class="section" id="git">
-<h1><a class="toc-backref" href="#id7">Git</a><a class="headerlink" href="#git" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1><a class="toc-backref" href="#id16">Git</a><a class="headerlink" href="#git" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="contents topic" id="id1">
 <p class="topic-title first">目次</p>
 <ul class="simple">
-<li><a class="reference internal" href="#git" id="id7">Git</a><ul>
-<li><a class="reference internal" href="#id2" id="id8">ブランチの移動</a></li>
-<li><a class="reference internal" href="#id3" id="id9">ログの見方</a></li>
-<li><a class="reference internal" href="#id6" id="id10">リポジトリの状態をある時点に完全に戻す</a></li>
+<li><a class="reference internal" href="#git" id="id16">Git</a><ul>
+<li><a class="reference internal" href="#id2" id="id17">参考</a></li>
+<li><a class="reference internal" href="#id3" id="id18">ブランチの移動</a></li>
+<li><a class="reference internal" href="#id4" id="id19">ログの見方</a></li>
+<li><a class="reference internal" href="#id7" id="id20">リポジトリの状態をある時点に完全に戻す</a></li>
+<li><a class="reference internal" href="#id8" id="id21">マージする</a></li>
+<li><a class="reference internal" href="#id9" id="id22">コミット操作</a></li>
+<li><a class="reference internal" href="#id12" id="id23">リモートリポジトリへの操作</a></li>
+<li><a class="reference internal" href="#id14" id="id24">リモートリポジトリからの操作</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id8">ブランチの移動</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">参考</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference external" href="http://k.swd.cc/learnGitBranching-ja/">http://k.swd.cc/learnGitBranching-ja/</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id18">ブランチの移動</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">branchを切り替えるときは</div>
 </div>
@@ -232,10 +281,10 @@
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h2><a class="toc-backref" href="#id9">ログの見方</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id4">
-<h3>ブランチを資格的に確認する<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2><a class="toc-backref" href="#id19">ログの見方</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h3>ブランチを資格的に確認する<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>git log --graph</pre>
 </div>
 <div class="line-block">
@@ -243,8 +292,8 @@
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3>現在のリポジトリで行われた作業ログを確認する<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id6">
+<h3>現在のリポジトリで行われた作業ログを確認する<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><pre>git reflog</pre>
 </div>
 <div class="admonition note">
@@ -257,8 +306,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="id6">
-<h2><a class="toc-backref" href="#id10">リポジトリの状態をある時点に完全に戻す</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id20">リポジトリの状態をある時点に完全に戻す</a><a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">リポジトリの状態をあるコミットまでもどす。</div>
 <div class="line">HEAD、ステージ、現在のワーキングツリーが戻る。</div>
@@ -267,6 +316,99 @@
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id21">マージする</a><a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">日ランチからマージしたことを明確にするには、</div>
+<div class="line">&#8211;no-ffオプションをつけてマージする。</div>
+</div>
+<div class="highlight-python"><pre>git merge --no-ff [ブランチ名]</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">今いるブランチに対して、[ブランチ名]で指定したブランチをマージする。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id22">コミット操作</a><a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id10">
+<h3>直近のコミットメッセージを修正する<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>git commit --amend</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>歴史を改ざんする<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line">typoみたいないらないコミットは消しちゃう。</div>
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python"><pre>git rebase -i HEAD~2</pre>
+</div>
+<div class="line-block">
+<div class="line">で、HEADを含めた歴史を対象としてエディタが立ちあがる</div>
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python"><pre>pick [SHAタグ①] [コミットコメント①]
+pick [SHAタグ②] [コミットコメント②]</pre>
+</div>
+<div class="line-block">
+<div class="line">②コミットをなかったことにして、①に統合する場合は、</div>
+<div class="line">↓の用に修正すればOK</div>
+</div>
+<div class="highlight-python"><pre>pick [SHAタグ①] [コミットコメント①]
+fixup [SHAタグ②] [コミットコメント②]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2><a class="toc-backref" href="#id23">リモートリポジトリへの操作</a><a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id13">
+<h3>リモートリポジトリを追加する<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>git remote add origin git:github.com:syobochim/[リポジトリ名]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="push">
+<h3>最初のpush<a class="headerlink" href="#push" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>git push -u origin [master/ブランチ名]</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">-uオプションにて、ブランチの上流はoriginリポジトリのmasterブランチであることを設定。</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2><a class="toc-backref" href="#id24">リモートリポジトリからの操作</a><a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id15">
+<h3>リモートリポジトリの特定のブランチをチェックアウト<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>git checkout -b [ブランチ名] origin/[ブランチ名]</pre>
+</div>
 </div>
 </div>
 </div>
@@ -288,7 +430,7 @@
     <ul class="nav pull-right">
       
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
-        <li><a href="../ruby/dotinstall.html" title="rubyMEMO" >次へ</a></li>
+        <li><a href="Gradle.html" title="Gradle" >次へ</a></li>
         <li><a href="mysql.html" title="MYSQL とか SQL とか MEMO" >前へ</a></li>
         <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
       
