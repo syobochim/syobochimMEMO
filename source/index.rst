@@ -30,6 +30,7 @@
    TIPS/Excel
    TIPS/mysql
    TIPS/Git
+   TIPS/Gradle
    ruby/dotinstall
 
 |
