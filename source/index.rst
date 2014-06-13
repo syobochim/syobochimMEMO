@@ -31,6 +31,7 @@
    TIPS/mysql
    TIPS/Git
    TIPS/Gradle
+   TIPS/jQuery
    ruby/dotinstall
 
 |
