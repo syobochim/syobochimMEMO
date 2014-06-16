@@ -72,7 +72,7 @@ CSSを変更
 
   $(A).append(B);
 
-..note::
+.. note::
 
   AにBが追加される
 
