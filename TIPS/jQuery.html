@@ -60,7 +60,7 @@
   });
 </script>
     <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
-    <link rel="next" title="rubyMEMO" href="../ruby/dotinstall.html" />
+    <link rel="next" title="Leiningen" href="Leiningen.html" />
     <link rel="prev" title="Gradle" href="Gradle.html" /> 
   </head>
   <body>
@@ -80,7 +80,7 @@
                 <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
                 </li>
                 <li>
-                <a href="../ruby/dotinstall.html" title="rubyMEMO" accesskey="N">次へ</a>
+                <a href="Leiningen.html" title="Leiningen" accesskey="N">次へ</a>
                 </li>
                 <li>
                 <a href="Gradle.html" title="Gradle" accesskey="P">前へ</a>
@@ -131,8 +131,8 @@
   <p class="topless"><a href="Gradle.html"
                         title="前の章へ">Gradle</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="../ruby/dotinstall.html"
-                        title="次の章へ">rubyMEMO</a></p>
+  <p class="topless"><a href="Leiningen.html"
+                        title="次の章へ">Leiningen</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/TIPS/jQuery.txt"
@@ -190,8 +190,8 @@
   <p class="topless"><a href="Gradle.html"
                         title="前の章へ">Gradle</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="../ruby/dotinstall.html"
-                        title="次の章へ">rubyMEMO</a></p>
+  <p class="topless"><a href="Leiningen.html"
+                        title="次の章へ">Leiningen</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/TIPS/jQuery.txt"
@@ -238,7 +238,8 @@
 <h2><a class="toc-backref" href="#id13">要素を変更する</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="css">
 <h3>CSSを変更<a class="headerlink" href="#css" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>$(オブジェクト).css('background', 'red')</pre>
+<div class="highlight-python"><div class="highlight"><pre>$(オブジェクト).css(&#39;background&#39;, &#39;red&#39;)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -246,7 +247,8 @@
 </div>
 <div class="section" id="id3">
 <h3>テキストを変更する<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>$(オブジェクト).text('hello')</pre>
+<div class="highlight-python"><div class="highlight"><pre>$(オブジェクト).text(&#39;hello&#39;)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -254,7 +256,8 @@
 </div>
 <div class="section" id="id4">
 <h3>要素に属性を設定する<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>$('.target&gt;button').attr('disabled','disabled')</pre>
+<div class="highlight-python"><div class="highlight"><pre>$(&#39;.target&gt;button&#39;).attr(&#39;disabled&#39;,&#39;disabled&#39;)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -262,7 +265,8 @@
 </div>
 <div class="section" id="id5">
 <h3>要素の属性を削除する<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>$('.target input').removeAttr('checked')</pre>
+<div class="highlight-python"><div class="highlight"><pre>$(&#39;.target input&#39;).removeAttr(&#39;checked&#39;)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -274,7 +278,8 @@
 <h2><a class="toc-backref" href="#id14">要素を追加する</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id7">
 <h3>同じ要素を作成する<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>$('#target&gt;span').clone()</pre>
+<div class="highlight-python"><div class="highlight"><pre>$(&#39;#target&gt;span&#39;).clone()
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -282,7 +287,8 @@
 </div>
 <div class="section" id="id8">
 <h3>場所の指定<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>.insertAfter($('#target&gt;span'))</pre>
+<div class="highlight-python"><div class="highlight"><pre>.insertAfter($(&#39;#target&gt;span&#39;))
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -290,7 +296,8 @@
 </div>
 <div class="section" id="id9">
 <h3>要素を移動する<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>$(A).append(B);</pre>
+<div class="highlight-python"><div class="highlight"><pre>$(A).append(B);
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">ノート</p>
@@ -299,7 +306,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python"><pre>$(A).appendTo(B)</pre>
+<div class="highlight-python"><div class="highlight"><pre>$(A).appendTo(B)
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">ノート</p>
@@ -315,7 +323,8 @@
 <h2><a class="toc-backref" href="#id15">要素を選択する</a><a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id11">
 <h3>何個目のオブジェクトかを指定<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>$('.target').eq(1)</pre>
+<div class="highlight-python"><div class="highlight"><pre>$(&#39;.target&#39;).eq(1)
+</pre></div>
 </div>
 </div>
 </div>
@@ -338,7 +347,7 @@
     <ul class="nav pull-right">
       
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
-        <li><a href="../ruby/dotinstall.html" title="rubyMEMO" >次へ</a></li>
+        <li><a href="Leiningen.html" title="Leiningen" >次へ</a></li>
         <li><a href="Gradle.html" title="Gradle" >前へ</a></li>
         <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
       
@@ -350,7 +359,7 @@
       <!-- footer -->
       <footer>
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
       </footer>
       <!-- /footer -->
 

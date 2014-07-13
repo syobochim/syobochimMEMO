@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>Leiningen &mdash; syobochim_MEMO 2013.10.15 ドキュメント</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootswatch-united.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="../_static/css/font-awesome-ie7.min.css">
+<![endif]-->
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+</style>
+<link rel="stylesheet" href="../_static/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/bootstrap-responsive.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '2013.10.15',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+<script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../_static/underscore.js"></script>
+<script type="text/javascript" src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/translations.js"></script>
+<script type="text/javascript" src="../_static/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.show-sidebar').click(function(e) {
+       e.preventDefault();
+       if ($(".show-sidebar").html() == "Open Table Of Contents") {
+          $('.for-mobile').removeClass('hidden-phone');
+          $(".show-sidebar").html("Close Table Of Contents");
+       } else {
+          $(".show-sidebar").html("Open Table Of Contents");
+       }
+    });
+  });
+</script>
+    <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
+    <link rel="next" title="rubyMEMO" href="../ruby/dotinstall.html" />
+    <link rel="prev" title="jQuery" href="jQuery.html" /> 
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top ">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              
+                <li>
+                <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
+                </li>
+                <li>
+                <a href="../ruby/dotinstall.html" title="rubyMEMO" accesskey="N">次へ</a>
+                </li>
+                <li>
+                <a href="jQuery.html" title="jQuery" accesskey="P">前へ</a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+
+      
+      <div class="row-fluid hidden-desktop hidden-tablet">
+      
+<div class="span3 ">
+  <a class="visible-phone btn btn-small show-sidebar" data-toggle="collapse" data-target=".for-mobile">Open Table Of Contents</a>
+  <div class="for-mobile sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Leiningen</a><ul>
+<li><a class="reference internal" href="#jar">Jarファイルとして出力する</a></li>
+<li><a class="reference internal" href="#id2">Leiningenのバージョンアップ</a></li>
+<li><a class="reference internal" href="#id3">テストを行う</a></li>
+<li><a class="reference internal" href="#id4">リポジトリの検索</a></li>
+<li><a class="reference internal" href="#repl">REPLを立ち上げる</a></li>
+<li><a class="reference internal" href="#id5">使い方を表示する</a></li>
+<li><a class="reference internal" href="#id6">特定のタスクの使い方をみる</a></li>
+<li><a class="reference internal" href="#id7">複数のタスクを記述する</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="jQuery.html"
+                        title="前の章へ">jQuery</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../ruby/dotinstall.html"
+                        title="次の章へ">rubyMEMO</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/TIPS/Leiningen.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div>
+      </div>
+      
+
+      <!-- row -->
+      <div class="row-fluid">
+         
+<div class="span3 visible-desktop visible-tablet">
+  <div class=" sidebar hidden-phone">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Leiningen</a><ul>
+<li><a class="reference internal" href="#jar">Jarファイルとして出力する</a></li>
+<li><a class="reference internal" href="#id2">Leiningenのバージョンアップ</a></li>
+<li><a class="reference internal" href="#id3">テストを行う</a></li>
+<li><a class="reference internal" href="#id4">リポジトリの検索</a></li>
+<li><a class="reference internal" href="#repl">REPLを立ち上げる</a></li>
+<li><a class="reference internal" href="#id5">使い方を表示する</a></li>
+<li><a class="reference internal" href="#id6">特定のタスクの使い方をみる</a></li>
+<li><a class="reference internal" href="#id7">複数のタスクを記述する</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="jQuery.html"
+                        title="前の章へ">jQuery</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../ruby/dotinstall.html"
+                        title="次の章へ">rubyMEMO</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/TIPS/Leiningen.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>クイック検索</h3>
+  <form class="search form-search" action="../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="検索" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="span9">
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="leiningen">
+<h1><a class="toc-backref" href="#id8">Leiningen</a><a class="headerlink" href="#leiningen" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title first">目次</p>
+<ul class="simple">
+<li><a class="reference internal" href="#leiningen" id="id8">Leiningen</a><ul>
+<li><a class="reference internal" href="#jar" id="id9">Jarファイルとして出力する</a></li>
+<li><a class="reference internal" href="#id2" id="id10">Leiningenのバージョンアップ</a></li>
+<li><a class="reference internal" href="#id3" id="id11">テストを行う</a></li>
+<li><a class="reference internal" href="#id4" id="id12">リポジトリの検索</a></li>
+<li><a class="reference internal" href="#repl" id="id13">REPLを立ち上げる</a></li>
+<li><a class="reference internal" href="#id5" id="id14">使い方を表示する</a></li>
+<li><a class="reference internal" href="#id6" id="id15">特定のタスクの使い方をみる</a></li>
+<li><a class="reference internal" href="#id7" id="id16">複数のタスクを記述する</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="jar">
+<h2><a class="toc-backref" href="#id9">Jarファイルとして出力する</a><a class="headerlink" href="#jar" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>エントリーポイントとなるcore.cljに「:gen-class」をnsの中につける。</li>
+</ul>
+<div class="highlight-clojure"><div class="highlight"><pre><span class="p">(</span><span class="kd">ns </span><span class="nv">first-project.core</span>
+  <span class="p">(</span><span class="ss">:gen-class</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>project.clj に「:aot」を追加する。</li>
+</ul>
+<div class="highlight-clojure"><div class="highlight"><pre><span class="ss">:main</span> <span class="nv">first-project.core</span>
+<span class="ss">:aot</span> <span class="p">[</span><span class="nv">first-project.core</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>コマンド</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>lein uberjar
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id10">Leiningenのバージョンアップ</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>lein upgrade
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id11">テストを行う</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>lein test
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>lein test &lt;ネーム・スペース&gt;  # 指定されたネーム・スペースのテストを行う
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id12">リポジトリの検索</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>lein search
+</pre></div>
+</div>
+</div>
+<div class="section" id="repl">
+<h2><a class="toc-backref" href="#id13">REPLを立ち上げる</a><a class="headerlink" href="#repl" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>lein repl
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id14">使い方を表示する</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>lein help
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id15">特定のタスクの使い方をみる</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>lein help &lt;タスク名&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id16">複数のタスクを記述する</a><a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">doから始めることで複数のタスクをカンマ区切りで一度記述することができる</div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>例）不要なファイルをcleanし、テストを行った後で、jarファイルを作る</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>lein do clean, test foo.test-core, jar
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row-fluid">
+<div class="related navbar ">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="../ruby/dotinstall.html" title="rubyMEMO" >次へ</a></li>
+        <li><a href="jQuery.html" title="jQuery" >前へ</a></li>
+        <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer>
+          &copy; Copyright 2013, syobochim.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

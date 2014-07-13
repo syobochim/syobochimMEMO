@@ -215,7 +215,8 @@
 <div class="line">セルに下記のように入力。</div>
 <div class="line">例）</div>
 </div>
-<div class="highlight-python"><pre>=IF(COUNTIF(G:G,"*" &amp; I10 &amp; "*")=1,"o","x")</pre>
+<div class="highlight-python"><div class="highlight"><pre>=IF(COUNTIF(G:G,&quot;*&quot; &amp; I10 &amp; &quot;*&quot;)=1,&quot;o&quot;,&quot;x&quot;)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">『G:G』のところには検索対象範囲。I10には検索対象セルを記載する。</div>
@@ -228,7 +229,8 @@
 <div class="line-block">
 <div class="line">文字列を置換する</div>
 </div>
-<div class="highlight-python"><pre>=SUBSTITUTE(文字列,検索文字列,置換文字列,対象)</pre>
+<div class="highlight-python"><div class="highlight"><pre>=SUBSTITUTE(文字列,検索文字列,置換文字列,対象)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -239,18 +241,20 @@
 <div class="line-block">
 <div class="line">ダブルクォーテーションのエスケープはダブルクォーテーションを使用</div>
 </div>
-<div class="highlight-python"><pre>"    // ←をエスケープするには
-""   // ←を使用</pre>
+<div class="highlight-python"><div class="highlight"><pre>&quot;    // ←をエスケープするには
+&quot;&quot;   // ←を使用
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line">ワイルドカードをエスケープするときはチルダを使用</div>
 </div>
-<div class="highlight-python"><pre>*   // 任意の文字列(*)は
+<div class="highlight-python"><div class="highlight"><pre>*   // 任意の文字列(*)は
 ~*  // を使用
 
 ?   // 任意の一文字(?)は
-~?  // を使用</pre>
+~?  // を使用
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -288,7 +292,7 @@
       <!-- footer -->
       <footer>
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
       </footer>
       <!-- /footer -->
 

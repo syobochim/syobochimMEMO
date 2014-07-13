@@ -60,7 +60,7 @@
   });
 </script>
     <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
-    <link rel="prev" title="MYSQL とか SQL とか MEMO" href="../TIPS/mysql.html" /> 
+    <link rel="prev" title="Leiningen" href="../TIPS/Leiningen.html" /> 
   </head>
   <body>
     <div class="navbar navbar-fixed-top ">
@@ -79,7 +79,7 @@
                 <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
                 </li>
                 <li>
-                <a href="../TIPS/mysql.html" title="MYSQL とか SQL とか MEMO" accesskey="P">前へ</a>
+                <a href="../TIPS/Leiningen.html" title="Leiningen" accesskey="P">前へ</a>
                 </li>
               
             </ul>
@@ -140,8 +140,8 @@
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="../TIPS/mysql.html"
-                        title="前の章へ">MYSQL とか SQL とか MEMO</a></p>
+  <p class="topless"><a href="../TIPS/Leiningen.html"
+                        title="前の章へ">Leiningen</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/ruby/dotinstall.txt"
@@ -212,8 +212,8 @@
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="../TIPS/mysql.html"
-                        title="前の章へ">MYSQL とか SQL とか MEMO</a></p>
+  <p class="topless"><a href="../TIPS/Leiningen.html"
+                        title="前の章へ">Leiningen</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/ruby/dotinstall.txt"
@@ -298,13 +298,15 @@
 <div class="line-block">
 <div class="line">myappというアプリケーションを始める。</div>
 </div>
-<div class="highlight-python"><pre>$ rails new myapp</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rails new myapp
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">↑のコマンドで、自動で必要なフォルダを作成してくれる。</div>
 <div class="line">作成されたフォルダに移動後、</div>
 </div>
-<div class="highlight-python"><pre>$ rails s</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rails s
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">でサーバーを起動。</div>
@@ -313,19 +315,22 @@
 <div class="line">一回サーバを停止して(Ctrl + c)</div>
 <div class="line">Gemfileを開いて、</div>
 </div>
-<div class="highlight-python"><pre>gem 'therubyracer', platforms: ruby</pre>
+<div class="highlight-python"><div class="highlight"><pre>gem &#39;therubyracer&#39;, platforms: ruby
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">のコメントアウトを外す。</div>
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python"><pre>bundle install</pre>
+<div class="highlight-python"><div class="highlight"><pre>bundle install
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">で必要なものをダウンロードして、</div>
 <div class="line">再度</div>
 </div>
-<div class="highlight-python"><pre>$ rails s</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rails s
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">をして、</div>
@@ -339,7 +344,8 @@
 <div class="line"><strong>Scafold</strong> 　…　シンプルなアプリケーションの枠組みを作ってくれる</div>
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python"><pre>$ rails generate scaffold users name:string score:integer</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rails generate scaffold users name:string score:integer
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">で、Userっていうインスタンスに、</div>
@@ -348,7 +354,8 @@
 <div class="line">scaffold ができたら、DBにデータをマイグレーションする。</div>
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python"><pre>$ rake db:migrate</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rake db:migrate
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">でマイグレーションは簡単！</div>
@@ -370,7 +377,8 @@
 <div class="line">すでにbundle installが済んでいる場合は、</div>
 <div class="line">bundle install をスキップすることができる。</div>
 </div>
-<div class="highlight-python"><pre>rails new taskapp --skip-bundle</pre>
+<div class="highlight-python"><div class="highlight"><pre>rails new taskapp --skip-bundle
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">taskappというアプリケーションが作成される。</div>
@@ -392,13 +400,15 @@
 <div class="line"><br /></div>
 <div class="line">Modelを作るコマンドは、</div>
 </div>
-<div class="highlight-python"><pre>$ rails generate model Project title:String</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rails generate model Project title:String
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">ただし、generate は <strong>g</strong> に省力することができるし、</div>
 <div class="line">項目の作成もデフォルトはstring型に設定されているので、</div>
 </div>
-<div class="highlight-python"><pre>$ rails g model Project title</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rails g model Project title
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">と省略することができる。</div>
@@ -411,7 +421,8 @@
 <div class="line-block">
 <div class="line">そのあとは、</div>
 </div>
-<div class="highlight-python"><pre>$ rake db:migtate</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rake db:migtate
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">すれば、DBへの適用はOK！！</div>
@@ -420,14 +431,15 @@
 <div class="section" id="rails-db-rails-console">
 <h2><a class="toc-backref" href="#id22">rails db/ rails console を使おう！</a><a class="headerlink" href="#rails-db-rails-console" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>ターミナルで、</p>
-<div class="highlight-python"><pre>rails db</pre>
+<div class="highlight-python"><div class="highlight"><pre>rails db
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">を入力すると、現在つながっているDBへ接続することができる！</div>
 <div class="line">MySQLに接続するために、</div>
 <div class="line">config/databese.ymlを下記のように書き換えた。</div>
 </div>
-<div class="highlight-python"><pre>development:
+<div class="highlight-python"><div class="highlight"><pre>development:
   adapter: mysql2
   encoding: utf8
   database: sample_development
@@ -452,14 +464,16 @@ production:
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock</pre>
+  socket: /tmp/mysql.sock
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">socketは個人個人で違う？</div>
 <div class="line">mysqlが入ってるところかな？</div>
 <div class="line">これを設定した後は、改めて</div>
 </div>
-<div class="highlight-python"><pre>rake db:create</pre>
+<div class="highlight-python"><div class="highlight"><pre>rake db:create
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">をしないといけなかった。</div>
@@ -471,13 +485,15 @@ production:
 <div class="line">rails console では、モデルをインタラクティブにいじれる！</div>
 <div class="line">ターミナル上で、</div>
 </div>
-<div class="highlight-python"><pre>rails console</pre>
+<div class="highlight-python"><div class="highlight"><pre>rails console
+</pre></div>
 </div>
 <img alt="../_images/rails_console.png" src="../_images/rails_console.png" />
 <div class="line-block">
 <div class="line">この、rails consoleにて、DBへのデータ入力等ができる</div>
 </div>
-<div class="highlight-python"><pre>p = Project.new(title: "p1")</pre>
+<div class="highlight-python"><div class="highlight"><pre>p = Project.new(title: &quot;p1&quot;)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">で、titleにp1って入ったものができる。</div>
@@ -495,7 +511,8 @@ production:
 <div class="line">で、実際にい入ったデータをみることができる</div>
 <div class="line">宣言とsaveの2つを合わせたコマンドが↓</div>
 </div>
-<div class="highlight-python"><pre>Project.create(title: "p2")</pre>
+<div class="highlight-python"><div class="highlight"><pre>Project.create(title: &quot;p2&quot;)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">すべてのデータをみるのは、↓</div>
@@ -514,20 +531,23 @@ production:
 <div class="line"><br /></div>
 <div class="line">適用するときは、</div>
 </div>
-<div class="highlight-python"><pre>rake db:seed</pre>
+<div class="highlight-python"><div class="highlight"><pre>rake db:seed
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">を使用する！</div>
 <div class="line"><br /></div>
 <div class="line">dbを削除するときは</div>
 </div>
-<div class="highlight-python"><pre>rake db:drop</pre>
+<div class="highlight-python"><div class="highlight"><pre>rake db:drop
+</pre></div>
 </div>
 </div>
 <div class="section" id="controller">
 <h2><a class="toc-backref" href="#id23">Controller を作ろう！</a><a class="headerlink" href="#controller" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>controlleer を作成するコマンド</p>
-<div class="highlight-python"><pre>$ rails g controller Projects</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rails g controller Projects
+</pre></div>
 </div>
 <p>で、Projectsっていうコントローラーができる</p>
 <div class="admonition warning">
@@ -538,16 +558,18 @@ production:
 <div class="line">コントローラーが作成できたら、</div>
 <div class="line">config/routes.rb を編集する。</div>
 </div>
-<div class="highlight-python"><pre>Taskapp::Application.routes.draw do
+<div class="highlight-python"><div class="highlight"><pre>Taskapp::Application.routes.draw do
   resources :projects
-end</pre>
+end
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">コメントアウトした部分を除いて、↑みたいな感じにする</div>
 <div class="line"><br /></div>
 <div class="line">コマンドにて、</div>
 </div>
-<div class="highlight-python"><pre>rake routes</pre>
+<div class="highlight-python"><div class="highlight"><pre>rake routes
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">をすると、routeの確認ができる。</div>
@@ -1253,7 +1275,8 @@ after_action は、すべてのメソッドの最後に実行。</p>
 <div class="line"><br /></div>
 <div class="line">新しくTaskアプリを作成する。</div>
 </div>
-<div class="highlight-python"><pre>$ rails g model Task title done:boolean project:references</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rails g model Task title done:boolean project:references
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">で、新しく Model を作成する。</div>
@@ -1282,12 +1305,14 @@ after_action は、すべてのメソッドの最後に実行。</p>
 <div class="line"><br /></div>
 <div class="line">編集後に</div>
 </div>
-<div class="highlight-python"><pre>rake db:migrate</pre>
+<div class="highlight-python"><div class="highlight"><pre>rake db:migrate
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">した後、Controllerを作成すれば準備OK！</div>
 </div>
-<div class="highlight-python"><pre>rails g controller Tasks</pre>
+<div class="highlight-python"><div class="highlight"><pre>rails g controller Tasks
+</pre></div>
 </div>
 </div>
 <div class="section" id="association">
@@ -1335,7 +1360,8 @@ after_action は、すべてのメソッドの最後に実行。</p>
 <div class="line"><br /></div>
 <div class="line">これで、</div>
 </div>
-<div class="highlight-python"><pre>$ rake routes</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ rake routes
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">すると、↓みたいにtasksの項目が追加されていることがわかる。</div>
@@ -1492,7 +1518,8 @@ after_action は、すべてのメソッドの最後に実行。</p>
 <div class="line">data-id には task.id、data-project_id にはtask.project_idを適用。</div>
 <div class="line">実際に生成されたHTMLは下記のようになる</div>
 </div>
-<div class="highlight-python"><pre>&lt;index data-id="2" data-project_id= "1" id="" name="" type="checkbox" value="" /&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>&lt;index data-id=&quot;2&quot; data-project_id= &quot;1&quot; id=&quot;&quot; name=&quot;&quot; type=&quot;checkbox&quot; value=&quot;&quot; /&gt;
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">このあと、data-id と data-project_id を使用して、jQuery で Ajaxをなげる処理を作成していく！</div>
@@ -1638,7 +1665,7 @@ after_action は、すべてのメソッドの最後に実行。</p>
     <ul class="nav pull-right">
       
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
-        <li><a href="../TIPS/mysql.html" title="MYSQL とか SQL とか MEMO" >前へ</a></li>
+        <li><a href="../TIPS/Leiningen.html" title="Leiningen" >前へ</a></li>
         <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
       
     </ul>
@@ -1649,7 +1676,7 @@ after_action は、すべてのメソッドの最後に実行。</p>
       <!-- footer -->
       <footer>
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
       </footer>
       <!-- /footer -->
 

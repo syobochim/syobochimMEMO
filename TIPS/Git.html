@@ -268,13 +268,15 @@
 <div class="line-block">
 <div class="line">branchを切り替えるときは</div>
 </div>
-<div class="highlight-python"><pre>git checkout [branch名]</pre>
+<div class="highlight-python"><div class="highlight"><pre>git checkout [branch名]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line">一つ前にアクセスしていたブランチに切り替えるときには</div>
 </div>
-<div class="highlight-python"><pre>git checkout -</pre>
+<div class="highlight-python"><div class="highlight"><pre>git checkout -
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -285,7 +287,8 @@
 <h2><a class="toc-backref" href="#id19">ログの見方</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id5">
 <h3>ブランチを資格的に確認する<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>git log --graph</pre>
+<div class="highlight-python"><div class="highlight"><pre>git log --graph
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -294,7 +297,8 @@
 </div>
 <div class="section" id="id6">
 <h3>現在のリポジトリで行われた作業ログを確認する<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>git reflog</pre>
+<div class="highlight-python"><div class="highlight"><pre>git reflog
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">ノート</p>
@@ -312,7 +316,8 @@
 <div class="line">リポジトリの状態をあるコミットまでもどす。</div>
 <div class="line">HEAD、ステージ、現在のワーキングツリーが戻る。</div>
 </div>
-<div class="highlight-python"><pre>git reset --hard [ハッシュ]</pre>
+<div class="highlight-python"><div class="highlight"><pre>git reset --hard [ハッシュ]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -325,7 +330,8 @@
 <div class="line">日ランチからマージしたことを明確にするには、</div>
 <div class="line">&#8211;no-ffオプションをつけてマージする。</div>
 </div>
-<div class="highlight-python"><pre>git merge --no-ff [ブランチ名]</pre>
+<div class="highlight-python"><div class="highlight"><pre>git merge --no-ff [ブランチ名]
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">ノート</p>
@@ -340,7 +346,8 @@
 <h2><a class="toc-backref" href="#id22">コミット操作</a><a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id10">
 <h3>直近のコミットメッセージを修正する<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>git commit --amend</pre>
+<div class="highlight-python"><div class="highlight"><pre>git commit --amend
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -353,21 +360,24 @@
 <div class="line">typoみたいないらないコミットは消しちゃう。</div>
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python"><pre>git rebase -i HEAD~2</pre>
+<div class="highlight-python"><div class="highlight"><pre>git rebase -i HEAD~2
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">で、HEADを含めた歴史を対象としてエディタが立ちあがる</div>
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python"><pre>pick [SHAタグ①] [コミットコメント①]
-pick [SHAタグ②] [コミットコメント②]</pre>
+<div class="highlight-python"><div class="highlight"><pre>pick [SHAタグ①] [コミットコメント①]
+pick [SHAタグ②] [コミットコメント②]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">②コミットをなかったことにして、①に統合する場合は、</div>
 <div class="line">↓の用に修正すればOK</div>
 </div>
-<div class="highlight-python"><pre>pick [SHAタグ①] [コミットコメント①]
-fixup [SHAタグ②] [コミットコメント②]</pre>
+<div class="highlight-python"><div class="highlight"><pre>pick [SHAタグ①] [コミットコメント①]
+fixup [SHAタグ②] [コミットコメント②]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -379,7 +389,8 @@ fixup [SHAタグ②] [コミットコメント②]</pre>
 <h2><a class="toc-backref" href="#id23">リモートリポジトリへの操作</a><a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id13">
 <h3>リモートリポジトリを追加する<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>git remote add origin git:github.com:syobochim/[リポジトリ名]</pre>
+<div class="highlight-python"><div class="highlight"><pre>git remote add origin git:github.com:syobochim/[リポジトリ名]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -388,7 +399,8 @@ fixup [SHAタグ②] [コミットコメント②]</pre>
 </div>
 <div class="section" id="push">
 <h3>最初のpush<a class="headerlink" href="#push" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>git push -u origin [master/ブランチ名]</pre>
+<div class="highlight-python"><div class="highlight"><pre>git push -u origin [master/ブランチ名]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -407,7 +419,8 @@ fixup [SHAタグ②] [コミットコメント②]</pre>
 <h2><a class="toc-backref" href="#id24">リモートリポジトリからの操作</a><a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id15">
 <h3>リモートリポジトリの特定のブランチをチェックアウト<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>git checkout -b [ブランチ名] origin/[ブランチ名]</pre>
+<div class="highlight-python"><div class="highlight"><pre>git checkout -b [ブランチ名] origin/[ブランチ名]
+</pre></div>
 </div>
 </div>
 </div>
@@ -442,7 +455,7 @@ fixup [SHAタグ②] [コミットコメント②]</pre>
       <!-- footer -->
       <footer>
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b2.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
       </footer>
       <!-- /footer -->
 

@@ -265,14 +265,15 @@
 <div class="line">検索　　：Ctrl + f</div>
 <div class="line">↓をまるっと書けばOK</div>
 </div>
-<div class="highlight-python"><pre>; コマンドプロンプトでの動作
+<div class="highlight-python"><div class="highlight"><pre>; コマンドプロンプトでの動作
 #IfWinActive,ahk_class ConsoleWindowClass
 ^k::Send,!{Space}ek ;範囲選択
 ^x::Send,!{Space}ey ;コピー
 ^v::Send,!{Space}ep ;貼り付け
 ^a::Send,!{Space}es ;全て選択
 ^f::Send,!{Space}ef ;検索
-#IfWinActive</pre>
+#IfWinActive
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -408,7 +409,7 @@
       <!-- footer -->
       <footer>
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
       </footer>
       <!-- /footer -->
 

@@ -32,6 +32,7 @@
    TIPS/Git
    TIPS/Gradle
    TIPS/jQuery
+   TIPS/Leiningen
    ruby/dotinstall
 
 |

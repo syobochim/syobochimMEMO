@@ -284,7 +284,8 @@
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id29">現在のフォルダをエクスプローラーで開く</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>start .</pre>
+<div class="highlight-python"><div class="highlight"><pre>start .
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -292,7 +293,8 @@
 </div>
 <div class="section" id="id4">
 <h2><a class="toc-backref" href="#id30">ツールの配置先を使用する</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>set TOOLPATH=%~dp0</pre>
+<div class="highlight-python"><div class="highlight"><pre>set TOOLPATH=%~dp0
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -300,14 +302,16 @@
 </div>
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id31">ドライブまたがりのフォルダ移動</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>cd /D パス</pre>
+<div class="highlight-python"><div class="highlight"><pre>cd /D パス
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 <div class="line">例)</div>
 </div>
-<div class="highlight-python"><pre>cd /D J:\\</pre>
+<div class="highlight-python"><div class="highlight"><pre>cd /D J:\\
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -315,7 +319,8 @@
 </div>
 <div class="section" id="id6">
 <h2><a class="toc-backref" href="#id32">ファイルコピー</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>cp [コピー元] [コピー先]</pre>
+<div class="highlight-python"><div class="highlight"><pre>cp [コピー元] [コピー先]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -323,7 +328,8 @@
 </div>
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id33">ディレクトリ階層だけコピー</a><a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>xcopy /T /E [コピー元] [コピー先]</pre>
+<div class="highlight-python"><div class="highlight"><pre>xcopy /T /E [コピー元] [コピー先]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -331,7 +337,8 @@
 </div>
 <div class="section" id="id8">
 <h2><a class="toc-backref" href="#id34">サブディレクトリのファイルも含めてコピー</a><a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>xcopy [コピー元] [コピー先] /E /Y</pre>
+<div class="highlight-python"><div class="highlight"><pre>xcopy [コピー元] [コピー先] /E /Y
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -339,7 +346,8 @@
 </div>
 <div class="section" id="id9">
 <h2><a class="toc-backref" href="#id35">ディレクトリ作成</a><a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>mkdir [ファイルパス]</pre>
+<div class="highlight-python"><div class="highlight"><pre>mkdir [ファイルパス]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -347,7 +355,8 @@
 </div>
 <div class="section" id="id10">
 <h2><a class="toc-backref" href="#id36">繰り返し処理</a><a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>FOR /L %変数 IN (開始,ステップ,終了) DO コマンド [コマンド パラメーター]</pre>
+<div class="highlight-python"><div class="highlight"><pre>FOR /L %変数 IN (開始,ステップ,終了) DO コマンド [コマンド パラメーター]
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -361,9 +370,10 @@
 <div class="line"><br /></div>
 <div class="line">例) abc1,abc2,abc3,...abc10までのフォルダを作成したい場合は</div>
 </div>
-<div class="highlight-python"><pre>for /L %%i in (1,1,10) do (
+<div class="highlight-python"><div class="highlight"><pre>for /L %%i in (1,1,10) do (
   mkdir abc%%i
-)</pre>
+)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -371,9 +381,10 @@
 </div>
 <div class="section" id="id11">
 <h2><a class="toc-backref" href="#id37">ファイルを一行ずつ処理</a><a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>FOR /f "delims=" %%変数 in (ファイル名) do (
+<div class="highlight-python"><div class="highlight"><pre>FOR /f &quot;delims=&quot; %%変数 in (ファイル名) do (
   処理(ファイルから読み込んだ文字列は「%%変数」にて使用可能)
-)</pre>
+)
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -389,7 +400,8 @@
 </div>
 <div class="section" id="id12">
 <h2><a class="toc-backref" href="#id38">標準出力と標準エラー出力の両方をファイルへ出力する</a><a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>コマンド &gt; ファイル名 2&gt;&amp;1</pre>
+<div class="highlight-python"><div class="highlight"><pre>コマンド &gt; ファイル名 2&gt;&amp;1
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -404,7 +416,8 @@
 </div>
 <div class="section" id="id14">
 <h3>正規表現を使用してフォルダ削除<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>for /R %i in (フォルダ名【正規表現可能】) do rd /Q /S "%i"</pre>
+<div class="highlight-python"><div class="highlight"><pre>for /R %i in (フォルダ名【正規表現可能】) do rd /Q /S &quot;%i&quot;
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -412,7 +425,8 @@
 </div>
 <div class="section" id="id15">
 <h3>正規表現を使用してファイル削除<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>for /R %i in (ファイル名【正規表現可能】) do del /Q /S "%i"</pre>
+<div class="highlight-python"><div class="highlight"><pre>for /R %i in (ファイル名【正規表現可能】) do del /Q /S &quot;%i&quot;
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -420,8 +434,9 @@
 </div>
 <div class="section" id="id16">
 <h3>サブディレクトリを含めてまるっと削除<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>del /s /q /f パス
-for /D %%f in ( * ) do rd /s /q "%%f"</pre>
+<div class="highlight-python"><div class="highlight"><pre>del /s /q /f パス
+for /D %%f in ( * ) do rd /s /q &quot;%%f&quot;
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -456,13 +471,15 @@ for /D %%f in ( * ) do rd /s /q "%%f"</pre>
 </div>
 <div class="section" id="pc">
 <h2><a class="toc-backref" href="#id40">PCに登録しているファイルサーバーの権限を確認</a><a class="headerlink" href="#pc" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>net use</pre>
+<div class="highlight-python"><div class="highlight"><pre>net use
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line">権限を削除する場合</div>
 </div>
-<div class="highlight-python"><pre>net use \\xxx.xx.xx.xxx /delete</pre>
+<div class="highlight-python"><div class="highlight"><pre>net use \\xxx.xx.xx.xxx /delete
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -472,7 +489,8 @@ for /D %%f in ( * ) do rd /s /q "%%f"</pre>
 <h2><a class="toc-backref" href="#id41">環境変数確認</a><a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id18">
 <h3>特定のものを確認<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-python"><pre>echo %PATH%</pre>
+<div class="highlight-python"><div class="highlight"><pre>echo %PATH%
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -493,7 +511,8 @@ for /D %%f in ( * ) do rd /s /q "%%f"</pre>
 <div class="line-block">
 <div class="line">リモートデスクトップで接続している端末を再起動する場合</div>
 </div>
-<div class="highlight-python"><pre>shutdown -r -m \\NJKWxx -t 0</pre>
+<div class="highlight-python"><div class="highlight"><pre>shutdown -r -m \\NJKWxx -t 0
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -530,14 +549,16 @@ for /D %%f in ( * ) do rd /s /q "%%f"</pre>
 </div>
 <div class="section" id="ip">
 <h2><a class="toc-backref" href="#id44">IPアドレスの確認</a><a class="headerlink" href="#ip" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>nslookup -?</pre>
+<div class="highlight-python"><div class="highlight"><pre>nslookup -?
+</pre></div>
 </div>
 <p>使用法</p>
-<div class="highlight-python"><pre>nslookup [-opt ...]                  # 既定のサーバーを使用する対話モード
-nslookup [-opt ...] - サーバー       # 'サーバー' を使用する対話モード
+<div class="highlight-python"><div class="highlight"><pre>nslookup [-opt ...]                  # 既定のサーバーを使用する対話モード
+nslookup [-opt ...] - サーバー       # &#39;サーバー&#39; を使用する対話モード
 nslookup [-opt ...] ホスト           # 既定のサーバーを使用して
-                                       'ホスト' を検索
-nslookup [-opt ...] ホスト サーバー  # 'サーバー' を使用して 'ホスト' を検索</pre>
+                                       &#39;ホスト&#39; を検索
+nslookup [-opt ...] ホスト サーバー  # &#39;サーバー&#39; を使用して &#39;ホスト&#39; を検索
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -546,7 +567,8 @@ nslookup [-opt ...] ホスト サーバー  # 'サーバー' を使用して '�
 <div class="section" id="jar">
 <h2><a class="toc-backref" href="#id45">Jarファイルに格納されているファイルの閲覧</a><a class="headerlink" href="#jar" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>JAR ファイル pack.jar に圧縮されているファイルの一覧は、次のコマンドを発行することで取得できる。</p>
-<div class="highlight-python"><pre>jar tf pack.jar</pre>
+<div class="highlight-python"><div class="highlight"><pre>jar tf pack.jar
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -554,7 +576,8 @@ nslookup [-opt ...] ホスト サーバー  # 'サーバー' を使用して '�
 </div>
 <div class="section" id="id22">
 <h2><a class="toc-backref" href="#id46">フォルダ内のファイル一覧を表示する</a><a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>dir *.jar /B /S</pre>
+<div class="highlight-python"><div class="highlight"><pre>dir *.jar /B /S
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><a href="#id23"><span class="problematic" id="id24">*</span></a>.jar は指定なくてもいい。</div>
@@ -571,17 +594,19 @@ nslookup [-opt ...] ホスト サーバー  # 'サーバー' を使用して '�
 </div>
 <div class="section" id="id25">
 <h2><a class="toc-backref" href="#id47">ファイルやコマンドの場所を検索</a><a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><pre>where &lt;&lt;実行コマンドなど&gt;&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>where &lt;&lt;実行コマンドなど&gt;&gt;
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">コマンドの実行したときにどこの、何のファイルが場所を探すことが出来る。</div>
 <div class="line"><br /></div>
 <div class="line">例）</div>
 </div>
-<div class="highlight-python"><pre>C:\BL\DML08\20130917_hon&gt;where find
+<div class="highlight-python"><div class="highlight"><pre>C:\BL\DML08\20130917_hon&gt;where find
 c:\java\gnuwin32\bin\find.exe
 c:\Windows\System32\find.exe
-c:\cygwin\bin\find.exe</pre>
+c:\cygwin\bin\find.exe
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -596,7 +621,8 @@ c:\cygwin\bin\find.exe</pre>
 <div class="line"><br /></div>
 <div class="line">ネットワーク割り当てコマンド</div>
 </div>
-<div class="highlight-python"><pre>pushd \\computer1\project1\program1</pre>
+<div class="highlight-python"><div class="highlight"><pre>pushd \\computer1\project1\program1
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line">自動的にネットワークドライブが割り当てられ、そのディレクトリに移動する。</div>
@@ -610,18 +636,20 @@ c:\cygwin\bin\find.exe</pre>
 <div class="line">なお、認証を行うには、たとえば次のように入力して認証のダイアログボックスを表示し、ユーザー名とパスワードを入力してください。</div>
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python"><pre>start \\computer1\project1\program1</pre>
+<div class="highlight-python"><div class="highlight"><pre>start \\computer1\project1\program1
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 <div class="line">ネットワーク上のバッチを実行する場合は、下記ではさめばOK！</div>
 </div>
-<div class="highlight-python"><pre>rem 相対パスを取得して一時ディレクトリへ割り当て
+<div class="highlight-python"><div class="highlight"><pre>rem 相対パスを取得して一時ディレクトリへ割り当て
 PUSHD %~dp0
 
 rem 上の処理を無効化
-POPD</pre>
+POPD
+</pre></div>
 </div>
 <ul class="simple">
 <li>%~dp0 ： ツールが配置されている相対パスを取得</li>
@@ -647,7 +675,8 @@ POPD</pre>
 <div class="line"><br /></div>
 <div class="line">例)</div>
 </div>
-<div class="highlight-python"><pre>netstat -n 1  // 1秒おきに表示</pre>
+<div class="highlight-python"><div class="highlight"><pre>netstat -n 1  // 1秒おきに表示
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -750,7 +779,7 @@ POPD</pre>
       <!-- footer -->
       <footer>
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
       </footer>
       <!-- /footer -->
 
