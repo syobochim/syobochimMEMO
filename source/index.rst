@@ -33,6 +33,7 @@
    TIPS/Gradle
    TIPS/jQuery
    TIPS/Leiningen
+   TIPS/Clojure
    ruby/dotinstall
 
 |
