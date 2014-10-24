@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     
-    <title>Leiningen &mdash; syobochim_MEMO 2013.10.15 ドキュメント</title>
+    <title>Clojure &mdash; syobochim_MEMO 2013.10.15 ドキュメント</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -60,7 +60,7 @@
   });
 </script>
     <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
-    <link rel="next" title="Leiningen" href="Clojure.html" />
+    <link rel="next" title="rubyMEMO" href="../ruby/dotinstall.html" />
     <link rel="prev" title="jQuery" href="jQuery.html" /> 
   </head>
   <body>
@@ -80,7 +80,7 @@
                 <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
                 </li>
                 <li>
-                <a href="Clojure.html" title="Leiningen" accesskey="N">次へ</a>
+                <a href="../ruby/dotinstall.html" title="rubyMEMO" accesskey="N">次へ</a>
                 </li>
                 <li>
                 <a href="jQuery.html" title="jQuery" accesskey="P">前へ</a>
@@ -105,15 +105,19 @@
   <div class="for-mobile sidebar hidden-phone">
   <h3><a href="../index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Leiningen</a><ul>
+<li><a class="reference internal" href="#">Clojure</a><ul>
+<li><a class="reference internal" href="#id2">命名</a><ul>
+<li><a class="reference internal" href="#id3">関数名</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#jar">Jarファイルとして出力する</a></li>
-<li><a class="reference internal" href="#id2">Leiningenのバージョンアップ</a></li>
-<li><a class="reference internal" href="#id3">テストを行う</a></li>
-<li><a class="reference internal" href="#id4">リポジトリの検索</a></li>
+<li><a class="reference internal" href="#leiningen">Leiningenのバージョンアップ</a></li>
+<li><a class="reference internal" href="#id4">テストを行う</a></li>
+<li><a class="reference internal" href="#id5">リポジトリの検索</a></li>
 <li><a class="reference internal" href="#repl">REPLを立ち上げる</a></li>
-<li><a class="reference internal" href="#id5">使い方を表示する</a></li>
-<li><a class="reference internal" href="#id6">特定のタスクの使い方をみる</a></li>
-<li><a class="reference internal" href="#id7">複数のタスクを記述する</a></li>
+<li><a class="reference internal" href="#id6">使い方を表示する</a></li>
+<li><a class="reference internal" href="#id7">特定のタスクの使い方をみる</a></li>
+<li><a class="reference internal" href="#id8">複数のタスクを記述する</a></li>
 </ul>
 </li>
 </ul>
@@ -122,11 +126,11 @@
   <p class="topless"><a href="jQuery.html"
                         title="前の章へ">jQuery</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="Clojure.html"
-                        title="次の章へ">Leiningen</a></p>
+  <p class="topless"><a href="../ruby/dotinstall.html"
+                        title="次の章へ">rubyMEMO</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/TIPS/Leiningen.txt"
+    <li><a href="../_sources/TIPS/Clojure.txt"
            rel="nofollow">ソースコードを表示</a></li>
   </ul>
 <div id="searchbox">
@@ -155,15 +159,19 @@
   <div class=" sidebar hidden-phone">
   <h3><a href="../index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Leiningen</a><ul>
+<li><a class="reference internal" href="#">Clojure</a><ul>
+<li><a class="reference internal" href="#id2">命名</a><ul>
+<li><a class="reference internal" href="#id3">関数名</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#jar">Jarファイルとして出力する</a></li>
-<li><a class="reference internal" href="#id2">Leiningenのバージョンアップ</a></li>
-<li><a class="reference internal" href="#id3">テストを行う</a></li>
-<li><a class="reference internal" href="#id4">リポジトリの検索</a></li>
+<li><a class="reference internal" href="#leiningen">Leiningenのバージョンアップ</a></li>
+<li><a class="reference internal" href="#id4">テストを行う</a></li>
+<li><a class="reference internal" href="#id5">リポジトリの検索</a></li>
 <li><a class="reference internal" href="#repl">REPLを立ち上げる</a></li>
-<li><a class="reference internal" href="#id5">使い方を表示する</a></li>
-<li><a class="reference internal" href="#id6">特定のタスクの使い方をみる</a></li>
-<li><a class="reference internal" href="#id7">複数のタスクを記述する</a></li>
+<li><a class="reference internal" href="#id6">使い方を表示する</a></li>
+<li><a class="reference internal" href="#id7">特定のタスクの使い方をみる</a></li>
+<li><a class="reference internal" href="#id8">複数のタスクを記述する</a></li>
 </ul>
 </li>
 </ul>
@@ -172,11 +180,11 @@
   <p class="topless"><a href="jQuery.html"
                         title="前の章へ">jQuery</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="Clojure.html"
-                        title="次の章へ">Leiningen</a></p>
+  <p class="topless"><a href="../ruby/dotinstall.html"
+                        title="次の章へ">rubyMEMO</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/TIPS/Leiningen.txt"
+    <li><a href="../_sources/TIPS/Clojure.txt"
            rel="nofollow">ソースコードを表示</a></li>
   </ul>
 <div id="searchbox">
@@ -203,26 +211,40 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="leiningen">
-<h1><a class="toc-backref" href="#id8">Leiningen</a><a class="headerlink" href="#leiningen" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="clojure">
+<h1><a class="toc-backref" href="#id9">Clojure</a><a class="headerlink" href="#clojure" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="contents topic" id="id1">
 <p class="topic-title first">目次</p>
 <ul class="simple">
-<li><a class="reference internal" href="#leiningen" id="id8">Leiningen</a><ul>
-<li><a class="reference internal" href="#jar" id="id9">Jarファイルとして出力する</a></li>
-<li><a class="reference internal" href="#id2" id="id10">Leiningenのバージョンアップ</a></li>
-<li><a class="reference internal" href="#id3" id="id11">テストを行う</a></li>
-<li><a class="reference internal" href="#id4" id="id12">リポジトリの検索</a></li>
-<li><a class="reference internal" href="#repl" id="id13">REPLを立ち上げる</a></li>
-<li><a class="reference internal" href="#id5" id="id14">使い方を表示する</a></li>
-<li><a class="reference internal" href="#id6" id="id15">特定のタスクの使い方をみる</a></li>
-<li><a class="reference internal" href="#id7" id="id16">複数のタスクを記述する</a></li>
+<li><a class="reference internal" href="#clojure" id="id9">Clojure</a><ul>
+<li><a class="reference internal" href="#id2" id="id10">命名</a></li>
+<li><a class="reference internal" href="#jar" id="id11">Jarファイルとして出力する</a></li>
+<li><a class="reference internal" href="#leiningen" id="id12">Leiningenのバージョンアップ</a></li>
+<li><a class="reference internal" href="#id4" id="id13">テストを行う</a></li>
+<li><a class="reference internal" href="#id5" id="id14">リポジトリの検索</a></li>
+<li><a class="reference internal" href="#repl" id="id15">REPLを立ち上げる</a></li>
+<li><a class="reference internal" href="#id6" id="id16">使い方を表示する</a></li>
+<li><a class="reference internal" href="#id7" id="id17">特定のタスクの使い方をみる</a></li>
+<li><a class="reference internal" href="#id8" id="id18">複数のタスクを記述する</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id10">命名</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h3>関数名<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>最後に「!」をつけると、何か状態を変える関数という意味になる</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
 <div class="section" id="jar">
-<h2><a class="toc-backref" href="#id9">Jarファイルとして出力する</a><a class="headerlink" href="#jar" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Jarファイルとして出力する</a><a class="headerlink" href="#jar" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li>エントリーポイントとなるcore.cljに「:gen-class」をnsの中につける。</li>
 </ul>
@@ -250,14 +272,14 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id10">Leiningenのバージョンアップ</a><a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="leiningen">
+<h2><a class="toc-backref" href="#id12">Leiningenのバージョンアップ</a><a class="headerlink" href="#leiningen" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>lein upgrade
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h2><a class="toc-backref" href="#id11">テストを行う</a><a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id13">テストを行う</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>lein test
 </pre></div>
 </div>
@@ -265,32 +287,32 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2><a class="toc-backref" href="#id12">リポジトリの検索</a><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id14">リポジトリの検索</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>lein search
 </pre></div>
 </div>
 </div>
 <div class="section" id="repl">
-<h2><a class="toc-backref" href="#id13">REPLを立ち上げる</a><a class="headerlink" href="#repl" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">REPLを立ち上げる</a><a class="headerlink" href="#repl" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>lein repl
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2><a class="toc-backref" href="#id14">使い方を表示する</a><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id16">使い方を表示する</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>lein help
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h2><a class="toc-backref" href="#id15">特定のタスクの使い方をみる</a><a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id17">特定のタスクの使い方をみる</a><a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>lein help &lt;タスク名&gt;
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h2><a class="toc-backref" href="#id16">複数のタスクを記述する</a><a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id18">複数のタスクを記述する</a><a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">doから始めることで複数のタスクをカンマ区切りで一度記述することができる</div>
 <div class="line"><br /></div>
@@ -321,7 +343,7 @@
     <ul class="nav pull-right">
       
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
-        <li><a href="Clojure.html" title="Leiningen" >次へ</a></li>
+        <li><a href="../ruby/dotinstall.html" title="rubyMEMO" >次へ</a></li>
         <li><a href="jQuery.html" title="jQuery" >前へ</a></li>
         <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
       
