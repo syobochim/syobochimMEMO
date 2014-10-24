@@ -32,9 +32,9 @@
    TIPS/Git
    TIPS/Gradle
    TIPS/jQuery
-   TIPS/Leiningen
    TIPS/Clojure
    ruby/dotinstall
+   kotlin/index
 
 |
 |
