@@ -11,7 +11,7 @@ Hello World!!
 ---------------------
 Hello Worldの例。かわゆさある。
 
-.. code-blcok:: java
+.. code-block:: java
 
   package hello
 
