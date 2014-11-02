@@ -416,10 +416,7 @@
 <tr class="row-odd"><td>?</td>
 <td>任意の1文字</td>
 </tr>
-<tr class="row-even"><td><ul class="first last simple">
-<li>(←アスタリスク「＊」)</li>
-</ul>
-</td>
+<tr class="row-even"><td>*</td>
 <td>任意の文字列</td>
 </tr>
 <tr class="row-odd"><td>[...]</td>
@@ -1036,7 +1033,7 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">./devファイルのなかのファイルに対して&#8221;hoge&#8221;文字列を再帰的に検索する</div>
+<div class="line">./devディレクトリのなかのファイルに対して&#8221;hoge&#8221;文字列を再帰的に検索する</div>
 <div class="line">オプションについて</div>
 </div>
 <ul class="simple">
@@ -1060,8 +1057,8 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]
 </div>
 <ul class="simple">
 <li>-Pオプションは、Perl風の正規表現を使うという意味。</li>
-<li>[sS]は改行文字も含めたすべての文字1文字にマッチ。</li>
-<li><a href="#id42"><span class="problematic" id="id43">*</span></a>?で、[sS]の繰り返しのうちもっとも短いものにマッチ。</li>
+<li><tt class="docutils literal"><span class="pre">[\s\S]</span></tt> は改行文字も含めたすべての文字1文字にマッチ。</li>
+<li><a href="#id42"><span class="problematic" id="id43">*</span></a>?で、 <tt class="docutils literal"><span class="pre">[\s\S]</span></tt> の繰り返しのうちもっとも短いものにマッチ。</li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>
