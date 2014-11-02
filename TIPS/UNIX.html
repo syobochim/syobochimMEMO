@@ -1032,13 +1032,19 @@ df [-a] [-k] [-F FSType] [-l] [Solaris]
 </div>
 <div class="section" id="id40">
 <h2><a class="toc-backref" href="#id86">あるディレクトリ内のファイルをGrep</a><a class="headerlink" href="#id40" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>find /etc -type f -print | xargs grep hoge /dev/null
+<div class="highlight-python"><div class="highlight"><pre>grep -nIR hoge ./dev
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">find コマンドで /etc 以下の通常のファイル(ディレクトリなど以外)を探し(-type f)、ファイル名を表示させます(-print)。</div>
-<div class="line">xargs コマンドは find の出力したファイル名を展開して「grep hoge /dev/nlll ファイル名リスト」というコマンドを実行します。</div>
-<div class="line"><br /></div>
+<div class="line">./devファイルのなかのファイルに対して&#8221;hoge&#8221;文字列を再帰的に検索する</div>
+<div class="line">オプションについて</div>
+</div>
+<ul class="simple">
+<li>n : 対象文字列がある行数を表示する</li>
+<li>I : バイナリファイルを除いて検索する</li>
+<li>R : 再帰的に検索</li>
+</ul>
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
