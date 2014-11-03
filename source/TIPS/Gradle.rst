@@ -8,9 +8,9 @@ Gradle
 初期化
 =====================
 
-::
+.. code-block :: sh
 
-  gradle init --type java-library
+  $ gradle init --type java-library
 
 
 java-libralyの他にも、下記オプションを選択できる。
@@ -20,7 +20,7 @@ java-libralyの他にも、下記オプションを選択できる。
 - pom
 - scala-library
 
-詳細な説明はhttp://www.gradle.org/docs/current/userguide/build_init_plugin.html
+詳細な説明は、http://www.gradle.org/docs/current/userguide/build_init_plugin.html
 
 |
 |
@@ -33,9 +33,8 @@ java-libralyの他にも、下記オプションを選択できる。
 | また、Gradleの使用バージョンを統一させることが出来る。
 
 
-::
+.. code-block:: groovy
 
    task wrapper(type: Wrapper) {
        gradleVersion = '2.0'
    }
-
