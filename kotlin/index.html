@@ -59,7 +59,8 @@
     });
   });
 </script>
-    <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" /> 
+    <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
+    <link rel="prev" title="rubyMEMO" href="../ruby/dotinstall.html" /> 
   </head>
   <body>
     <div class="navbar navbar-fixed-top ">
@@ -76,6 +77,9 @@
               
                 <li>
                 <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
+                </li>
+                <li>
+                <a href="../ruby/dotinstall.html" title="rubyMEMO" accesskey="P">前へ</a>
                 </li>
               
             </ul>
@@ -99,10 +103,15 @@
   <ul>
 <li><a class="reference internal" href="#">Kotlin(*´Д`)ﾊｧﾊｧ</a><ul>
 <li><a class="reference internal" href="#hello-world">Hello World!!</a></li>
+<li><a class="reference internal" href="#class">Classの定義</a></li>
+<li><a class="reference internal" href="#id3">高階関数</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../ruby/dotinstall.html"
+                        title="前の章へ">rubyMEMO</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/kotlin/index.txt"
@@ -136,10 +145,15 @@
   <ul>
 <li><a class="reference internal" href="#">Kotlin(*´Д`)ﾊｧﾊｧ</a><ul>
 <li><a class="reference internal" href="#hello-world">Hello World!!</a></li>
+<li><a class="reference internal" href="#class">Classの定義</a></li>
+<li><a class="reference internal" href="#id3">高階関数</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../ruby/dotinstall.html"
+                        title="前の章へ">rubyMEMO</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/kotlin/index.txt"
@@ -187,6 +201,38 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="class">
+<h2>Classの定義<a class="headerlink" href="#class" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Classのコンストラクタは１つだけしか定義出来ない
+（コンストラクタオーバーロードできない）。
+プライマリコンストラクタと呼ばれる。
+クラスメンバ変数はval(不変)かvar（可変）で宣言する。</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">class</span> <span class="nf">Syobochim</span><span class="o">(){</span>
+  <span class="n">val</span> <span class="n">range</span> <span class="o">=</span> <span class="mi">1</span><span class="o">..</span><span class="mi">10</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>高階関数<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Kotlinでは高階関数が使える。</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">fun</span> <span class="n">Syobochim</span><span class="o">.</span><span class="na">templeatePattern</span><span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="o">(</span><span class="n">Int</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">Unit</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="n">in</span> <span class="k">this</span><span class="o">.</span><span class="na">range</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">f</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>使用例。</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">fun</span> <span class="nf">main</span><span class="o">(</span><span class="n">args</span> <span class="o">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;)</span> <span class="o">{</span>
+  <span class="n">val</span> <span class="n">syobo</span> <span class="o">=</span> <span class="n">Syobochim</span><span class="o">()</span>
+  <span class="n">syobo</span><span class="o">.</span><span class="na">templeatePattern</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;財布ない！&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -206,6 +252,7 @@
     <ul class="nav pull-right">
       
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="../ruby/dotinstall.html" title="rubyMEMO" >前へ</a></li>
         <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
       
     </ul>
