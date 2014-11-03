@@ -33,6 +33,7 @@
    TIPS/Gradle
    TIPS/jQuery
    TIPS/Clojure
+   TIPS/java8
    ruby/dotinstall
    kotlin/index
 
