@@ -13,12 +13,12 @@ Hello Worldの例。かわゆさある。
 
 .. code-block:: java
 
-  package hello
+   package hello
 
-  // main関数はパッケージレベルのファンクションで宣言する
-  fun main(args: Array<String>) {
-    println("Hello World!")
-  }
+   // main関数はパッケージレベルのファンクションで宣言する
+   fun main(args: Array<String>) {
+     println("Hello World!")
+   }
   
 Classの定義
 ---------------------
@@ -29,9 +29,9 @@ Classのコンストラクタは１つだけしか定義出来ない
 
 .. code-block:: java
 
-  class Syobochim() {
-    val range = 1..10 
-  }
+   class Syobochim() {
+     val range = 1..10
+   }
 
 高階関数
 ---------------------
@@ -39,22 +39,22 @@ Kotlinでは高階関数が使える。
 
 .. code-block:: java  
 
-  fun Syobochim.templeatePattern(f : (Int) -> Unit) {
-    for(i in this.range) {
-      f(i)
-    }
-  }
+   fun Syobochim.templeatePattern(f : (Int) -> Unit) {
+     for(i in this.range) {
+       f(i)
+     }
+   }
   
 使用例。
 
 .. code-block:: java  
 
-  fun main(args : Array<String>) {
-    val syobo = Syobochim()
-    syobo.templeatePattern {
-      println("財布ない！")
-    }
-  }
+   fun main(args : Array<String>) {
+     val syobo = Syobochim()
+     syobo.templeatePattern {
+       println("財布ない！")
+     }
+   }
 
 
 
