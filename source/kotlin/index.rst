@@ -25,11 +25,11 @@ Classの定義
 Classのコンストラクタは１つだけしか定義出来ない
 （コンストラクタオーバーロードできない）。
 プライマリコンストラクタと呼ばれる。
-クラスメンバ変数はval(不変)かvar（可変）で宣言する。
+クラスメンバ変数はval（不変）かvar（可変）で宣言する。
 
 .. code-block:: java
 
-  class Syobochim(){
+  class Syobochim() {
     val range = 1..10 
   }
 
