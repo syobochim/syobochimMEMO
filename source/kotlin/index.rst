@@ -1,4 +1,4 @@
-Kotlin(*´Д`)ﾊｧﾊｧ
+Kotlin(\*´Д`)ﾊｧﾊｧ
 =======================
 Kotlinは、IntelliJ IDEAで有名なJetBrainsさんが作ってるプログラミング言語。
 
