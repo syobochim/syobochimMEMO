@@ -174,9 +174,14 @@ http://k.swd.cc/learnGitBranching-ja/
 
   git checkout -b [ブランチ名] origin/[ブランチ名]
 
+|
+|
 
+ファイル名の大文字小文字を変更する
+=====================================
 
+ファイル名を変更するだけだと、認識されない。
 
+::
 
-
-
+  git mv -f collatz.java Collatz.java
