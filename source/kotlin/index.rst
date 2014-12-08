@@ -66,9 +66,25 @@ Classのコンストラクタは１つだけしか定義出来ない
      }
    }
 
-staticメソッドは
+staticメソッドは無い。
+「それはパッケージレベルの関数でいいんでない?」とJetBrainsさんも仰っている。
+そして「どーしても必要ならScalaのコンパニオンオブジェクトみたいなclass objectってのがあるよ。」と寛容さを見せるKotlin。
+http://kotlinlang.org/docs/reference/classes.html#class-objects
 
-可視性は
+publicとかprivateは4種類ある.
+
+private
+   同一スコープからしか見えない
+
+protected
+   private+子クラスからしか見えない
+
+internal
+   これがデフォルト
+   同じモジュールの中からは見える
+
+public
+   どこからでも見える
 
 高階関数
 ---------------------
@@ -96,12 +112,34 @@ Kotlinでは高階関数が使える。
 KotlinからJavaを使う
 --------------------
 
-importは
+そのままJavaのクラスがimportできる。
+
+.. code-block:: java
+
+   import java.util.ArrayList
+
+   fun main(args: Array<String>) {
+       println("Hello, World!")
+       listSample()
+   }
+
+   fun listSample() {
+       val list = ArrayList<Int>()
+
+       list.add(0)
+       list.add(1)
+       list.add(2)
+
+       for (i in list) {
+           println("number is $i")
+       }
+   }
+
 
 JavaからKotlinを使う
 --------------------
 
-jarにまとめて
+KotlinはJVM言語なのでbytecodeになってしまえばJavaから呼べる。
   
 各種情報源
 ----------
