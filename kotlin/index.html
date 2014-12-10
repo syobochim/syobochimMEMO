@@ -8,18 +8,17 @@
     <meta charset="utf-8" />
     
     <title>Kotlin(*´Д`)ﾊｧﾊｧ &mdash; syobochim_MEMO 2013.10.15 ドキュメント</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
     
+
 <link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
-<link rel="stylesheet" href="../_static/css/bootswatch-united.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-united.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-united.css" type="text/css" />
+
 <link rel="stylesheet" href="../_static/css/font-awesome.min.css">
-<!--[if IE 7]>
-<link rel="stylesheet" href="../_static/css/font-awesome-ie7.min.css">
-<![endif]-->
+
 <style type="text/css">
   body {
     padding-top: 60px;
@@ -27,10 +26,10 @@
   }
 }
 </style>
-<link rel="stylesheet" href="../_static/basicstrap.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
 <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
 <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-<link rel="stylesheet" href="../_static/css/bootstrap-responsive.min.css" type="text/css" />
     
 <script type="text/javascript">
   var DOCUMENTATION_OPTIONS = {
@@ -41,49 +40,70 @@
             HAS_SOURCE:  true
   };
 </script>
-<script type="text/javascript" src="../_static/js/jquery.min.js"></script>
-<script type="text/javascript" src="../_static/underscore.js"></script>
-<script type="text/javascript" src="../_static/doctools.js"></script>
-<script type="text/javascript" src="../_static/translations.js"></script>
-<script type="text/javascript" src="../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('.show-sidebar').click(function(e) {
-       e.preventDefault();
-       if ($(".show-sidebar").html() == "Open Table Of Contents") {
-          $('.for-mobile').removeClass('hidden-phone');
-          $(".show-sidebar").html("Close Table Of Contents");
-       } else {
-          $(".show-sidebar").html("Open Table Of Contents");
-       }
-    });
-  });
 </script>
     <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
     <link rel="prev" title="rubyMEMO" href="../ruby/dotinstall.html" /> 
   </head>
-  <body>
-    <div class="navbar navbar-fixed-top ">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav pull-right">
-              
-                <li>
-                <a href="../genindex.html" title="総合索引" accesskey="I">索引</a>
-                </li>
-                <li>
-                <a href="../ruby/dotinstall.html" title="rubyMEMO" accesskey="P">前へ</a>
-                </li>
-              
-            </ul>
-          </div>
+          </button>
+          <a class="navbar-brand" href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">Kotlin(*´Д`)ﾊｧﾊｧ</a><ul>
+<li><a class="reference internal" href="#id1">Kotlinの動かし方</a></li>
+<li><a class="reference internal" href="#hello-world">Hello World!!</a></li>
+<li><a class="reference internal" href="#class">Classの定義</a></li>
+<li><a class="reference internal" href="#id2">高階関数</a></li>
+<li><a class="reference internal" href="#kotlinjava">KotlinからJavaを使う</a></li>
+<li><a class="reference internal" href="#javakotlin">JavaからKotlinを使う</a></li>
+<li><a class="reference internal" href="#id3">各種情報源</a></li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="../ruby/dotinstall.html" title="rubyMEMO" accesskey="P">前へ </a></li>
+              <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../_sources/kotlin/index.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -92,61 +112,21 @@
     <!-- container -->
     <div class="container-fluid">
 
-
-      
-      <div class="row-fluid hidden-desktop hidden-tablet">
-      
-<div class="span3 ">
-  <a class="visible-phone btn btn-small show-sidebar" data-toggle="collapse" data-target=".for-mobile">Open Table Of Contents</a>
-  <div class="for-mobile sidebar hidden-phone">
-  <h3><a href="../index.html">目次</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Kotlin(*´Д`)ﾊｧﾊｧ</a><ul>
-<li><a class="reference internal" href="#hello-world">Hello World!!</a></li>
-<li><a class="reference internal" href="#class">Classの定義</a></li>
-<li><a class="reference internal" href="#id1">高階関数</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>前のトピックへ</h4>
-  <p class="topless"><a href="../ruby/dotinstall.html"
-                        title="前の章へ">rubyMEMO</a></p>
-  <h3>このページ</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/kotlin/index.txt"
-           rel="nofollow">ソースコードを表示</a></li>
-  </ul>
-<div id="searchbox">
-  <h3>クイック検索</h3>
-  <form class="search form-search" action="../search.html" method="get">
-      <div class="input-append">
-        <input type="text" class="search-query" name="q">
-        <input type="submit" class="btn" value="検索" />
-      </div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    モジュール、クラス、または関数名を入力してください
-    </p>
-</div>
-  </div>
-</div>
-      </div>
-      
-
       <!-- row -->
-      <div class="row-fluid">
+      <div class="row">
          
-<div class="span3 visible-desktop visible-tablet">
-  <div class=" sidebar hidden-phone">
+<div class="col-md-3 hidden-xs">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
   <h3><a href="../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Kotlin(*´Д`)ﾊｧﾊｧ</a><ul>
+<li><a class="reference internal" href="#id1">Kotlinの動かし方</a></li>
 <li><a class="reference internal" href="#hello-world">Hello World!!</a></li>
 <li><a class="reference internal" href="#class">Classの定義</a></li>
-<li><a class="reference internal" href="#id1">高階関数</a></li>
+<li><a class="reference internal" href="#id2">高階関数</a></li>
+<li><a class="reference internal" href="#kotlinjava">KotlinからJavaを使う</a></li>
+<li><a class="reference internal" href="#javakotlin">JavaからKotlinを使う</a></li>
+<li><a class="reference internal" href="#id3">各種情報源</a></li>
 </ul>
 </li>
 </ul>
@@ -159,12 +139,14 @@
     <li><a href="../_sources/kotlin/index.txt"
            rel="nofollow">ソースコードを表示</a></li>
   </ul>
-<div id="searchbox">
+<div id="searchbox" role="search">
   <h3>クイック検索</h3>
-  <form class="search form-search" action="../search.html" method="get">
-      <div class="input-append">
-        <input type="text" class="search-query" name="q">
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
         <input type="submit" class="btn" value="検索" />
+        </span>
       </div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -177,8 +159,8 @@
 </div> 
         
 
-        <div class="span9">
-          <div class="document">
+        <div class="col-md-9">
+          <div class="document" role="main">
             <div class="documentwrapper">
               <div class="bodywrapper">
                 <div class="body">
@@ -189,6 +171,19 @@
 <p>静的に型付けされた言語で、JVM上で実行することができる。
 また、JavaScriptへの変換もできる。</p>
 <p>何よりも名前がかわゆく、女子力が高まる感じが非常に良い言語である。</p>
+<div class="section" id="id1">
+<h2>Kotlinの動かし方<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>とりあえず実行するならブラウザで動く <a class="reference external" href="http://kotlin-demo.jetbrains.com/">Kotlin Web Demo</a> 。
+Kotlinお手軽。</p>
+<p>ちゃんとやるなら <a class="reference external" href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> 。
+日本だとお髭のイケメンさんがライセンスの販売代理店をやっている。</p>
+<p>でも Yosemite で起動するとJava6が無いと怒られる。 <cite>:;(∩´﹏`∩);:</cite></p>
+<p>検索するとさっきの代理店のブログが見つかった。→ <a class="reference external" href="http://samuraism.com/2014/10/17/2555">http://samuraism.com/2014/10/17/2555</a>
+無事起動できた!! <cite>（｀・ω・´）</cite></p>
+<p>IntelliJ IDEA → Preferences... → Plugins → Install JetBrains plugin... ボタン → &#8220;kotlin&#8221;で探してInstall plugin!!
+IntelliJ IDEA再起動してインストール完了 <cite>＼(^o^)／</cite></p>
+<p>後の細かいところは <a class="reference external" href="https://sites.google.com/site/tarokotlin/chap2/sec24">https://sites.google.com/site/tarokotlin/chap2/sec24</a> に任せたっ!</p>
+</div>
 <div class="section" id="hello-world">
 <h2>Hello World!!<a class="headerlink" href="#hello-world" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Hello Worldの例。かわゆさある。</p>
@@ -206,15 +201,44 @@
 <p>Classのコンストラクタは１つだけしか定義出来ない
 （コンストラクタオーバーロードできない）。
 プライマリコンストラクタと呼ばれる。
-クラスメンバ変数はval(不変)かvar（可変）で宣言する。</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="kd">class</span> <span class="nf">Syobochim</span><span class="o">(){</span>
+クラスメンバ変数はval（不変）かvar（可変）で宣言する。</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">class</span> <span class="nf">Syobochim</span><span class="o">()</span> <span class="o">{</span>
   <span class="n">val</span> <span class="n">range</span> <span class="o">=</span> <span class="mi">1</span><span class="o">..</span><span class="mi">10</span>
 <span class="o">}</span>
 </pre></div>
 </div>
+<p>メソッドはこう書ける。</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">fun</span> <span class="nf">main</span><span class="o">(</span><span class="nl">args:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;)</span> <span class="o">{</span>
+  <span class="n">val</span> <span class="n">syobochim</span> <span class="o">=</span> <span class="n">Syobochim</span><span class="o">()</span>
+  <span class="n">syobochim</span><span class="o">.</span><span class="na">say</span><span class="o">()</span> <span class="c1">// 女子力!</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nf">Syobochim</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">fun</span> <span class="nf">say</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;女子力!&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
 </div>
-<div class="section" id="id1">
-<h2>高階関数<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>staticメソッドは無い。
+「それはパッケージレベルの関数でいいんでない?」とJetBrainsさんも仰っている。
+そして「どーしても必要ならScalaのコンパニオンオブジェクトみたいなclass objectってのがあるよ。」と寛容さを見せるKotlin。
+<a class="reference external" href="http://kotlinlang.org/docs/reference/classes.html#class-objects">http://kotlinlang.org/docs/reference/classes.html#class-objects</a></p>
+<p>publicとかprivateは4種類ある.</p>
+<dl class="docutils">
+<dt>private</dt>
+<dd>同一スコープからしか見えない</dd>
+<dt>protected</dt>
+<dd>private+子クラスからしか見えない</dd>
+<dt>internal</dt>
+<dd>これがデフォルト
+同じモジュールの中からは見える</dd>
+<dt>public</dt>
+<dd>どこからでも見える</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h2>高階関数<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Kotlinでは高階関数が使える。</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">fun</span> <span class="n">Syobochim</span><span class="o">.</span><span class="na">templeatePattern</span><span class="o">(</span><span class="n">f</span> <span class="o">:</span> <span class="o">(</span><span class="n">Int</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">Unit</span><span class="o">)</span> <span class="o">{</span>
   <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="n">in</span> <span class="k">this</span><span class="o">.</span><span class="na">range</span><span class="o">)</span> <span class="o">{</span>
@@ -233,6 +257,49 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="kotlinjava">
+<h2>KotlinからJavaを使う<a class="headerlink" href="#kotlinjava" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>そのままJavaのクラスがimportできる。</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">java.util.ArrayList</span>
+
+<span class="n">fun</span> <span class="nf">main</span><span class="o">(</span><span class="nl">args:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;)</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="o">)</span>
+    <span class="n">listSample</span><span class="o">()</span>
+<span class="o">}</span>
+
+<span class="n">fun</span> <span class="nf">listSample</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">val</span> <span class="n">list</span> <span class="o">=</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;()</span>
+
+    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+
+    <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="n">in</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">println</span><span class="o">(</span><span class="s">&quot;number is $i&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="javakotlin">
+<h2>JavaからKotlinを使う<a class="headerlink" href="#javakotlin" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>KotlinはJVM言語なのでbytecodeになってしまえばJavaから呼べる。</p>
+</div>
+<div class="section" id="id3">
+<h2>各種情報源<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://kotlinlang.org/">公式サイト</a></li>
+<li><a class="reference external" href="https://github.com/JetBrains/kotlin">GitHubレポジトリ</a></li>
+</ul>
+<p><a class="reference external" href="https://twitter.com/ngsw_taro">&#64;ngsw_taro</a> さんが頑張ってるAdvent Calendarと資料。</p>
+<ul class="simple">
+<li><a class="reference external" href="https://atnd.org/events/34627">Kotlin Advent Calendar 2012 (全部俺) JavaプログラマのためのKotlin入門</a></li>
+<li><a class="reference external" href="http://www.adventar.org/calendars/148">Kotlin Advent Calendar 2013</a></li>
+<li><a class="reference external" href="http://www.adventar.org/calendars/477">Kotlin Advent Calendar 2014</a></li>
+<li><a class="reference external" href="https://speakerdeck.com/ntaro/jvmyan-yu-falsekawaiiruki-kotlinfalseshao-jie">JVM言語のかわいいルーキー Kotlinの紹介</a></li>
+<li><a class="reference external" href="https://sites.google.com/site/tarokotlin/home">プログラミング言語Kotlin 解説</a></li>
+</ul>
+</div>
 </div>
 
 
@@ -246,14 +313,16 @@
       </div><!-- /row -->
 
       <!-- row -->
-      <div class="row-fluid">
-<div class="related navbar ">
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
   <div class="navbar-inner">
-    <ul class="nav pull-right">
+    <ul class="nav navbar-nav">
+        <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li>
+    </ul>
+    <ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
       
-        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
         <li><a href="../ruby/dotinstall.html" title="rubyMEMO" >前へ</a></li>
-        <li><a href="../index.html">syobochim_MEMO 2013.10.15 ドキュメント</a></li> 
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li> 
       
     </ul>
   </div>
@@ -261,7 +330,7 @@
       </div><!-- /row -->
 
       <!-- footer -->
-      <footer>
+      <footer role="contentinfo">
           &copy; Copyright 2013, syobochim.
         Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
       </footer>
