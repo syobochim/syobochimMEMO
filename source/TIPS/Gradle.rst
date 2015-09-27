@@ -108,3 +108,20 @@ Gradleでは、testクラスを全て実行してしまう。そのため、テ�
 
   命名規約としてxxxxTestという書き方にしておくと、上記のようにフィルダリングすることができた。
 
+
+タスクの実行
+================================================
+
+タスク名をキャメルケースにしておくと、コマンド実行のときに省略系を使うことが出来る。
+
+.. code-block :: groovy
+
+   task copyJavaImage(type: Copy) {
+        from file('../images/java.jpg')
+        into "${buildDir}/java-image"
+    }
+
+.. code-block :: sh
+
+    gradle cJI
+
