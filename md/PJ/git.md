@@ -142,7 +142,7 @@ PJをcloneしてきたばかりの人は手順1α⇒手順2を、以前作業1α
 ③ 新規ブランチをチェックアウトを選択し、プルダウンリストからdevelopブランチを選択してください。  
 ④ 新ブランチ名は自動で入ります。問題なければそのまま。  
 
-<img src="./img/sourceTree_branch1.png" width="600px">
+<img src="./img/sourcetree_branch1.png" width="600px">
 
 ⑤ OKを押してください。これが、イメージ図のひとつめの"**checkout**"の作業です。  
 
@@ -157,21 +157,21 @@ PJをcloneしてきたばかりの人は手順1α⇒手順2を、以前作業1α
 ② 赤枠のdevelopをダブルクリックしてください。  
 ③ developブランチに切り替わります。
 
-<img src="./img/sourceTree_branch2.png" width="600px">
+<img src="./img/sourcetree_branch2.png" width="600px">
 
 ### 手順書2
 
 ① SourceTreeを起動してください。  
 ② developブランチを**最新化**してください。(以下作業にてリモートリポジトリの変更をローカルに適用させることが出来ます。)  
 
-<img src="./img/sourceTree_pull.png" width="600px">
+<img src="./img/sourcetree_pull.png" width="600px">
 
 ③ ブランチボタンを押す。  
 ④ 現在のブランチが**develop**になっていることを確認してください。  
 ⑤ 新規ブランチにfeatureブランチの名前を入力してください。  
 ブランチ名は機能をあらわす名称やチケット番号など、作成内容がわかるようにしてください。
 
-<img src="./img/sourceTree_featureBranch.png" width="600px">
+<img src="./img/sourcetree_featureBranch.png" width="600px">
 
 ⑥ OKを押してください。これがイメージ図のふたつめの"**checkout**"です。  
 
@@ -214,14 +214,14 @@ PJをcloneしてきたばかりの人は手順1α⇒手順2を、以前作業1α
 ① SourceTreeを起動します。  
 ② 「コミットされていない変更があります」の表記を確認し、「ファイルステータス」タブに切り替えます。
 
-<img src="./img/sourceTree_commit1.png" width="600px">
+<img src="./img/sourcetree_commit1.png" width="600px">
 ※？は追加したファイル、…は更新したファイルです。  
   
 ③ 変更内容を確認し、コミット対象ファイルを選択する。  
 ※必ず**コミットしたいファイルを選んで**チェックを付けてください。コミットメッセージにあったファイルを選択すること。  
 ④ 赤枠にコミットメッセージを記載する。  
 
-<img src="./img/sourceTree_commit2.png" width="600px">
+<img src="./img/sourcetree_commit2.png" width="600px">
 
 ⑤ コミットボタンを押してください。これがイメージ図の**add + commit**です。  
 
@@ -245,16 +245,16 @@ PJをcloneしてきたばかりの人は手順1α⇒手順2を、以前作業1α
 ① SourceTreeを起動します。  
 ② developブランチのソースコードから、最新の資源を取り込みます。  
   
-![fetch](./img/sourceTree_fetch.png)
+![fetch](./img/sourcetree_fetch.png)
 
 ③ developブランチの末尾のコミットを指定しOKボタンを押します。  
 
-<img src="./img/sourceTree_marge.png" width="600px">
+<img src="./img/sourcetree_marge.png" width="600px">
 ※**自分が作成したfeatureブランチの状態になっていることを確認**し、マージボタンを押下する。  
   
 ④ developブランチの末尾のコミットを指定しOKボタンを押します。  
 
-<img src="./img/sourceTree_pull2.png" width="600px">
+<img src="./img/sourcetree_pull2.png" width="600px">
 
 これを実施することで、developブランチとfeatureブランチの差分を吸収し、  
 developブランチへマージ後でもアプリケーションが正常に動作することを確認することが出来ます。  
@@ -267,7 +267,7 @@ http://naichilab.blogspot.jp/2014/01/git-4sourcetreegit.html
 ⑦ **featureブランチにのみ**チェックをいれてください。  
 ⑧ OKボタンを押してください。これが、イメージ図の**push**です。  
 
-![push](./img/sourceTree_push.png)
+![push](./img/sourcetree_push.png)
 
 ### 完了状態
 
