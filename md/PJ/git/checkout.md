@@ -64,6 +64,10 @@ featureブランチの作成方法は手順2を参照してください。
 ④ 現在のブランチが**develop**になっていることを確認してください。  
 ⑤ 新規ブランチにfeatureブランチの名前を入力してください。  
 ブランチ名は機能をあらわす名称やチケット番号など、作成内容がわかるようにしてください。
+ブランチ名：feature/[タスク内容がわかる名前]
+例）
+- ユーザ作成機能のブランチの場合： feature/createUser
+- Redmineのチケット番号#123の対応をする場合： feature/#123
 
 <img src="../img/sourcetree_featureBranch.png" width="600px">
 
