@@ -87,16 +87,16 @@ PGUT工程中は、主に以下のような種類のブランチができます�
 では、実際の操作方法について記載していきます。  
 状況にあわせて以下リンクを参照してください。
 
-[プロジェクト参加のときにやること(clone)](./sub/clone.html)
+[プロジェクト参加のときにやること(clone)](./git/clone.html)
 
-[開発を始めるときにやること(checkout)](./sub/checkout.html)
+[開発を始めるときにやること(checkout)](./git/checkout.html)
 
-[開発中にやること(ローカルでの作業)(addとcommit)](./sub/commit.html)
+[開発中にやること(ローカルでの作業)(addとcommit)](./git/commit.html)
 
-[開発中にやること(リモートブランチへの反映)(push)](./sub/push.html)
+[開発中にやること(リモートブランチへの反映)(push)](./git/push.html)
 
-[レビュー依頼のときにやること(pull request)](./sub/pullRequest.html)
+[レビュー依頼のときにやること(pull request)](./git/pullRequest.html)
 
-[レビュー指摘対応のときにやること](./sub/review.html)
+[レビュー指摘対応のときにやること](./git/review.html)
 
-[レビュー合格後にやること(レビュアーが実施)(merge)](./sub/finish.html)
+[レビュー合格後にやること(レビュアーが実施)(merge)](./git/finish.html)
