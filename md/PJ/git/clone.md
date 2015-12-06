@@ -16,12 +16,12 @@
 
 ## 作業内容
 
-① ブラウザからgitBucketを開いてください。
+① ブラウザからgitBucketを開いてください。  
 ② 赤枠の文字列をコピーしてください。
 
 <img src="../img/gitBucket.png" width="600px">
 
-③ SourceTreeを起動してください。
+③ SourceTreeを起動してください。  
 ④ 赤枠のボタンを押し、出てきた画面に以下を入力する
    - 元のパス/URL ：　gitBucketからコピーしてきたURL
    - 保存先のパス：ワークスペースにしたいフォルダ
