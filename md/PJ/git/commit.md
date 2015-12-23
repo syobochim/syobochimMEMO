@@ -42,7 +42,7 @@ addに対しての操作内容が異なりますので、注意してくださ�
 ① SourceTreeを起動します。  
 ② 「コミットされていない変更があります」の表記を確認し、「ファイルステータス」タブに切り替えます。
 
-<img src="../img/sourcetree_commit1.png" width="600px">
+<img src="../img/sourcetree_commit1.png" width="600px">  
 ※![？](../img/sourcetree_icon_untracked.png)は追加したファイル、![…](../img/sourcetree_icon_not_staged.png)は更新したファイルです。  
   
 ③ 変更内容を確認し、コミット対象ファイルを選択する。  
