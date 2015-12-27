@@ -51,7 +51,7 @@
 </script>
     <link rel="top" title="syobochim_MEMO 2013.10.15 ドキュメント" href="../index.html" />
     <link rel="next" title="Kotlin(*´Д`)ﾊｧﾊｧ" href="../kotlin/index.html" />
-    <link rel="prev" title="Java8" href="../TIPS/java8.html" /> 
+    <link rel="prev" title="Vim" href="../TIPS/vim.html" /> 
   </head>
   <body role="document">
     <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
@@ -113,7 +113,7 @@
               </li>
 
             
-              <li><a href="../TIPS/java8.html" title="Java8" accesskey="P">前へ </a></li>
+              <li><a href="../TIPS/vim.html" title="Vim" accesskey="P">前へ </a></li>
               <li><a href="../kotlin/index.html" title="Kotlin(*´Д`)ﾊｧﾊｧ" accesskey="N">次へ </a></li>
               <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
             
@@ -186,16 +186,18 @@
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="../TIPS/java8.html"
-                        title="前の章へ">Java8</a></p>
+  <p class="topless"><a href="../TIPS/vim.html"
+                        title="前の章へ">Vim</a></p>
   <h4>次のトピックへ</h4>
   <p class="topless"><a href="../kotlin/index.html"
                         title="次の章へ">Kotlin(*´Д`)ﾊｧﾊｧ</a></p>
-  <h3>このページ</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/ruby/dotinstall.txt"
-           rel="nofollow">ソースコードを表示</a></li>
-  </ul>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/ruby/dotinstall.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
 <div id="searchbox" role="search">
   <h3>クイック検索</h3>
   <form class="search form-inline" action="../search.html" method="get">
@@ -345,7 +347,7 @@
 <div class="line">にアクセスすると、DBへのデータ登録・編集・削除を行うことが出来るアプリケーションが出来てる！</div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">ノート</p>
+<p class="first admonition-title">注釈</p>
 <p class="last">マイグレーションとは、プログラムやデータの移行・変換作業のこと。</p>
 </div>
 </div>
@@ -616,7 +618,7 @@ end
 <div class="line">rootingを設定していく。</div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">ノート</p>
+<p class="first admonition-title">注釈</p>
 <p class="last">rootingとは、URLとアクションを関連づけるもの</p>
 </div>
 <div class="line-block">
@@ -637,11 +639,11 @@ end
 <div class="line"><br /></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">ノート</p>
+<p class="first admonition-title">注釈</p>
 <p class="last">rootは大元って意味。</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">ノート</p>
+<p class="first admonition-title">注釈</p>
 <p class="last">他にも、いろいろな設定がコメントアウトされて載っている。
 rootingの設定を変えたいときは参考にすること。</p>
 </div>
@@ -853,7 +855,7 @@ rootingの設定を変えたいときは参考にすること。</p>
 <div class="line"><br /></div>
 <div class="line">app/models/project.rb ファイルにValidationの設定を書いていく</div>
 </div>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Project</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Project</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">validates</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span>
 <span class="k">end</span>
 </pre></div>
@@ -879,7 +881,7 @@ rootingの設定を変えたいときは参考にすること。</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">ノート</p>
+<p class="first admonition-title">注釈</p>
 <p class="last">&#64;project.save はboolean型なので、if分の条件分岐に使用することができる</p>
 </div>
 <div class="line-block">
@@ -937,7 +939,7 @@ rootingの設定を変えたいときは参考にすること。</p>
 <div class="line"><br /></div>
 <div class="line">先ほど追加した箇所を下のように変更</div>
 </div>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Project</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Project</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">validates</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="p">{</span> <span class="ss">message</span><span class="p">:</span> <span class="s2">&quot;入力してください。&quot;</span> <span class="p">}</span>
 <span class="k">end</span>
 </pre></div>
@@ -953,7 +955,7 @@ rootingの設定を変えたいときは参考にすること。</p>
 <div class="line">たとえば、3文字以上でないと精査エラーになるとしたければ、</div>
 <div class="line">下記のようにかく。</div>
 </div>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Project</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Project</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">validates</span> <span class="ss">:title</span><span class="p">,</span>
     <span class="ss">presence</span><span class="p">:</span> <span class="p">{</span> <span class="ss">message</span><span class="p">:</span> <span class="s2">&quot;入力してください。&quot;</span> <span class="p">},</span>
     <span class="ss">length</span><span class="p">:</span> <span class="p">{</span> <span class="ss">minimum</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="ss">message</span><span class="p">:</span> <span class="s2">&quot;短すぎ！&quot;</span> <span class="p">}</span>
@@ -1042,7 +1044,7 @@ rootingの設定を変えたいときは参考にすること。</p>
 <div class="line">DRYの精神に反している！！</div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">ノート</p>
+<p class="first admonition-title">注釈</p>
 <p class="last">DRY ... Don&#8217;t repeat yourself 　同じことを繰り返すな！</p>
 </div>
 <div class="line-block">
@@ -1182,7 +1184,7 @@ rootingの設定を変えたいときは参考にすること。</p>
 <div class="line">同じ記述は切り出す！！</div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">ノート</p>
+<p class="first admonition-title">注釈</p>
 <p class="last">before_action は、すべてのメソッドの最初に実行。
 after_action は、すべてのメソッドの最後に実行。</p>
 </div>
@@ -1265,7 +1267,7 @@ after_action は、すべてのメソッドの最後に実行。</p>
 <div class="line">db/migrate/xxxx_create_tasks.rb</div>
 <div class="line">ファイルを編集する。</div>
 </div>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CreateTasks</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Migration</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CreateTasks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
   <span class="k">def</span> <span class="nf">change</span>
     <span class="n">create_table</span> <span class="ss">:tasks</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
       <span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:title</span>
@@ -1307,7 +1309,7 @@ after_action は、すべてのメソッドの最後に実行。</p>
 <div class="line">ファイルがある。</div>
 <div class="line">task.rb ファイルの中をみると、</div>
 </div>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Task</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Task</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">belongs_to</span> <span class="ss">:project</span>
 <span class="k">end</span>
 </pre></div>
@@ -1406,7 +1408,7 @@ after_action は、すべてのメソッドの最後に実行。</p>
 <div class="line">validationを定める</div>
 <div class="line">app/models/task.rb</div>
 </div>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Task</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Task</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">belongs_to</span> <span class="ss">:project</span>
     <span class="n">validates</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span>
 <span class="k">end</span>
@@ -1489,7 +1491,7 @@ after_action は、すべてのメソッドの最後に実行。</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">ノート</p>
+<p class="first admonition-title">注釈</p>
 <p class="last">check_box_tag 要素名, 値, checked = false, {その他設定したい値}</p>
 </div>
 <div class="line-block">
@@ -1555,7 +1557,7 @@ after_action は、すべてのメソッドの最後に実行。</p>
 <div class="line"><br /></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">ノート</p>
+<p class="first admonition-title">注釈</p>
 <p class="last">何か問題がある場合は、JavaScriptコンソール(ブラウザにてF12して出てくる)でエラーが出る。</p>
 </div>
 </div>
@@ -1646,7 +1648,7 @@ after_action は、すべてのメソッドの最後に実行。</p>
     </ul>
     <ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
       
-        <li><a href="../TIPS/java8.html" title="Java8" >前へ</a></li>
+        <li><a href="../TIPS/vim.html" title="Vim" >前へ</a></li>
         <li><a href="../kotlin/index.html" title="Kotlin(*´Д`)ﾊｧﾊｧ" >次へ</a></li>
         <li><a href="../genindex.html" title="総合索引" >索引</a></li> 
       
@@ -1658,7 +1660,7 @@ after_action は、すべてのメソッドの最後に実行。</p>
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2013, syobochim.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.3.
       </footer>
       <!-- /footer -->
 
