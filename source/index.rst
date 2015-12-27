@@ -34,6 +34,7 @@
    TIPS/jQuery
    TIPS/Clojure
    TIPS/java8
+   TIPS/vim
    ruby/dotinstall
    kotlin/index
 
